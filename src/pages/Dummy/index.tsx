@@ -16,7 +16,7 @@ const Dummy = () => {
   }, []);
   return (
     <>
-      <p>Value in React : {value}</p>
+      <p className="text-3xl font-bold underline">Value in React : {value}</p>
       {!initialize && (
         <div
           style={{
