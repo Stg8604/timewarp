@@ -8,6 +8,9 @@ export default defineConfig({
   server: {
     port: 8000,
   },
+  optimizeDeps: {
+    exclude: ["@ion-phaser/core/loader"],
+  },
   resolve: {
     alias: [
       {
@@ -52,5 +55,6 @@ export default defineConfig({
       },
     ],
   },
+  base: "",
   plugins: [react(), VitePWA({ registerType: "autoUpdate" })],
 });
