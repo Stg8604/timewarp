@@ -1,0 +1,3 @@
+interface DummyState {
+  value: number;
+}
