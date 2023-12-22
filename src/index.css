@@ -10,3 +10,13 @@
 canvas {
   display: block;
 }
+
+@font-face {
+  font-family: "PixelifySans";
+  src: url("assets/fonts/PixelifySans.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PressStart2P";
+  src: url("assets/fonts/PressStart2P-Regular.ttf") format("truetype");
+}

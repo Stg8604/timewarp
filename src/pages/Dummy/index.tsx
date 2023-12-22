@@ -5,7 +5,10 @@ import { IonPhaser } from "@ion-phaser/react";
 import { Loader } from "@mantine/core";
 
 const Dummy = () => {
-  const value = useAppSelector((state) => state.dummy.value);
+  // Get value from the redux store
+  const dummyValue = useAppSelector((state) => state.dummy.value);
+
+  // console.log(dummyValue);
 
   const gameRef = useRef(null);
 
@@ -16,7 +19,9 @@ const Dummy = () => {
   }, []);
   return (
     <>
-      <p className="text-3xl font-bold underline">Value in React : {value}</p>
+      <p className="text-3xl font-bold underline">
+        Value in React : {dummyValue}
+      </p>
       {!initialize && (
         <div
           style={{

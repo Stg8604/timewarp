@@ -5,10 +5,13 @@ import { useEffect } from "react";
 import { store } from "@stores/index.ts";
 import { Provider } from "react-redux";
 import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
 import { ErrorBoundary } from "react-error-boundary";
 import { MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 import { Fallback } from "./components/index.tsx";
 import { PythonProvider } from "react-py";
+import { theme } from "@utils/index.ts";
 
 function App() {
   useEffect(() => {
@@ -27,7 +30,12 @@ function App() {
     <>
       <ErrorBoundary fallbackRender={Fallback}>
         <PythonProvider>
-          <MantineProvider>
+          <MantineProvider theme={theme}>
+            <Notifications
+              position="bottom-right"
+              zIndex={1000}
+              autoClose={5000}
+            />
             <Provider store={store}>
               <Router />
             </Provider>

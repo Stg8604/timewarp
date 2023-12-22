@@ -1,5 +1,4 @@
 import Phaser from "phaser";
-
 import { GameScene } from "../scenes/hello";
 
 export const phaserConfig: Phaser.Types.Core.GameConfig = {
