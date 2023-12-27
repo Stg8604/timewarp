@@ -8,46 +8,46 @@ import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
 import { activateUser } from "../../slices";
 
 const ActivateUser = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+	const location = useLocation();
+	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    const userId = new URLSearchParams(location.search).get("userid");
-    const token = new URLSearchParams(location.search).get("token");
+	useEffect(() => {
+		const userId = new URLSearchParams(location.search).get("userid");
+		const token = new URLSearchParams(location.search).get("token");
 
-    console.log(userId, token);
+		console.log(userId, token);
 
-    const activate = async ({ userId, token }: ActivateUserParams) => {
-      if (userId == null || token == null) {
-        Toast(TOAST_ERROR, "There seems to be an issue");
-        navigate("/");
-        return;
-      }
-      const resultActivate = await dispatch(
-        activateUser({
-          userId: userId,
-          token: token,
-        }),
-      );
-      if (activateUser.fulfilled.match(resultActivate)) {
-        Toast(TOAST_SUCCESS, "Email Successfully Verified!");
-        navigate("/");
-      } else {
-        if (resultActivate.error) {
-          navigate("/");
-          Toast(TOAST_ERROR, resultActivate.error.message);
-        } else {
-          navigate("/");
-          Toast(TOAST_ERROR, "There seems to be an issue.");
-        }
-      }
-    };
+		const activate = async ({ userId, token }: ActivateUserParams) => {
+			if (userId == null || token == null) {
+				Toast(TOAST_ERROR, "There seems to be an issue");
+				navigate("/");
+				return;
+			}
+			const resultActivate = await dispatch(
+				activateUser({
+					userId: userId,
+					token: token,
+				})
+			);
+			if (activateUser.fulfilled.match(resultActivate)) {
+				Toast(TOAST_SUCCESS, "Email Successfully Verified!");
+				navigate("/");
+			} else {
+				if (resultActivate.error) {
+					navigate("/");
+					Toast(TOAST_ERROR, resultActivate.error.message);
+				} else {
+					navigate("/");
+					Toast(TOAST_ERROR, "There seems to be an issue.");
+				}
+			}
+		};
 
-    activate({ userId, token });
-  }, []);
+		activate({ userId, token });
+	}, []);
 
-  return <p>Loading...</p>;
+	return <p>Loading...</p>;
 };
 
 export default ActivateUser;

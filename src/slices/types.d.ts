@@ -1,3 +1,3 @@
 interface DummyState {
-  value: number;
+	value: number;
 }

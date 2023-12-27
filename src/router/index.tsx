@@ -8,39 +8,39 @@ import { useEffect } from "react";
 import { getUser } from "../slices/index";
 
 const Router = () => {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    (async () => {
-      await dispatch(getUser());
-    })();
-  }, []);
-  return (
-    <>
-      <BrowserRouter basename={BASEPATH}>
-        <Routes>
-          {routes.map((route) => {
-            return (
-              <Route
-                key={route.path}
-                path={route.path}
-                element={<>{route.element}</>}
-              />
-            );
-          })}
-          {protectedRoutes.map((route) => {
-            return (
-              <Route
-                key={route.path}
-                path={route.path}
-                element={<Protected>{route.element}</Protected>}
-              />
-            );
-          })}
-          {/* <Route key={"404"} path={"*"} element={<NotFound />} /> */}
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
+	const dispatch = useAppDispatch();
+	useEffect(() => {
+		(async () => {
+			await dispatch(getUser());
+		})();
+	}, []);
+	return (
+		<>
+			<BrowserRouter basename={BASEPATH}>
+				<Routes>
+					{routes.map((route) => {
+						return (
+							<Route
+								key={route.path}
+								path={route.path}
+								element={<>{route.element}</>}
+							/>
+						);
+					})}
+					{protectedRoutes.map((route) => {
+						return (
+							<Route
+								key={route.path}
+								path={route.path}
+								element={<Protected>{route.element}</Protected>}
+							/>
+						);
+					})}
+					{/* <Route key={"404"} path={"*"} element={<NotFound />} /> */}
+				</Routes>
+			</BrowserRouter>
+		</>
+	);
 };
 
 export default Router;

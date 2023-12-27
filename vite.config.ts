@@ -5,56 +5,56 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-    port: 8000,
-  },
-  optimizeDeps: {
-    exclude: ["@ion-phaser/core/loader"],
-  },
-  resolve: {
-    alias: [
-      {
-        find: "@public",
-        replacement: path.resolve(__dirname, "./public"),
-      },
-      {
-        find: "@components",
-        replacement: path.resolve(__dirname, "./src/components"),
-      },
-      {
-        find: "@config",
-        replacement: path.resolve(__dirname, "./src/config"),
-      },
-      {
-        find: "@contexts",
-        replacement: path.resolve(__dirname, "./src/contexts"),
-      },
-      {
-        find: "@pages",
-        replacement: path.resolve(__dirname, "./src/pages"),
-      },
-      {
-        find: "@router",
-        replacement: path.resolve(__dirname, "./src/router"),
-      },
-      {
-        find: "@utils",
-        replacement: path.resolve(__dirname, "./src/utils"),
-      },
-      {
-        find: "@assets",
-        replacement: path.resolve(__dirname, "./src/assets"),
-      },
-      {
-        find: "@stores",
-        replacement: path.resolve(__dirname, "./src/stores"),
-      },
-      {
-        find: "@phaserGame",
-        replacement: path.resolve(__dirname, "./src/phaserGame"),
-      },
-    ],
-  },
-  base: "",
-  plugins: [react(), VitePWA({ registerType: "autoUpdate" })],
+	server: {
+		port: 8000,
+	},
+	optimizeDeps: {
+		exclude: ["@ion-phaser/core/loader"],
+	},
+	resolve: {
+		alias: [
+			{
+				find: "@public",
+				replacement: path.resolve(__dirname, "./public"),
+			},
+			{
+				find: "@components",
+				replacement: path.resolve(__dirname, "./src/components"),
+			},
+			{
+				find: "@config",
+				replacement: path.resolve(__dirname, "./src/config"),
+			},
+			{
+				find: "@contexts",
+				replacement: path.resolve(__dirname, "./src/contexts"),
+			},
+			{
+				find: "@pages",
+				replacement: path.resolve(__dirname, "./src/pages"),
+			},
+			{
+				find: "@router",
+				replacement: path.resolve(__dirname, "./src/router"),
+			},
+			{
+				find: "@utils",
+				replacement: path.resolve(__dirname, "./src/utils"),
+			},
+			{
+				find: "@assets",
+				replacement: path.resolve(__dirname, "./src/assets"),
+			},
+			{
+				find: "@stores",
+				replacement: path.resolve(__dirname, "./src/stores"),
+			},
+			{
+				find: "@phaserGame",
+				replacement: path.resolve(__dirname, "./src/phaserGame"),
+			},
+		],
+	},
+	base: "",
+	plugins: [react(), VitePWA({ registerType: "autoUpdate" })],
 });

@@ -1,38 +1,70 @@
-import { useState } from "react";
+import { Editor } from "../../components";
+import { useAppSelector, useAppDispatch } from "@stores/hooks";
+import { toggleEditor } from "../../slices";
 import { usePython } from "react-py";
+import { useEffect } from "react";
 
 const DummyPydiode = () => {
-  const [input, setInput] = useState("");
+	const player = useAppSelector((state) => state.player);
+	const editorConfig = useAppSelector((state) => state.editor);
+	const dispatch = useAppDispatch();
 
-  const { runPython, stdout, stderr, isLoading, isRunning } = usePython();
+	const modules: ICustomModule[] = [
+		{
+			fileCode: `def getPlayerMovementSpeed():\n\treturn ${player.playerMovementSpeed}\ndef getFireballPower():\n\treturn ${player.fireballPower}`,
+			filename: "player.py",
+		},
+	];
 
-  return (
-    <>
-      {isLoading ? <p>Loading...</p> : <p>Ready!</p>}
-      <form>
-        <textarea
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter your code here"
-        />
-        <input
-          type="submit"
-          value={!isRunning ? "Run" : "Running..."}
-          disabled={isLoading || isRunning}
-          onClick={(e) => {
-            e.preventDefault();
-            runPython(input);
-          }}
-        />
-      </form>
-      <p>Output</p>
-      <pre>
-        <code>{stdout}</code>
-      </pre>
-      <pre>
-        <code>{stderr}</code>
-      </pre>
-    </>
-  );
+	const {
+		runPython,
+		stdout,
+		stderr,
+		isLoading,
+		isRunning,
+		interruptExecution,
+		writeFile,
+		// watchModules,
+		// unwatchModules
+	} = usePython();
+
+	function runCodeHandler(code: string) {
+		runPython(code);
+	}
+
+	function stopCodeHandler() {
+		interruptExecution();
+	}
+
+	function closeEditor() {
+		dispatch(toggleEditor());
+	}
+
+	function write(modules: ICustomModule[]) {
+		modules.forEach((module) => {
+			writeFile(module.filename, module.fileCode);
+		});
+	}
+
+	useEffect(() => {
+		write(modules);
+	}, [isLoading]);
+
+	return (
+		<>
+			<button onClick={() => dispatch(toggleEditor())}>Editor</button>
+			<Editor
+				config={editorConfig}
+				output={stdout}
+				error={stderr}
+				isLoading={isLoading}
+				isRunning={isRunning}
+				run={runCodeHandler}
+				stop={stopCodeHandler}
+				closeEditor={closeEditor}
+			/>
+		</>
+	);
 };
 
 export default DummyPydiode;

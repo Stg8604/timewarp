@@ -1,15 +1,22 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { DummyReducer, UserReducer } from "../slices/index";
+import {
+	DummyReducer,
+	EditorReducer,
+	PlayerReducer,
+	UserReducer,
+} from "../slices/index";
 
 // add all the reducers here
 
 const rootReducer = combineReducers({
-  dummy: DummyReducer,
-  user: UserReducer,
+	dummy: DummyReducer,
+	user: UserReducer,
+	player: PlayerReducer,
+	editor: EditorReducer,
 });
 
 export const store = configureStore({
-  reducer: rootReducer,
+	reducer: rootReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

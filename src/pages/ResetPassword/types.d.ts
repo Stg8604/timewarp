@@ -1,4 +1,4 @@
 interface IReset {
-  password: string;
-  confirm: string;
+	password: string;
+	confirm: string;
 }

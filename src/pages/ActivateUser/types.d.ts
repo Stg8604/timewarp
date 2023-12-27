@@ -1,4 +1,4 @@
 interface ActivateUserParams {
-  userId: string | null;
-  token: string | null;
+	userId: string | null;
+	token: string | null;
 }

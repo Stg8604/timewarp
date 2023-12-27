@@ -4,19 +4,19 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Protected = (props: any) => {
-  const { children } = props;
-  const navigate = useNavigate();
+	const { children } = props;
+	const navigate = useNavigate();
 
-  const isLoggedIn = false;
+	const isLoggedIn = false;
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate("/login");
-    }
-  }, [isLoggedIn, navigate]);
+	useEffect(() => {
+		if (!isLoggedIn) {
+			navigate("/login");
+		}
+	}, [isLoggedIn, navigate]);
 
-  if (isLoggedIn) {
-    return children;
-  }
+	if (isLoggedIn) {
+		return children;
+	}
 };
 export default Protected;
