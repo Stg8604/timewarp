@@ -53,6 +53,10 @@ export default defineConfig({
 				find: "@phaserGame",
 				replacement: path.resolve(__dirname, "./src/phaserGame"),
 			},
+			{
+				find: "@slices",
+				replacement: path.resolve(__dirname, "./src/slices"),
+			},
 		],
 	},
 	base: "",

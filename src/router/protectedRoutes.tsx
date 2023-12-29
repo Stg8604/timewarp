@@ -1,12 +1,12 @@
-//protected routes here
+import Dashboard from "@pages/Dashboard";
 
 const protectedRoutes: Routes[] = [
-	// {
-	//   title: "Profile",
-	//   path: "/profile",
-	//   description: "profile Page",
-	//   element: <Profile />,
-	// },
+	{
+		title: "Dashboard",
+		path: "/dashboard",
+		description: "dashboard Page",
+		element: <Dashboard />,
+	},
 ];
 
 export default protectedRoutes;

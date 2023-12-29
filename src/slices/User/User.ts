@@ -3,6 +3,7 @@ import {
 	forgotPasswordUser,
 	getUser,
 	loginUser,
+	logoutUser,
 	registerUser,
 } from "./UserActions";
 
@@ -31,6 +32,20 @@ export const user = createSlice({
 
 		builder.addCase(loginUser.fulfilled, (state) => {
 			state.loggedIn = true;
+			state.isFetching = false;
+		});
+		builder.addCase(logoutUser.rejected, (state) => {
+			state.loggedIn = true;
+			state.isFetching = false;
+		});
+
+		builder.addCase(logoutUser.pending, (state) => {
+			state.loggedIn = true;
+			state.isFetching = true;
+		});
+
+		builder.addCase(logoutUser.fulfilled, (state) => {
+			state.loggedIn = false;
 			state.isFetching = false;
 		});
 		builder.addCase(registerUser.rejected, (state) => {

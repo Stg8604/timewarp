@@ -37,6 +37,10 @@ export const registerUser = createAsyncThunk<
 				password: userDetails.password,
 				username: userDetails.username,
 				token: userDetails.token,
+				college: userDetails.college,
+				phonenumber: userDetails.phonenumber,
+				degree: userDetails.degree,
+				year: userDetails.year,
 			});
 			return response.data;
 		} catch (error: any) {

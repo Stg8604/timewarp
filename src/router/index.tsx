@@ -13,7 +13,7 @@ const Router = () => {
 		(async () => {
 			await dispatch(getUser());
 		})();
-	}, []);
+	}, [dispatch]);
 	return (
 		<>
 			<BrowserRouter basename={BASEPATH}>
