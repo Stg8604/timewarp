@@ -31,9 +31,7 @@ const Register = () => {
 		confirm: "",
 		token: "",
 		college: "",
-		phonenumber: 0,
-		degree: "",
-		year: 0,
+		phonenumber: "",
 	});
 	const updateregisterCredentials = (type: string, value: string) => {
 		const updateregisterCredentials: IRegister = { ...registerCredentials };
@@ -89,8 +87,6 @@ const Register = () => {
 					token: "",
 					college: registerCredentials.college,
 					phonenumber: registerCredentials.phonenumber,
-					degree: registerCredentials.degree,
-					year: registerCredentials.year,
 				})
 			);
 			if (registerUser.fulfilled.match(res)) {
@@ -105,24 +101,25 @@ const Register = () => {
 	return (
 		<>
 			<div className={styles.your_class}>
-				<div className="h-full flex flex-col items-center">
+				<div className="relative h-full flex flex-col items-center">
 					<img
 						src={timewarp}
-						className="absolute top-8 sm:top-8 xl:top-4 z-10"
+						className="w-[80%] sm:w-[65%] absolute top-[6%] sm:top-[2%] xl:top-[0%] z-10"
 					/>
+
 					<img
 						src={bgcardextended}
-						className=" absolute top-[14%] sm:invisible"
+						className=" w-[100%] absolute top-[14%] sm:invisible"
 					/>
 					<img
 						src={bgcard}
-						className="h-[75%] xl:h[85%] absolute top-[20%] sm:top-[23%] lg:top-[20%] invisible sm:visible"
+						className="h-[90%] xl:h-[90%] absolute top-[20%] sm:top-[8%] lg:top-[8%] invisible sm:visible"
 					/>
 					<img
 						src={earth}
-						className="w-[45%] sm:w-[20%] absolute top-0 sm:top-16 xl:top-4"
+						className="w-[35%] md:w-[16%] xl:w-[16%] absolute top-[4%] sm:top-[2%] xl:top-[0%] z-5"
 					/>
-					<div className="w-[80%] pl-8 pr-8 sm:w-[50%] xl:w-[37%] absolute top-[22%] sm:top-[35%] xl:top-[40%] flex flex-col justify-center">
+					<div className="w-[65%] pl-8 pr-8 sm:w-[50%] md:w-[45%] xl:w-[30%] absolute top-[22%] sm:top-[20%] xl:top-[30%] flex flex-col justify-center line-clamp-2">
 						<Regprops
 							input={updateregisterCredentials}
 							onButtonClick={emailRegisterHandler}

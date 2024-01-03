@@ -36,7 +36,7 @@ const ResetPassword = () => {
 
 		if (token == null) {
 			Toast(TOAST_ERROR, "Something went wrong!");
-			navigate("/");
+			navigate("/login");
 			return;
 		}
 		const resultResetPassword = await dispatch(
@@ -70,7 +70,7 @@ const ResetPassword = () => {
 					/>
 					<img
 						src={bgcard}
-						className="h-[60%] absolute top-[20%] sm:top-[20%] xl:top-[30%] invisible sm:visible"
+						className="h-[60%] sm:h-[65%] absolute top-[20%] sm:top-[20%] xl:top-[30%] invisible sm:visible"
 					/>
 					<img
 						src={earth}

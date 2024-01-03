@@ -45,7 +45,7 @@ const ActivateUser = () => {
 		};
 
 		activate({ userId, token });
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return <p>Loading...</p>;

@@ -8,3 +8,4 @@ export { default as Regprops } from "./RegBox/RegProps";
 export { default as Reguser } from "./Auth/Input/RegUser";
 export { default as Regpassword } from "./Auth/Input/RegPassword";
 export { default as Loader } from "./Loader/index";
+export { default as AuthWrapper } from "./Auth/AuthWrapper/AuthWrapper";

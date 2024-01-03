@@ -5,9 +5,7 @@ interface IRegister {
 	confirm: string;
 	token: string;
 	college: string;
-	phonenumber: integer;
-	degree: string;
-	year: integer;
+	phonenumber: string;
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	[key: string]: any;
 }

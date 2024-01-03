@@ -24,13 +24,13 @@ const regprops: FC<MyComponentProps> = ({
 
 			<div className="flex flex-col  mt-8">
 				<Button
-					className="w-fit mx-auto h-12 sm:h-12 xl:h-12 object-cover transition-transform transform hover:scale-110 "
+					className="w-fit mx-auto h-10 sm:h-10 xl:h-10 object-cover transition-transform transform hover:scale-110 "
 					onClick={onButtonClick}
 				>
 					<img src={cta} className="w-full h-full" />
 				</Button>
 				<Button
-					className="flex justify-center sm:-left-0 sm:mx-auto w-fit mt-2"
+					className="flex justify-start -left-8 sm:-left-0 sm:mx-auto w-fit mt-2"
 					onClick={onButtonClick2}
 				>
 					<Text
@@ -38,7 +38,7 @@ const regprops: FC<MyComponentProps> = ({
 						styles={(theme) => ({
 							root: {
 								fontSize: theme.fontSizes.md,
-								backgroundColor: theme.colors.regPink[0],
+								backgroundColor: "transparent",
 								fontFamily: "pixelifySans",
 								color: theme.colors.blue[0],
 							},

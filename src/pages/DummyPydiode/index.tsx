@@ -48,7 +48,7 @@ const DummyPydiode = () => {
 
 	useEffect(() => {
 		write(modules);
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isLoading]);
 
 	return (

@@ -10,9 +10,7 @@ interface UserDetails {
 	username: string;
 	token: string;
 	college: string;
-	phonenumber: integer;
-	degree: string;
-	year: integer;
+	phonenumber: string;
 }
 
 interface UserState {
