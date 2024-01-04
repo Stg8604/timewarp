@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  web:
+    container_name: timewarp-frontend-prod
+    image: timewarp-frontend-prod
+    build:
+      context: .
+      target: prod
+    ports:
+      - 9876:80
+    restart: always
