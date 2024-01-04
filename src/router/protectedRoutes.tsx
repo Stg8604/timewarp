@@ -1,6 +1,4 @@
-import Dashboard from "@pages/Dashboard";
-import Dummy from "@pages/Dummy";
-import Tutorial from "@pages/Tutorial";
+import { PhasorRouter, Dummy, Dashboard } from "@pages/index";
 
 const protectedRoutes: Routes[] = [
 	{
@@ -10,10 +8,10 @@ const protectedRoutes: Routes[] = [
 		element: <Dashboard />,
 	},
 	{
-		title: "Tutorial Game",
-		path: "/tutorial",
-		description: "Tutorial Game",
-		element: <Tutorial />,
+		title: "Game",
+		path: "/game",
+		description: "Game",
+		element: <PhasorRouter />,
 	},
 	{
 		title: "Dummy",

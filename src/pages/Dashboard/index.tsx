@@ -26,11 +26,10 @@ const Dashboard = () => {
 				<h1>Dashboard</h1>
 				<button
 					onClick={() => {
-						dispatch(setScene("TutorialScene"));
-						navigate("/tutorial");
+						navigate("/game");
 					}}
 				>
-					Tutorial
+					Play
 				</button>
 				<button
 					onClick={() => {

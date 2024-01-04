@@ -2,11 +2,14 @@ import { useAppDispatch } from "@stores/hooks";
 import { useState } from "react";
 import { togglePortalKey } from "../../../slices/Tutorial/tutorial";
 import { checkPasskey } from "../../../slices/Tutorial/tutorialActions";
+import { Toast } from "../..";
+import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
+import { useNavigate } from "react-router-dom";
 
 const PasskeyBox = () => {
 	const [passkey, setPasskey] = useState("");
-	const [res, setRes] = useState("");
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 
 	return (
 		<div className="absolute h-full w-full flex flex-col justify-center items-center">
@@ -32,8 +35,17 @@ const PasskeyBox = () => {
 								})
 							);
 							if (res.payload) {
-								const ans = res.payload.toString();
-								setRes(ans);
+								// eslint-disable-next-line @typescript-eslint/no-explicit-any
+								const ans: any = res.payload;
+								if (ans.correct == true) {
+									Toast(TOAST_SUCCESS, "Correct PassKey!");
+									// Add Dispatch to change scene to lobby here
+									setTimeout(() => {
+										window.location.reload();
+									}, 1000);
+								} else {
+									Toast(TOAST_ERROR, "Incorrect PassKey!");
+								}
 							}
 						}}
 						className=" bg-tutorialUiBlue px-2 py-1 mx-auto rounded-lg"
@@ -49,7 +61,6 @@ const PasskeyBox = () => {
 						CLOSE
 					</button>
 				</div>
-				<div>{res}</div>
 			</div>
 		</div>
 	);

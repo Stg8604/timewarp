@@ -16,8 +16,6 @@ const ActivateUser = () => {
 		const userId = new URLSearchParams(location.search).get("userid");
 		const token = new URLSearchParams(location.search).get("token");
 
-		console.log(userId, token);
-
 		const activate = async ({ userId, token }: ActivateUserParams) => {
 			if (userId == null || token == null) {
 				Toast(TOAST_ERROR, "There seems to be an issue");

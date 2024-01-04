@@ -19,7 +19,7 @@ const Protected = (props: any) => {
 			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [loggedIn, isUserFetching]);
+	}, []);
 	return isLoading ? <Loader /> : children;
 };
 

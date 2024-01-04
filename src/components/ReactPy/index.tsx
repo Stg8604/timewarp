@@ -35,7 +35,6 @@ const ReactPy: FC<IReactPy> = ({ seederParams, defaultInput }) => {
 			sysOutputSplit.forEach((params) => {
 				if (params && params != " ") {
 					params = params.replace(/'/g, '"');
-					console.log("dsfgfg", params);
 					const updatedParams = JSON.parse(params);
 					dispatch(seederParams[curModule].dispatch(updatedParams[0]));
 					curModule += 1;

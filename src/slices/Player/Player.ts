@@ -1,7 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { status } from "./PlayerActions";
 const initialState = {
 	playerMovementSpeed: 10,
 	fireballPower: 10,
+	day: 0,
+	tutorialCompleted: false,
+	score: 0,
+	isFetching: false,
 } as PlayerState;
 
 export const playerSlice = createSlice({
@@ -14,6 +19,20 @@ export const playerSlice = createSlice({
 		changeFireballPower: (state, action: PayloadAction<number>) => {
 			state.fireballPower = action.payload;
 		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(status.rejected, (state) => {
+			state.isFetching = false;
+		});
+		builder.addCase(status.pending, (state) => {
+			state.isFetching = true;
+		});
+		builder.addCase(status.fulfilled, (state, { payload }) => {
+			state.isFetching = false;
+			state.day = payload.day;
+			state.tutorialCompleted = payload.tutorialCompleted;
+			state.score = payload.score;
+		});
 	},
 });
 

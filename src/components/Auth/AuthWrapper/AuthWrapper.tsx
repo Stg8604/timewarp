@@ -22,7 +22,7 @@ const AuthWrapper: FC<AuthProps> = ({ children, title }) => {
 			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [loggedIn, isUserFetching]);
+	}, []);
 
 	return isLoading ? <Loader /> : <>{children}</>;
 };

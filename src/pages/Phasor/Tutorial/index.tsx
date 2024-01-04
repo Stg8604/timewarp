@@ -6,8 +6,8 @@ import { InfoBox } from "@components/index";
 import { toggleEditor } from "@slices/index";
 import { updateTutorialParams } from "@slices/Tutorial/tutorial";
 import { phaserConfig } from "@phaserGame/game";
-import BackBtn from "../../components/BackBtn";
-import PasskeyBox from "../../components/Tutorial/PasskeyBox";
+import BackBtn from "../../../components/BackBtn";
+import PasskeyBox from "../../../components/Tutorial/PasskeyBox";
 import SecurModule from "@modules/SecurityModule.txt";
 import { ReactPy } from "@components/index";
 

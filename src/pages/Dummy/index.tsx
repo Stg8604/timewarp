@@ -9,8 +9,6 @@ const Dummy = () => {
 	// Get value from the redux store
 	const dummyValue = useAppSelector((state) => state.dummy.value);
 
-	// console.log(dummyValue);
-
 	const gameRef = useRef(null);
 
 	const [initialize, setInitialize] = useState(false);
