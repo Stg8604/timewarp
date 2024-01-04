@@ -1,9 +1,9 @@
 import { useCookies } from "react-cookie";
-import { useSelector } from "react-redux";
-import { logoutUser, userSelector } from "../../slices";
+import { logoutUser } from "@slices/index";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "@components/index";
 import { useAppDispatch } from "@stores/hooks";
+import { setScene } from "@slices/Scene/scene";
 
 const Dashboard = () => {
 	const navigate = useNavigate();
@@ -14,17 +14,35 @@ const Dashboard = () => {
 		const logoutDispatch = await dispatch(logoutUser());
 		if (logoutUser.fulfilled.match(logoutDispatch)) {
 			removeCookie("jwt", { path: "/" });
-			navigate("/login");
+			navigate("/");
 		} else {
 			Toast("toastRed", "Oops! There seems to be an issue.");
 		}
 	};
 
 	return (
-		<div>
-			<h1>Dashboard</h1>
-			<button onClick={handleLogOut}>Logout</button>
-		</div>
+		<>
+			<div className="absolute z-50 flex flex-col text-center">
+				<h1>Dashboard</h1>
+				<button
+					onClick={() => {
+						dispatch(setScene("TutorialScene"));
+						navigate("/tutorial");
+					}}
+				>
+					Tutorial
+				</button>
+				<button
+					onClick={() => {
+						dispatch(setScene("GameScene"));
+						navigate("/redux");
+					}}
+				>
+					Redux Test
+				</button>
+				<button onClick={handleLogOut}>Logout</button>
+			</div>
+		</>
 	);
 };
 

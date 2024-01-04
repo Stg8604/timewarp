@@ -3,6 +3,7 @@ import { phaserConfig } from "@phaserGame/game";
 import { useRef, useState, Ref, useEffect } from "react";
 import { IonPhaser } from "@ion-phaser/react";
 import { Loader } from "@mantine/core";
+import { BackBtn } from "@components/index";
 
 const Dummy = () => {
 	// Get value from the redux store
@@ -22,6 +23,9 @@ const Dummy = () => {
 			<p className="text-3xl font-bold underline">
 				Value in React : {dummyValue}
 			</p>
+
+			<BackBtn />
+
 			{!initialize && (
 				<div
 					style={{

@@ -27,6 +27,7 @@ const Interpretor: FC<IInterpretorProps> = ({
 	error,
 	isLoading,
 	closeEditor,
+	defaultInput,
 }) => {
 	const editorOnLoad = (editor: {
 		setOptions: (arg0: {
@@ -58,33 +59,24 @@ const Interpretor: FC<IInterpretorProps> = ({
 		editor.renderer.setScrollMargin(10, 10, 0, 0);
 		editor.moveCursorTo(0, 0);
 	};
-	const [input, setInput] = useState<string>(
-		`def function(): \n\t# write your code here`
-	);
-
-	// const editorConfigHandler = () => {
-	//   dispatch(
-	//     setEditorOptions({
-	//       fontSize: 25,
-	//       tabSize: 4,
-	//       showLineNumbers: false,
-	//       theme: "terminal",
-	//       isOpen: config.isOpen
-	//     }),
-	//   );
-	// };
+	const [input, setInput] = useState<string>(defaultInput);
+	const [delayedOpen, setDelayedOpen] = useState<boolean>(false);
 
 	useEffect(() => {
-		if (output === "") return;
-		try {
-			console.log(JSON.parse(output));
-		} catch (e) {
-			console.log(e);
+		if (!config.isOpen) {
+			setDelayedOpen(false);
+			return;
 		}
-	}, [output]);
+
+		const timeOut = setTimeout(() => {
+			setDelayedOpen(config.isOpen);
+		}, 2000);
+
+		return () => clearTimeout(timeOut);
+	}, [config.isOpen]);
 
 	return (
-		<Drawer opened={config.isOpen} size="lg" onClose={() => closeEditor()}>
+		<Drawer opened={delayedOpen} size="lg" onClose={() => closeEditor()}>
 			<Group
 				styles={() => ({
 					root: {

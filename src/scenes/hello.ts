@@ -1,13 +1,13 @@
 import { Scene, GameObjects } from "phaser";
-import { store } from "../stores/index";
-import { increment } from "../slices/Dummy/Dummy";
+import { store } from "@stores/index";
+import { increment } from "@slices/Dummy/Dummy";
 
 export class GameScene extends Scene {
 	private textbox: GameObjects.Text | undefined;
 	public value: number = store.getState().dummy.value;
 
 	constructor() {
-		super("scene-game");
+		super({ key: "GameScene" });
 	}
 
 	create() {

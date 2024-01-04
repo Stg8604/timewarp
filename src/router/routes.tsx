@@ -1,20 +1,14 @@
 import {
 	ActivateUser,
-	Dummy,
 	DummyPydiode,
 	ForgotPassword,
 	Login,
 	Register,
 	ResetPassword,
+	Landing,
 } from "@pages/index";
 
 const routes: Routes[] = [
-	{
-		title: "Dummy",
-		path: "/",
-		description: "home",
-		element: <Dummy />,
-	},
 	{
 		title: "DummyPy",
 		path: "/py",
@@ -50,6 +44,12 @@ const routes: Routes[] = [
 		path: "/activate",
 		description: "Activate User Page",
 		element: <ActivateUser />,
+	},
+	{
+		title: "Landing Page",
+		path: "/",
+		description: "Landing Page",
+		element: <Landing />,
 	},
 ];
 

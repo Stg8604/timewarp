@@ -1,6 +1,6 @@
-import { Editor } from "../../components";
+import { Editor } from "@components/index";
 import { useAppSelector, useAppDispatch } from "@stores/hooks";
-import { toggleEditor } from "../../slices";
+import { toggleEditor } from "@slices/index";
 import { usePython } from "react-py";
 import { useEffect } from "react";
 
@@ -63,6 +63,7 @@ const DummyPydiode = () => {
 				run={runCodeHandler}
 				stop={stopCodeHandler}
 				closeEditor={closeEditor}
+				defaultInput={"#type"}
 			/>
 		</>
 	);

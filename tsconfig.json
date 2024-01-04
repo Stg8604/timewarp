@@ -22,13 +22,17 @@
 
 		"paths": {
 			"@public/*": ["./public/*"],
+			"@modules/*": ["./src/modules/*"],
 			"@config/*": ["./src/config/*"],
 			"@contexts/*": ["./src/contexts/*"],
 			"@components/*": ["./src/components/"],
 			"@pages/*": ["./src/pages/*"],
 			"@router/*": ["./src/router/*"],
 			"@utils/*": ["./src/utils/*"],
+			"@slices/*": ["./src/slices/*"],
+			"@sprites/*": ["./src/sprites/*"],
 			"@stores/*": ["./src/stores/*"],
+			"@assets/*": ["./src/assets/*"],
 			"@phaserGame/*": ["./src/phaserGame/*"]
 		}
 	},

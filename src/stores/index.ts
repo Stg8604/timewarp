@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
 	DummyReducer,
+	TutorialReducer,
 	EditorReducer,
 	PlayerReducer,
 	UserReducer,
+	SceneReducer,
 } from "../slices/index";
 
 // add all the reducers here
@@ -13,6 +15,8 @@ const rootReducer = combineReducers({
 	user: UserReducer,
 	player: PlayerReducer,
 	editor: EditorReducer,
+	tutorial: TutorialReducer,
+	scene: SceneReducer,
 });
 
 export const store = configureStore({

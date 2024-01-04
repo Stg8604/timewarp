@@ -1,0 +1,6 @@
+
+class Security:
+    def __init__(self,params):
+        self.passcode = params["passcode"]
+
+

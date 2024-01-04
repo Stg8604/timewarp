@@ -1,5 +1,5 @@
 import { Toast } from "@components/index";
-import { forgotPasswordUser } from "../../slices/index";
+import { forgotPasswordUser } from "@slices/index";
 import { useAppDispatch } from "@stores/hooks";
 import { isEmailValid } from "@utils/index";
 import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";

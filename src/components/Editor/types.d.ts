@@ -23,4 +23,5 @@ interface IInterpretorProps {
 	isLoading: boolean;
 	isRunning: boolean;
 	closeEditor: () => void;
+	defaultInput: string;
 }

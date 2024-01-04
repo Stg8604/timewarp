@@ -22,7 +22,7 @@ import {
 	isEmailValid,
 	theme,
 } from "@utils/index";
-import { loginUser, userSelector } from "../../slices";
+import { loginUser, userSelector } from "@slices/index";
 import { useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "@mantine/core";

@@ -1,5 +1,5 @@
 import { Toast } from "@components/index";
-import { resetPasswordUser } from "../../slices/index";
+import { resetPasswordUser } from "@slices/index";
 import { useAppDispatch } from "@stores/hooks";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

@@ -57,6 +57,10 @@ export default defineConfig({
 				find: "@slices",
 				replacement: path.resolve(__dirname, "./src/slices"),
 			},
+			{
+				find: "@modules",
+				replacement: path.resolve(__dirname, "./src/modules"),
+			},
 		],
 	},
 	base: "",

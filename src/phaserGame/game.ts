@@ -1,9 +1,10 @@
 import Phaser from "phaser";
+import { TutorialScene } from "../scenes/tutorial";
 import { GameScene } from "../scenes/hello";
+import { LoadingScene } from "../scenes/loading";
 
 export const phaserConfig: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
-	// parent: 'phaser-container',
 	backgroundColor: "black",
 	scale: {
 		mode: Phaser.Scale.ScaleModes.RESIZE,
@@ -13,10 +14,8 @@ export const phaserConfig: Phaser.Types.Core.GameConfig = {
 	physics: {
 		default: "arcade",
 		arcade: {
-			gravity: { y: 200 },
+			gravity: { y: 0 },
 		},
 	},
-	scene: [GameScene],
+	scene: [LoadingScene, TutorialScene, GameScene],
 };
-
-// export default new Phaser.Game(config)
