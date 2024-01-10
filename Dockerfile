@@ -1,16 +1,3 @@
-FROM node:21-alpine as dev
-
-WORKDIR /app
-
-COPY ./package*.json ./yarn.lock ./
-
-RUN yarn install 
-COPY .. .
-EXPOSE 80
-
-CMD ["yarn", "dev", "--host", "0.0.0.0", "--port", "80"]
-
-
 FROM alpine/git:2.43.0 as mod
 WORKDIR /
 RUN git clone https://github.com/mharrish7/Modified_Ion_Phaser.git

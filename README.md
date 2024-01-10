@@ -18,6 +18,11 @@ yarn build
 serve dist -p 8000
 ```
 
+### To run in Docker
+```shell
+docker-compose watch
+```
+
 ### Reference.
 
 react-py (Pyodide) : https://elilambnz.github.io/react-py/
