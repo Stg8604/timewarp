@@ -6,6 +6,7 @@ import {
 	PlayerReducer,
 	UserReducer,
 	SceneReducer,
+	WaterMorseReducer,
 } from "../slices/index";
 
 // add all the reducers here
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
 	editor: EditorReducer,
 	tutorial: TutorialReducer,
 	scene: SceneReducer,
+	waterMorse: WaterMorseReducer,
 });
 
 export const store = configureStore({

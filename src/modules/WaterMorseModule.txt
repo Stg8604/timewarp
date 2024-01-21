@@ -1,0 +1,23 @@
+class Background:
+    # Private variable (kinda)
+    __keys = ["forest", "water", "wind"]
+    
+    def __init__(self, params):
+        pass
+
+    def showAllKeys(self):
+        print("All keys:", self.__keys)
+
+    def pause(self, key):
+        if (key in self.__keys):
+            setattr(self, key, "pause")
+            print(f"'{key}' has been paused")
+        else:
+            print("Invalid audio key!")
+
+    def resume(self, key):
+        if (key in self.__keys):
+            setattr(self, key, "resume")
+            print(f"'{key}' has been resumed")
+        else:
+            print("Invalid audio key!")

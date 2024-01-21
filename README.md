@@ -19,6 +19,7 @@ serve dist -p 8000
 ```
 
 ### To run in Docker
+
 ```shell
 docker-compose watch
 ```

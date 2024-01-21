@@ -16,6 +16,23 @@ export class TutorialPlayer extends Phaser.Physics.Arcade.Sprite {
 		this.scene.physics.world.enable(this);
 		this.scene.add.existing(this);
 
+		this.scene.load.spritesheet("player", "assets/tutorial/player.png", {
+			frameWidth: 64,
+			frameHeight: 64,
+		});
+		this.scene.load.spritesheet("playerUI", "assets/tutorial/playerUI.png", {
+			frameWidth: 64,
+			frameHeight: 64,
+		});
+		this.scene.load.spritesheet(
+			"playerCloseUI",
+			"assets/tutorial/playerCloseUI.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+
 		// Sprite configuration
 		this.setPosition(x, y);
 		this.setScale(2);
@@ -40,7 +57,7 @@ export class TutorialPlayer extends Phaser.Physics.Arcade.Sprite {
 			key: "openUI",
 			frames: this.anims.generateFrameNumbers("playerUI", {
 				start: 0,
-				end: 23,
+				end: 22,
 			}),
 			frameRate: 10,
 			repeat: 0,
@@ -49,7 +66,7 @@ export class TutorialPlayer extends Phaser.Physics.Arcade.Sprite {
 			key: "closeUI",
 			frames: this.anims.generateFrameNumbers("playerCloseUI", {
 				start: 0,
-				end: 23,
+				end: 19,
 			}),
 			frameRate: 10,
 			repeat: 0,

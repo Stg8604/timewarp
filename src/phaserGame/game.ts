@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import { TutorialScene } from "../scenes/tutorial";
 import { GameScene } from "../scenes/hello";
 import { LoadingScene } from "../scenes/loading";
+import { WaterMorseScene } from "../scenes/waterMorse";
 
 export const phaserConfig: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
@@ -17,5 +18,5 @@ export const phaserConfig: Phaser.Types.Core.GameConfig = {
 			gravity: { y: 0 },
 		},
 	},
-	scene: [LoadingScene, TutorialScene, GameScene],
+	scene: [LoadingScene, TutorialScene, GameScene, WaterMorseScene],
 };
