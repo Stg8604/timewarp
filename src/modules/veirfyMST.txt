@@ -1,0 +1,35 @@
+class Computer:
+    def __init__(self, params):
+        self.edgeLists = params["edgeLists"]
+        self.possibleEdges = params["possibleEdges"]
+        self.userEdgeList = params["userEdgeList"]
+
+    def connect(self, source, target):
+        edge_to_add = {"source": source, "target": target}
+        if edge_to_add not in self.userEdgeList:
+            if edge_to_add in self.possibleEdges:
+                self.userEdgeList.append(edge_to_add)
+                print("Successfully added the edge ",edge_to_add)
+            else:
+                print("Invalid Edge")
+
+    def disconnect(self, source, target):
+        edge_to_remove = {"source": source, "target": target}
+        if edge_to_remove in self.userEdgeList:
+            self.userEdgeList.remove(edge_to_remove)
+            print("Successfully Disconnected ",edge_to_remove)
+        else:
+            print("Edge not connected or Invalid")
+
+    def get_all_edges(self):
+        return self.edgeLists
+
+    def get_current_edges(self):
+        return self.userEdgeList
+        
+    def __eq__(self, other):
+        if not isinstance(other, Computer):
+            
+            return NotImplemented
+
+        return set(self.a["userEdgeList"]) == set(other.a["userEdgeList"])

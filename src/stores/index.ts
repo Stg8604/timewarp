@@ -6,6 +6,7 @@ import {
 	PlayerReducer,
 	UserReducer,
 	SceneReducer,
+	ComputerReducer,
 	WaterMorseReducer,
 } from "../slices/index";
 
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
 	editor: EditorReducer,
 	tutorial: TutorialReducer,
 	scene: SceneReducer,
+	computer: ComputerReducer,
 	waterMorse: WaterMorseReducer,
 });
 

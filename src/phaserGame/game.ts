@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import { TutorialScene } from "../scenes/tutorial";
 import { GameScene } from "../scenes/hello";
 import { LoadingScene } from "../scenes/loading";
+import { ComputerScene } from "../scenes/computer";
 import { WaterMorseScene } from "../scenes/waterMorse";
 
 export const phaserConfig: Phaser.Types.Core.GameConfig = {
@@ -18,5 +19,8 @@ export const phaserConfig: Phaser.Types.Core.GameConfig = {
 			gravity: { y: 0 },
 		},
 	},
-	scene: [LoadingScene, TutorialScene, GameScene, WaterMorseScene],
+	input: {
+		keyboard: true,
+	},
+	scene: [LoadingScene, TutorialScene, GameScene, ComputerScene,WaterMorseScene],
 };

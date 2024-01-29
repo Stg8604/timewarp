@@ -5,6 +5,7 @@ export { default as WaterMorseReducer } from "./WaterMorse/waterMorse";
 export { default as PlayerReducer } from "./Player/Player";
 export { default as EditorReducer } from "./Editor/Editor";
 export { default as SceneReducer } from "./Scene/scene";
+export { default as ComputerReducer } from "./computer/computer";
 
 export {
 	loginUser,

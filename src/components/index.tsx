@@ -11,5 +11,7 @@ export { default as Loader } from "./Loader/index";
 export { default as BackBtn } from "./BackBtn/index";
 export { default as ReactPy } from "./ReactPy/index";
 export { default as AuthWrapper } from "./Auth/AuthWrapper/AuthWrapper";
+export { default as HintBox } from "./computers/HintBox/index";
+export { default as MstWeight } from "./computers/MstWeight/index";
 export { default as PasskeyBox } from "./PasskeyBox/index";
 export { default as InfoBox } from "./InfoBox/index";

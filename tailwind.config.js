@@ -6,7 +6,7 @@ export default {
 			paleYellow: "#FEFECB",
 			paleBrown: "#A2724A",
 			lightGrey: "#6B685F",
-			grey: "##2E2A25",
+			grey: "#2E2A25",
 			lightBlue: "#94B0C2",
 			blue: "#323C56",
 			lightPurple: "#FECBFC",
@@ -16,6 +16,9 @@ export default {
 			white: "#FFFFFF",
 			red: "#FF0000",
 			black: "#000000",
+			computerhintbox: "#BFCFE7",
+			close: "#332941",
+			green: "#008000",
 		},
 		fontFamily: {
 			pressStart2P: ["PressStart2P", "sans-serif"],

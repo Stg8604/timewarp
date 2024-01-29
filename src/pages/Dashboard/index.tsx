@@ -31,6 +31,14 @@ const Dashboard = () => {
 				>
 					Play
 				</button>
+				{/* <button
+					onClick={() => {
+						dispatch(setScene("ComputerScene"));
+						navigate("/comp-game");
+					}}
+				>
+					Computer Game
+				</button> */}
 				<button
 					onClick={() => {
 						dispatch(setScene("GameScene"));

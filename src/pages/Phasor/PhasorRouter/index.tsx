@@ -7,12 +7,15 @@ import { useNavigate } from "react-router-dom";
 import { setScene } from "@slices/Scene/scene";
 import Tutorial from "../Tutorial";
 import Lobby from "../Lobby";
+import Computer from "../Computer";
 
 const PhasorRouter = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(true);
-	const [map, setMap] = useState<"Lobby" | "Tutorial" | "Fetching">("Fetching");
+	const [map, setMap] = useState<
+		"Lobby" | "Tutorial" | "Computer" | "InterceptorX" | "Fetching"
+	>("Fetching");
 	const playerDetails = useAppSelector((state) => state.player);
 
 	useEffect(() => {
@@ -21,11 +24,15 @@ const PhasorRouter = () => {
 			if (status.fulfilled.match(getStatus)) {
 				setIsLoading(false);
 				if (playerDetails.tutorialCompleted) {
-					setMap("Lobby");
-					// dispatch(setScene("Lobby"));
+					// setMap("Computer");
+					// dispatch(setScene("ComputerScene"));
 				} else {
-					setMap("Tutorial");
-					dispatch(setScene("TutorialScene"));
+					// setMap("Tutorial");
+					// dispatch(setScene("TutorialScene"));
+					setMap("Computer");
+					dispatch(setScene("ComputerScene"));
+					// setMap("InterceptorX");
+					// dispatch(setScene("InterceptorXScene"));
 				}
 			} else {
 				navigate("/dashboard");
@@ -35,7 +42,18 @@ const PhasorRouter = () => {
 	}, [dispatch, navigate, playerDetails.tutorialCompleted]);
 
 	return (
-		<> {isLoading ? <Loader /> : map === "Lobby" ? <Lobby /> : <Tutorial />} </>
+		<>
+			{" "}
+			{isLoading ? (
+				<Loader />
+			) : map === "Lobby" ? (
+				<Lobby />
+			) : map === "Computer" ? (
+				<Computer />
+			) : (
+				<Tutorial />
+			)}{" "}
+		</>
 	);
 };
 
