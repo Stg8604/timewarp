@@ -15,3 +15,6 @@ export { default as HintBox } from "./computers/HintBox/index";
 export { default as MstWeight } from "./computers/MstWeight/index";
 export { default as PasskeyBox } from "./PasskeyBox/index";
 export { default as InfoBox } from "./InfoBox/index";
+export { default as Portal } from "./Lobby/Portal/index";
+export { default as TextBox } from "./Lobby/TextBox/index";
+export { default as Leaderboard } from "./Lobby/Leaderboard/index";

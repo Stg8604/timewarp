@@ -9,34 +9,35 @@ import Tutorial from "../Tutorial";
 import Lobby from "../Lobby";
 import Computer from "../Computer";
 import SoundPuzzle from "../SoundPuzzle";
+import WaterMorse from "../WaterMorse";
 
 const PhasorRouter = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(true);
-	const [map, setMap] = useState<
-		| "Lobby"
-		| "Tutorial"
-		| "Computer"
-		| "InterceptorX"
-		| "SoundPuzzle"
-		| "Fetching"
-	>("Fetching");
+	let storedScene = localStorage.getItem("scene");
+	if (storedScene == null) {
+		localStorage.setItem("scene", "Lobby");
+		storedScene = "Lobby";
+	}
+	const [map, setMap] = useState(storedScene);
+
 	const playerDetails = useAppSelector((state) => state.player);
 
 	useEffect(() => {
 		(async () => {
 			const getStatus = await dispatch(status());
 			if (status.fulfilled.match(getStatus)) {
-				setIsLoading(false);
 				if (playerDetails.tutorialCompleted) {
 					// setMap("Computer");
 					// dispatch(setScene("ComputerScene"));
 				} else {
-					setMap("SoundPuzzle");
-					dispatch(setScene("SoundPuzzle"));
-					//setMap("Computer");
-					//dispatch(setScene("ComputerScene"));
+					// setMap("Tutorial");
+					// dispatch(setScene("TutorialScene"));
+					if (map != "Fetching") {
+						dispatch(setScene(map + "Scene"));
+						// window.location.reload();
+					}
 					// setMap("InterceptorX");
 					// dispatch(setScene("InterceptorXScene"));
 				}
@@ -44,20 +45,32 @@ const PhasorRouter = () => {
 				navigate("/dashboard");
 				Toast(TOAST_ERROR, "Try again later! There seems to be an issue.");
 			}
+			setIsLoading(false);
 		})();
-	}, [dispatch, navigate, playerDetails.tutorialCompleted]);
+	}, [playerDetails.tutorialCompleted]);
+
+	const switchScene = (scene: string) => {
+		setIsLoading(true);
+		setMap(scene);
+		console.log("Switchting map");
+		localStorage.setItem("scene", scene);
+		dispatch(setScene(scene + "Scene"));
+		setIsLoading(false);
+		window.location.reload();
+	};
 
 	return (
 		<>
-			{" "}
 			{isLoading ? (
 				<Loader />
 			) : map === "Lobby" ? (
-				<Lobby />
+				<Lobby switchScene={switchScene} />
 			) : map === "Computer" ? (
 				<Computer />
 			) : map === "SoundPuzzle" ? (
 				<SoundPuzzle />
+			) : map === "WaterMorse" ? (
+				<WaterMorse />
 			) : (
 				<Tutorial />
 			)}{" "}

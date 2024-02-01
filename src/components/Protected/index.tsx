@@ -15,7 +15,7 @@ const Protected = (props: any) => {
 				setIsLoading(false);
 			} else {
 				Toast("toastRed", "Oops! You are not signed in!");
-				navigate("/");
+				setIsLoading(false);
 			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps

@@ -28,7 +28,7 @@ export class SoundPuzzle extends Phaser.Scene {
 	puzzle: SoundPuzzleState;
 
 	constructor() {
-		super({ key: "SoundPuzzle" });
+		super({ key: "SoundPuzzleScene" });
 		this.puzzle = store.getState().soundPuzzle;
 		this.inventory = store.getState().status.inventory;
 		this.clipsOrder = store.getState().soundPuzzle.clipsOrder;

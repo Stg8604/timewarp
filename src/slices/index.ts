@@ -8,6 +8,7 @@ export { default as StatusReducer } from "./Status/status";
 export { default as SceneReducer } from "./Scene/scene";
 export { default as ComputerReducer } from "./computer/computer";
 export { default as SoundPuzzleReducer } from "./SoundPuzzle/soundPuzzle";
+export { default as LobbyReducer } from "./Lobby/Lobby";
 
 export {
 	loginUser,

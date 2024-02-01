@@ -2,9 +2,10 @@ interface PlayerState {
 	playerMovementSpeed: number;
 	fireballPower: number;
 	day: number;
-	tutorialCompleted: boolean;
+	tutorialCompleted: boolean | undefined;
 	score: number;
 	isFetching: boolean;
+	inventoryOpen : boolean
 }
 
 interface Status {
@@ -15,4 +16,13 @@ interface Status {
 	puzzleCompletionList: {
 		[key: string]: boolean;
 	};
+}
+
+interface ILobbyState {
+	isInfoOpen: boolean;
+	isLeaderboardOpen: boolean;
+	isLoreOpen: boolean;
+	isPastPortalOpen: boolean;
+	isPresentPortalOpen: boolean;
+	isFuturePortalOpen: boolean;
 }
