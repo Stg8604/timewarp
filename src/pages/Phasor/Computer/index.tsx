@@ -2,7 +2,6 @@ import { useRef, useState, useEffect } from "react";
 import { IonPhaser } from "@ion-phaser/react";
 import { Loader } from "@mantine/core";
 import { useAppDispatch, useAppSelector } from "@stores/hooks";
-import { MstWeight } from "@components/index";
 import { HintBox, Toast } from "@components/index";
 import PasskeyBox from "../../../components/computers/PasskeyBox";
 import { toggleEditor } from "@slices/index";
@@ -10,7 +9,7 @@ import { phaserConfig } from "@phaserGame/game";
 import { BackBtn } from "@components/index";
 import MSTModule from "@modules/veirfyMST.txt";
 import { ReactPy } from "@components/index";
-import { toggleSwitch, updateComputerParams } from "@slices/computer/computer";
+import { updateComputerParams } from "@slices/computer/computer";
 import { checkMstWeight, status } from "@slices/computer/computerAction";
 import { toggleComputerPortalKey } from "@slices/computer/computer";
 import { TOAST_ERROR, TOAST_INFO, TOAST_SUCCESS } from "@utils/ToastStatus";
@@ -65,7 +64,6 @@ const Computer = () => {
 		if (response.type === "computer/checkMstWeight/fulfilled") {
 			dispatch(toggleComputerPortalKey());
 			if (response.payload && response.payload.correct) {
-				console.log("Next Puzzle Activated");
 				Toast(TOAST_SUCCESS, response.payload?.message);
 			} else {
 				Toast(TOAST_INFO, response.payload?.message);

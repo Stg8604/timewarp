@@ -1,10 +1,6 @@
 import { TutorialPlayer } from "../sprites/TutorialPlayer";
 import { store } from "@stores/index";
-import {
-	toggleInfo,
-	toggleLeverInfo,
-	toggleSwitch,
-} from "@slices/computer/computer";
+import { toggleInfo } from "@slices/computer/computer";
 import { toggleComputerPortalKey } from "@slices/computer/computer";
 
 export class ComputerScene extends Phaser.Scene {
@@ -334,8 +330,6 @@ export class ComputerScene extends Phaser.Scene {
 	// }
 
 	toggleLayers(wires: Edge[]) {
-		console.log("switching layers");
-
 		this.Edge34!.setDepth(0);
 		this.Edge38!.setDepth(0);
 		this.Edge36!.setDepth(0);

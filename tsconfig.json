@@ -16,8 +16,8 @@
 
 		/* Linting */
 		"strict": true,
-		"noUnusedLocals": false,
-		"noUnusedParameters": false,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
 
 		"paths": {
@@ -33,9 +33,9 @@
 			"@sprites/*": ["./src/sprites/*"],
 			"@stores/*": ["./src/stores/*"],
 			"@assets/*": ["./src/assets/*"],
-			"@phaserGame/*": ["./src/phaserGame/*"]
-		}
+			"@phaserGame/*": ["./src/phaserGame/*"],
+		},
 	},
 	"include": ["src"],
-	"references": [{ "path": "./tsconfig.node.json" }]
+	"references": [{ "path": "./tsconfig.node.json" }],
 }

@@ -2,7 +2,7 @@ import { Reguser, Regpassword } from "@components/index";
 import { Button } from "@mantine/core";
 import { Text } from "@mantine/core";
 import cta from "/assets/signup.svg";
-import reglogin from "/assets/reglogin.svg";
+// import reglogin from "/assets/reglogin.svg";
 import { FC, MouseEvent } from "react";
 type MyComponentProps = RegProps & {
 	onButtonClick: (event: MouseEvent<HTMLButtonElement>) => void;

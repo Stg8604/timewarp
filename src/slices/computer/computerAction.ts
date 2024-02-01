@@ -10,7 +10,7 @@ export const status = createAsyncThunk<
 	{
 		rejectValue: APIError;
 	}
->("computer/status", async (payload, thunkAPI) => {
+>("computer/status", async (_payload, thunkAPI) => {
 	try {
 		const response = await CustomAxios.get(
 			"/api/user/puzzle/future/mst/status/init"

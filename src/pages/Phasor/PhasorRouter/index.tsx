@@ -1,20 +1,26 @@
-import { CustomAxios, TOAST_ERROR } from "@utils/index";
+import { TOAST_ERROR } from "@utils/index";
 import { useEffect, useState } from "react";
 import { Loader, Toast } from "@components/index";
 import { useAppDispatch, useAppSelector } from "@stores/hooks";
-import { status } from "@slices/Player/PlayerActions";
+import { status } from "@slices/Status/statusActions";
 import { useNavigate } from "react-router-dom";
 import { setScene } from "@slices/Scene/scene";
 import Tutorial from "../Tutorial";
 import Lobby from "../Lobby";
 import Computer from "../Computer";
+import SoundPuzzle from "../SoundPuzzle";
 
 const PhasorRouter = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(true);
 	const [map, setMap] = useState<
-		"Lobby" | "Tutorial" | "Computer" | "InterceptorX" | "Fetching"
+		| "Lobby"
+		| "Tutorial"
+		| "Computer"
+		| "InterceptorX"
+		| "SoundPuzzle"
+		| "Fetching"
 	>("Fetching");
 	const playerDetails = useAppSelector((state) => state.player);
 
@@ -27,10 +33,10 @@ const PhasorRouter = () => {
 					// setMap("Computer");
 					// dispatch(setScene("ComputerScene"));
 				} else {
-					// setMap("Tutorial");
-					// dispatch(setScene("TutorialScene"));
-					setMap("Computer");
-					dispatch(setScene("ComputerScene"));
+					setMap("SoundPuzzle");
+					dispatch(setScene("SoundPuzzle"));
+					//setMap("Computer");
+					//dispatch(setScene("ComputerScene"));
 					// setMap("InterceptorX");
 					// dispatch(setScene("InterceptorXScene"));
 				}
@@ -50,6 +56,8 @@ const PhasorRouter = () => {
 				<Lobby />
 			) : map === "Computer" ? (
 				<Computer />
+			) : map === "SoundPuzzle" ? (
+				<SoundPuzzle />
 			) : (
 				<Tutorial />
 			)}{" "}

@@ -6,8 +6,6 @@ import { usePython } from "react-py";
 import { FC } from "react";
 
 const ReactPy: FC<IReactPy> = ({ seederParams, defaultInput }) => {
-	const tutorial = useAppSelector((state) => state.tutorial);
-	const computer = useAppSelector((state) => state.computer);
 	const config = useAppSelector((state) => state.editor);
 	const dispatch = useAppDispatch();
 
@@ -55,7 +53,7 @@ const ReactPy: FC<IReactPy> = ({ seederParams, defaultInput }) => {
 				preCode +
 				`from ${module.moduleName} import ${module.className}\n${
 					module.className
-				} = ${module.className}(${JSON.stringify(computer.params)})\n`;
+				} = ${module.className}(${JSON.stringify(module.params)})\n`;
 		});
 		return preCode;
 	};

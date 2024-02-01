@@ -22,7 +22,6 @@ const Register = () => {
 	const nav = () => {
 		navigate("/login");
 	};
-	const [isFirstDivVisible, setFirstDivVisibility] = useState(true);
 
 	const [registerCredentials, setRegisterCredentials] = useState<IRegister>({
 		username: "",
@@ -37,27 +36,6 @@ const Register = () => {
 		const updateregisterCredentials: IRegister = { ...registerCredentials };
 		updateregisterCredentials[type] = value.trim();
 		setRegisterCredentials(updateregisterCredentials);
-	};
-
-	const toggleVisibility = async () => {
-		if (!isEmailValid(registerCredentials.email)) {
-			Toast(TOAST_ERROR, "Invalid Email");
-		} else if (
-			registerCredentials.password.length === 0 ||
-			registerCredentials.username.length === 0 ||
-			registerCredentials.confirm.length === 0
-		) {
-			Toast(TOAST_INFO, "Fields cannot be empty");
-		} else if (registerCredentials.password !== registerCredentials.confirm) {
-			Toast(TOAST_ERROR, "Passwords do not match");
-		} else if (
-			registerCredentials.password.length < 3 ||
-			registerCredentials.password.length > 15
-		) {
-			Toast(TOAST_INFO, "Password length should be between 3-15 characters");
-		} else {
-			setFirstDivVisibility(!isFirstDivVisible);
-		}
 	};
 
 	const emailRegisterHandler = async () => {

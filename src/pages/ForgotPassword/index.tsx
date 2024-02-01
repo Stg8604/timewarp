@@ -3,7 +3,7 @@ import { forgotPasswordUser } from "@slices/index";
 import { useAppDispatch } from "@stores/hooks";
 import { isEmailValid } from "@utils/index";
 import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bgcard from "/assets/bgcard.svg";
 import timewarp from "/assets/timewarpbg.svg";
@@ -17,9 +17,9 @@ const ForgotPassword = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const [email, setEmail] = useState("");
-	const [token, setToken] = useState<string>("");
+	const [token, _setToken] = useState<string>("");
 
-	const emailUpdate = (type: string, value: string) => {
+	const emailUpdate = (_type: string, value: string) => {
 		setEmail(value);
 	};
 	const forgotPassword = async () => {
@@ -44,11 +44,6 @@ const ForgotPassword = () => {
 			);
 		}
 	};
-
-	const onVerify = useCallback((token: string) => {
-		setToken(token);
-	}, []);
-
 	return (
 		<>
 			<AuthWrapper title="Forgot Password">

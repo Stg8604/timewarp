@@ -1,0 +1,27 @@
+class Sound:
+    def __init__(self, params):
+        self.inventory = params["inventory"]
+        self.audioFiles = params["audioFiles"][::]
+        self.play = params["play"]
+        self.files = params["audioFiles"][::]
+        
+    def add_sound(self, audio):
+        if audio not in self.inventory:
+            print(audio + " not in inventory")
+        elif audio not in ["audio_clip_1", "audio_clip_2", "audio_clip_3", "audio_clip_4", "audio_clip_5", "audio_clip_6"]:
+            print("The added file is not an audio")
+        else:
+            self.files.append(audio)
+    
+    def remove_sound(self, audio):
+        if audio in self.files:
+            self.files.remove(audio)
+    
+    def play_audio(self):
+        self.play = 1
+        print(str(self.files))
+        for i in self.files:
+            self.audioFiles.append(i)
+        self.files = []
+        return self.audioFiles
+        

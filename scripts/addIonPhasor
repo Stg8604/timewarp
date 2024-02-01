@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd node_modules/@ion-phaser/core
+pwd
+ls
+rm -r dist/ README.md || true
+git init
+git remote add origin https://github.com/mharrish7/Modified_Ion_Phaser.git
+git pull origin main

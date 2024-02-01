@@ -59,8 +59,31 @@ const Interpretor: FC<IInterpretorProps> = ({
 		editor.renderer.setScrollMargin(10, 10, 0, 0);
 		editor.moveCursorTo(0, 0);
 	};
-	const [input, setInput] = useState<string>(defaultInput);
+	const [input, setInput] = useState<string>(
+		`def function(): \n\t# write your code here`
+	);
 	const [delayedOpen, setDelayedOpen] = useState<boolean>(false);
+
+	// const editorConfigHandler = () => {
+	//   dispatch(
+	//     setEditorOptions({
+	//       fontSize: 25,
+	//       tabSize: 4,
+	//       showLineNumbers: false,
+	//       theme: "terminal",
+	//       isOpen: config.isOpen
+	//     }),
+	//   );
+	// };
+
+	// useEffect(() => {
+	// 	if (output === "") return;
+	// 	try {
+	// 		console.log(JSON.parse(output));
+	// 	} catch (e) {
+	// 		console.log(e);
+	// 	}
+	// }, [output]);
 
 	useEffect(() => {
 		if (!config.isOpen) {
@@ -70,7 +93,7 @@ const Interpretor: FC<IInterpretorProps> = ({
 
 		const timeOut = setTimeout(() => {
 			setDelayedOpen(config.isOpen);
-		}, 2000);
+		}, 650);
 
 		return () => clearTimeout(timeOut);
 	}, [config.isOpen]);
@@ -132,8 +155,11 @@ const Interpretor: FC<IInterpretorProps> = ({
 				maxLines={100}
 				editorProps={{ $blockScrolling: true }}
 				value={input}
-				onChange={(value) => setInput(value)}
+				onChange={(value) => {
+					setInput(value);
+				}}
 				onLoad={editorOnLoad}
+				defaultValue={defaultInput}
 			/>
 			{isLoading ? <p>Loading...</p> : <p>Ready!</p>}
 			<code>{error}</code>

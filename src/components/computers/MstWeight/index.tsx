@@ -1,9 +1,5 @@
-import { useAppDispatch, useAppSelector } from "@stores/hooks";
-import {
-	toggleLeverInfo,
-	updateUserParams,
-} from "../../../slices/computer/computer";
-import { store } from "@stores/index";
+import { useAppDispatch } from "@stores/hooks";
+import { toggleLeverInfo } from "../../../slices/computer/computer";
 
 const MSTweight = (props: { text: string }) => {
 	const dispatch = useAppDispatch();

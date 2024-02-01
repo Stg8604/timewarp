@@ -19,6 +19,8 @@ export default {
 			computerhintbox: "#BFCFE7",
 			close: "#332941",
 			green: "#008000",
+			darkBrown: "#451B0B",
+			brown: "#BC8C61",
 		},
 		fontFamily: {
 			pressStart2P: ["PressStart2P", "sans-serif"],

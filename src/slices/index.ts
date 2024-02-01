@@ -4,8 +4,10 @@ export { default as TutorialReducer } from "./Tutorial/tutorial";
 export { default as WaterMorseReducer } from "./WaterMorse/waterMorse";
 export { default as PlayerReducer } from "./Player/Player";
 export { default as EditorReducer } from "./Editor/Editor";
+export { default as StatusReducer } from "./Status/status";
 export { default as SceneReducer } from "./Scene/scene";
 export { default as ComputerReducer } from "./computer/computer";
+export { default as SoundPuzzleReducer } from "./SoundPuzzle/soundPuzzle";
 
 export {
 	loginUser,
@@ -24,5 +26,6 @@ export {
 } from "./Player/Player";
 
 export { setEditorOptions, toggleEditor } from "./Editor/Editor";
+
 export { userSelector } from "./User/User";
 export { editorSelector } from "./Editor/Editor";

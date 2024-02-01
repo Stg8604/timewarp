@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { Toast } from "@components/index";
 import { useAppDispatch } from "@stores/hooks";
 import { setScene } from "@slices/Scene/scene";
+import { useEffect } from "react";
+import { status } from "../../slices/Status/statusActions";
 
 const Dashboard = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
-
-	const [cookie, setCookie, removeCookie] = useCookies();
+	const [_cookie, _setCookie, removeCookie] = useCookies();
 	const handleLogOut = async () => {
 		const logoutDispatch = await dispatch(logoutUser());
 		if (logoutUser.fulfilled.match(logoutDispatch)) {
@@ -19,6 +20,12 @@ const Dashboard = () => {
 			Toast("toastRed", "Oops! There seems to be an issue.");
 		}
 	};
+
+	useEffect(() => {
+		(async () => {
+			dispatch(status());
+		})();
+	}, []);
 
 	return (
 		<>

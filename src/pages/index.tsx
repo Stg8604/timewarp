@@ -8,3 +8,4 @@ export { default as ActivateUser } from "./ActivateUser/index";
 export { default as PhasorRouter } from "./Phasor/PhasorRouter/index";
 export { default as Dashboard } from "./Dashboard/index";
 export { default as Landing } from "./Landing/index";
+export { default as Tutorial } from "./Tutorial/index";

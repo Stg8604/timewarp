@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { status } from "./computerAction";
-import { stat } from "fs";
 
 const computerPuzzleSolution = [
 	{ source: 1, target: 2, weight: 10 },
@@ -39,9 +38,9 @@ interface Edge {
 	target: number;
 }
 
-interface EdgeWithWeight extends Edge {
-	weight: number;
-}
+// interface EdgeWithWeight extends Edge {
+// 	weight: number;
+// }
 
 interface ComputerState {
 	isInfoOpen: boolean;
@@ -94,7 +93,7 @@ export const computerSlice = createSlice({
 		updateUserParams: (state, action: PayloadAction<Edge[]>) => {
 			state.params.userEdgeList = action.payload;
 
-			const tempPuzzleSol: EdgeWithWeight[] = action.payload.map((edge) => {
+			action.payload.map((edge) => {
 				const correspondingEdge = computerPuzzleSolution.find(
 					(solEdge) =>
 						solEdge.source === edge.source && solEdge.target === edge.target
@@ -103,8 +102,6 @@ export const computerSlice = createSlice({
 					? { ...edge, weight: correspondingEdge.weight }
 					: { ...edge, weight: 0 };
 			});
-
-			console.log(tempPuzzleSol);
 		},
 	},
 

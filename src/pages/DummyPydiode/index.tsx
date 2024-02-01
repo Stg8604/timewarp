@@ -9,7 +9,7 @@ const DummyPydiode = () => {
 	const editorConfig = useAppSelector((state) => state.editor);
 	const dispatch = useAppDispatch();
 
-	const modules: ICustomModule[] = [
+	const modules = [
 		{
 			fileCode: `def getPlayerMovementSpeed():\n\treturn ${player.playerMovementSpeed}\ndef getFireballPower():\n\treturn ${player.fireballPower}`,
 			filename: "player.py",
@@ -41,7 +41,7 @@ const DummyPydiode = () => {
 	}
 
 	function write(modules: ICustomModule[]) {
-		modules.forEach((module) => {
+		modules.forEach((module: { filename: string; fileCode: string }) => {
 			writeFile(module.filename, module.fileCode);
 		});
 	}

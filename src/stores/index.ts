@@ -5,9 +5,11 @@ import {
 	EditorReducer,
 	PlayerReducer,
 	UserReducer,
+	StatusReducer,
 	SceneReducer,
 	ComputerReducer,
 	WaterMorseReducer,
+	SoundPuzzleReducer,
 } from "../slices/index";
 
 // add all the reducers here
@@ -21,6 +23,8 @@ const rootReducer = combineReducers({
 	scene: SceneReducer,
 	computer: ComputerReducer,
 	waterMorse: WaterMorseReducer,
+	status: StatusReducer,
+	soundPuzzle: SoundPuzzleReducer,
 });
 
 export const store = configureStore({

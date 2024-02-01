@@ -8,7 +8,7 @@ export const status = createAsyncThunk<
 	{
 		rejectValue: APIError;
 	}
->("watermorse/status", async (payload, thunkAPI) => {
+>("watermorse/status", async (_payload, thunkAPI) => {
 	try {
 		const response = await CustomAxios.get(
 			"/api/user/puzzle/past/morse/status/init"

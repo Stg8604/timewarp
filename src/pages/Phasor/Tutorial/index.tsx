@@ -41,7 +41,7 @@ const Tutorial = () => {
 		},
 	];
 
-	const defaultInput = `# Useful Object - Security\n# print(Security)\n# print(vars(Security))`;
+	const defaultInput = `#Objects available\n# - Security\nprint(Security)`;
 
 	useEffect(() => {
 		setInitialize(true);

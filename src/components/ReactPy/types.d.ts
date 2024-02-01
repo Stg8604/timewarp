@@ -7,10 +7,14 @@ interface IReactPy {
 	seederParams: {
 		moduleName: string;
 		className: string;
-		params: { [key: string]: string | number | Edge[] };
-		file: string;
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		dispatch: (params: any) => any;
+		params: { [key: string]: any };
+		file: string;
+		dispatch: (params: {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			[key: string]: any;
+		}) => UnknownAction;
 	}[];
-	defaultInput: string;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	defaultInput: any;
 }

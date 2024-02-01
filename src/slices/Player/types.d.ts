@@ -9,6 +9,10 @@ interface PlayerState {
 
 interface Status {
 	day: number;
-	tutorialCompleted: boolean;
+	tutorialCompleted?: boolean;
 	score: number;
+	inventory: [string, string][];
+	puzzleCompletionList: {
+		[key: string]: boolean;
+	};
 }

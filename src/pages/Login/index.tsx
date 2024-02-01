@@ -10,17 +10,17 @@ import { BACKEND_URL } from "../../config/config.ts";
 import {
 	Username,
 	Password,
-	AuthWrapper,
+	// AuthWrapper,
 	Toast,
 	Loader,
 } from "@components/index";
 import { GoogleReCaptcha } from "react-google-recaptcha-v3";
 import {
 	TOAST_ERROR,
-	TOAST_INFO,
+	// TOAST_INFO,
 	TOAST_SUCCESS,
 	isEmailValid,
-	theme,
+	// theme,
 } from "@utils/index";
 import { loginUser, userSelector } from "@slices/index";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +39,7 @@ const Login = () => {
 		token: "",
 		type: "",
 	});
-	const [token, setToken] = useState<string>("");
+	const [_token, setToken] = useState<string>("");
 	const [isLoading, setIsLoading] = useState(true);
 	const { loggedIn, isUserFetching } = useSelector(userSelector);
 

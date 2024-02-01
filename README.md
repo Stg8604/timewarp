@@ -35,3 +35,9 @@ Ion-Phaser : https://github.com/proyecto26/ion-phaser/tree/develop
 Ion-Phaser should work in dev properly, this step is optional.
 
 See the readme of https://github.com/mharrish7/Modified_Ion_Phaser.
+
+or simply run this script
+
+```shell
+./scripts/addIonPhasor
+```
