@@ -98,10 +98,15 @@ const SoundPuzzle = () => {
 		playNext();
 	};
 	useEffect(() => {
+		// Check if sound.params.play is true
 		if (sound.params.play) {
+			// Call the function to play audio recordings
 			playAudioRecordings(sound.params.audioFiles);
 		}
-	}, [sound]);
+		// You can add cleanup code here if needed
+
+		// Note: If playAudioRecordings returns a cleanup function (e.g., for stopping playback), you can use it in the return statement of useEffect.
+	}, [sound.params.play, sound.params.audioFiles]);
 
 	// const defaultInput = `'''Class:Sound\nadd_sound(param) - adds audio files to be played,\nremove_sound - removes audio files from array\nplay_audio() - plays audio files in order'''`;
 	const defaultInput = `# Object: Sound\n# play_audio() - function to play multiple audio files in the order of their addition. \n#\t\t\t - per execution the audio file is played only at the last time it is called \n# add_sound("audio_clip_name") - adds audio files to list of files to be played\n# remove_sound("audio_clip_name") - removes the specified audio file from list of audio files to be played\n`;

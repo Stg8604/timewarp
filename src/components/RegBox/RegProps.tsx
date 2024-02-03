@@ -22,7 +22,7 @@ const regprops: FC<MyComponentProps> = ({
 			<Reguser field="college" save={input} title="COLLEGE" />
 			<Reguser field="phonenumber" save={input} title="PHONE NUMBER" />
 
-			<div className="flex flex-col  mt-8">
+			<div className="flex flex-col mt-8">
 				<Button
 					className="w-fit mx-auto h-10 sm:h-10 xl:h-10 object-cover transition-transform transform hover:scale-110 "
 					onClick={onButtonClick}

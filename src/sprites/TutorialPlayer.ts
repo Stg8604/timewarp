@@ -339,19 +339,19 @@ export class TutorialPlayer extends Phaser.Physics.Arcade.Sprite {
 		this.setVelocity(0, 0);
 		this.playerMoving = false;
 		if (this.WKey?.isDown) {
-			this.setVelocityY(-80);
+			this.setVelocityY(-100);
 			this.playerMoving = true;
 		} else if (this.SKey?.isDown) {
-			this.setVelocityY(80);
+			this.setVelocityY(100);
 			this.playerMoving = true;
 		} else if (this.AKey?.isDown) {
-			this.setVelocityX(-80);
+			this.setVelocityX(-100);
 			this.playerMoving = true;
 			if (!this.flipX) {
 				this.flipX = true;
 			}
 		} else if (this.DKey?.isDown) {
-			this.setVelocityX(80);
+			this.setVelocityX(100);
 			this.playerMoving = true;
 			if (this.flipX) {
 				this.flipX = false;

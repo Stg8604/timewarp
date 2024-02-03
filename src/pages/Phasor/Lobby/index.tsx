@@ -6,6 +6,7 @@ import { Portal, TextBox, Leaderboard } from "@components/index";
 import BackBtn from "../../../components/BackBtn";
 import { IonPhaser } from "@ion-phaser/react";
 import { phaserConfig } from "@phaserGame/game";
+import LevelSelector from "../../../components/LevelSelector";
 
 const loreText = "lore blah blah";
 const pastText = "past";
@@ -26,11 +27,33 @@ const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
 		<>
 			<BackBtn />
 
-			{lobby.isPastPortalOpen && <Portal text={pastText} type="past" />}
-			{lobby.isPresentPortalOpen && (
-				<Portal text={presentText} type="present" />
+			{lobby.isPastPortalOpen && (
+				<LevelSelector
+					title1="WaterMorse"
+					title2="SoundPuzzle"
+					title3="Past3"
+					currentTime="past"
+					switchScene={switchScene}
+				/>
 			)}
-			{lobby.isFuturePortalOpen && <Portal text={futureText} type="future" />}
+			{lobby.isPresentPortalOpen && (
+				<LevelSelector
+					title1="Computer"
+					title2="Present2"
+					title3="Present3"
+					currentTime="present"
+					switchScene={switchScene}
+				/>
+			)}
+			{lobby.isFuturePortalOpen && (
+				<LevelSelector
+					title1="Computer"
+					title2="Future2"
+					title3="Future3"
+					currentTime="future"
+					switchScene={switchScene}
+				/>
+			)}
 			{lobby.isLoreOpen && <TextBox text={loreText} type="lore" />}
 			{lobby.isLeaderboardOpen && <Leaderboard />}
 

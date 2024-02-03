@@ -40,7 +40,10 @@ export const playerSlice = createSlice({
 	},
 });
 
-export const { changePlayerMovementSpeed, changeFireballPower,toggleInventory } =
-	playerSlice.actions;
+export const {
+	changePlayerMovementSpeed,
+	changeFireballPower,
+	toggleInventory,
+} = playerSlice.actions;
 export const playerSelector = (state: { player: PlayerState }) => state.player;
 export default playerSlice.reducer;

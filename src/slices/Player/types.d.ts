@@ -5,7 +5,7 @@ interface PlayerState {
 	tutorialCompleted: boolean | undefined;
 	score: number;
 	isFetching: boolean;
-	inventoryOpen : boolean
+	inventoryOpen: boolean;
 }
 
 interface Status {

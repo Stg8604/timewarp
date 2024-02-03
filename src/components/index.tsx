@@ -18,3 +18,5 @@ export { default as InfoBox } from "./InfoBox/index";
 export { default as Portal } from "./Lobby/Portal/index";
 export { default as TextBox } from "./Lobby/TextBox/index";
 export { default as Leaderboard } from "./Lobby/Leaderboard/index";
+export { default as LevelProps } from "./LevelSelector/LevelProps";
+export { default as LevelProps2 } from "./LevelSelector/LevelProps2";

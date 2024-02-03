@@ -26,14 +26,23 @@ const Dashboard = () => {
 			dispatch(status());
 		})();
 	}, []);
+	const switchScene = () => {
+		navigate("/game");
+		console.log("Switchting map");
+		localStorage.setItem("scene", "Lobby");
+		dispatch(setScene("Lobby" + "Scene"));
+		window.location.reload();
+	};
 
 	return (
 		<>
 			<div className="absolute z-50 flex flex-col text-center">
 				<h1>Dashboard</h1>
+				<button onClick={switchScene}>Lobby</button>
 				<button
 					onClick={() => {
 						navigate("/game");
+						window.location.reload();
 					}}
 				>
 					Play

@@ -21,6 +21,7 @@ export default {
 			green: "#008000",
 			darkBrown: "#451B0B",
 			brown: "#BC8C61",
+			browntwo: "#F5F5AC",
 		},
 		fontFamily: {
 			pressStart2P: ["PressStart2P", "sans-serif"],

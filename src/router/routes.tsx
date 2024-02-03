@@ -7,6 +7,7 @@ import {
 	ResetPassword,
 	Landing,
 } from "@pages/index";
+import LevelSelector from "../components/LevelSelector";
 
 const routes: Routes[] = [
 	{
