@@ -24,7 +24,7 @@ const clue =
 	"Seek the hidden symphony within silence; silence the cacophony around, and let the whispers guide you to the key.";
 
 const clue2 =
-	"Listen closely as each water bead tells a tale; decode the ripples, and the passkey will flow to you.";
+	"A gentle chime, a signal clear, the water speaks, its code draws near. Let each drop's soft tap unlock the way, and follow the rhythm, where secrets play.";
 
 const WaterMorse = () => {
 	const [initialize, setInitialize] = useState(false);
