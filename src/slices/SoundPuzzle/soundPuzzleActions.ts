@@ -6,7 +6,7 @@ const getClipsOrder = createAsyncThunk(
 	async (_, { rejectWithValue }) => {
 		try {
 			const response = await CustomAxios.get(
-				"/api/user/past/sound/status/init",
+				"/api/user/puzzle/past/sound/status/init",
 				{
 					withCredentials: true,
 				}
@@ -25,7 +25,7 @@ const getClipsOrder = createAsyncThunk(
 
 const checkSolution = async (solution: string) => {
 	const response = await CustomAxios.post(
-		"/api/user/past/sound/action/flag",
+		"/api/user/puzzle/past/sound/action/flag",
 		{ solution: Number(solution) },
 		{
 			withCredentials: true,
