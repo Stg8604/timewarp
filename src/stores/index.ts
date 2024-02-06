@@ -11,6 +11,7 @@ import {
 	WaterMorseReducer,
 	SoundPuzzleReducer,
 	LobbyReducer,
+	StegReducer,
 } from "../slices/index";
 
 // add all the reducers here
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
 	status: StatusReducer,
 	soundPuzzle: SoundPuzzleReducer,
 	lobby: LobbyReducer,
+	steg: StegReducer,
 });
 
 export const store = configureStore({

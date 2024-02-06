@@ -10,6 +10,7 @@ import Lobby from "../Lobby";
 import Computer from "../Computer";
 import SoundPuzzle from "../SoundPuzzle";
 import WaterMorse from "../WaterMorse";
+import Steg from "../Steg";
 
 const PhasorRouter = () => {
 	const dispatch = useAppDispatch();
@@ -52,7 +53,7 @@ const PhasorRouter = () => {
 	const switchScene = (scene: string) => {
 		setIsLoading(true);
 		setMap(scene);
-		console.log("Switchting map");
+		// console.log("Switchting map");
 		localStorage.setItem("scene", scene);
 		dispatch(setScene(scene + "Scene"));
 		setIsLoading(false);
@@ -71,6 +72,8 @@ const PhasorRouter = () => {
 				<SoundPuzzle />
 			) : map === "WaterMorse" ? (
 				<WaterMorse />
+			) : map === "Steg" ? (
+				<Steg />
 			) : (
 				<Tutorial />
 			)}{" "}

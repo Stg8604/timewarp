@@ -5,6 +5,7 @@ import { ComputerScene } from "../scenes/computer";
 import { WaterMorseScene } from "../scenes/waterMorse";
 import { SoundPuzzle } from "../scenes/soundPuzzle";
 import { LobbyScene } from "../scenes/lobby";
+import { StegScene } from "../scenes/steg";
 
 export const phaserConfig: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
@@ -31,5 +32,6 @@ export const phaserConfig: Phaser.Types.Core.GameConfig = {
 		ComputerScene,
 		WaterMorseScene,
 		LobbyScene,
+		StegScene,
 	],
 };

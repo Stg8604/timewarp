@@ -1,21 +1,15 @@
 import {
 	ActivateUser,
-	DummyPydiode,
 	ForgotPassword,
 	Login,
 	Register,
 	ResetPassword,
 	Landing,
+	Steg,
 } from "@pages/index";
 import LevelSelector from "../components/LevelSelector";
 
 const routes: Routes[] = [
-	{
-		title: "DummyPy",
-		path: "/py",
-		description: "py",
-		element: <DummyPydiode />,
-	},
 	{
 		title: "Login",
 		path: "/login",
@@ -51,6 +45,12 @@ const routes: Routes[] = [
 		path: "/",
 		description: "Landing Page",
 		element: <Landing />,
+	},
+	{
+		title: "Steganography Game",
+		path: "/steg",
+		description: "Steganography Game",
+		element: <Steg />,
 	},
 ];
 

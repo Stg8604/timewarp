@@ -11,11 +11,11 @@ const LevelProps2 = (props: { text: string; type: string }) => {
 	const [data] = useState("");
 	const dispatch = useAppDispatch();
 	const handleChange = () => {
-		console.log(props.type);
+		// console.log(props.type);
 		if (props.type === "past") dispatch(togglePastPortal());
 		else if (props.type === "present") dispatch(togglePresentPortal());
 		else if (props.type === "future") dispatch(toggleFuturePortal());
-		console.log("closed");
+		// console.log("closed");
 	};
 	return (
 		<Button

@@ -39,7 +39,7 @@ const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
 			{lobby.isPresentPortalOpen && (
 				<LevelSelector
 					title1="Computer"
-					title2="Present2"
+					title2="Steg"
 					title3="Present3"
 					currentTime="present"
 					switchScene={switchScene}

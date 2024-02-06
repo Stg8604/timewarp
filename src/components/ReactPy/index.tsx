@@ -21,24 +21,28 @@ const ReactPy: FC<IReactPy> = ({ seederParams, defaultInput }) => {
 
 	const [output, setOuput] = useState<string>("");
 	const filterOutput = () => {
-		const systemOutputIndex = stdout.indexOf("__SYSTEM__OUTPUT__");
-		if (systemOutputIndex != -1) {
-			setOuput(stdout.slice(0, systemOutputIndex));
-			//use the systemOutput to update the state variables
-			const sysOutput = stdout.slice(
-				systemOutputIndex + "__SYSTEM__OUTPUT__".length,
-				stdout.length
-			);
-			let curModule = 0;
-			const sysOutputSplit = sysOutput.split("\n");
-			sysOutputSplit.forEach((params) => {
-				if (params && params != " ") {
-					params = params.replace(/'/g, '"');
-					const updatedParams = JSON.parse(params);
-					dispatch(seederParams[curModule].dispatch(updatedParams[0]));
-					curModule += 1;
-				}
-			});
+		try {
+			const systemOutputIndex = stdout.indexOf("__SYSTEM__OUTPUT__");
+			if (systemOutputIndex != -1) {
+				setOuput(stdout.slice(0, systemOutputIndex));
+				//use the systemOutput to update the state variables
+				const sysOutput = stdout.slice(
+					systemOutputIndex + "__SYSTEM__OUTPUT__".length,
+					stdout.length
+				);
+				let curModule = 0;
+				const sysOutputSplit = sysOutput.split("\n");
+				sysOutputSplit.forEach((params) => {
+					if (params && params != " ") {
+						params = params.replace(/'/g, '"');
+						const updatedParams = JSON.parse(params);
+						dispatch(seederParams[curModule].dispatch?.(updatedParams[0]));
+						curModule += 1;
+					}
+				});
+			}
+		} catch (e) {
+			console.log(e);
 		}
 	};
 

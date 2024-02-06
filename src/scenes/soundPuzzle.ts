@@ -5,7 +5,7 @@ import { Collectable } from "../sprites/Collectable";
 import { store } from "../stores";
 import { status } from "../slices/Status/statusActions";
 import { setInventory } from "../slices/Status/status";
-import { addItemToInventory } from "../slices/Player/PlayerActions";
+import { addItemToInventory } from "../slices/Status/statusActions";
 import { getClipsOrder } from "../slices/SoundPuzzle/soundPuzzleActions";
 import {
 	togglePortalKey,

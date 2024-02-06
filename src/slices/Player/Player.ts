@@ -1,8 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { status } from "./PlayerActions";
 const initialState = {
-	playerMovementSpeed: 10,
-	fireballPower: 10,
 	day: 0,
 	inventoryOpen: false,
 	tutorialCompleted: false,
@@ -14,12 +12,6 @@ export const playerSlice = createSlice({
 	name: "player",
 	initialState,
 	reducers: {
-		changePlayerMovementSpeed: (state, action: PayloadAction<number>) => {
-			state.playerMovementSpeed = action.payload;
-		},
-		changeFireballPower: (state, action: PayloadAction<number>) => {
-			state.fireballPower = action.payload;
-		},
 		toggleInventory: (state) => {
 			state.inventoryOpen = !state.inventoryOpen;
 		},
@@ -40,10 +32,6 @@ export const playerSlice = createSlice({
 	},
 });
 
-export const {
-	changePlayerMovementSpeed,
-	changeFireballPower,
-	toggleInventory,
-} = playerSlice.actions;
+export const { toggleInventory } = playerSlice.actions;
 export const playerSelector = (state: { player: PlayerState }) => state.player;
 export default playerSlice.reducer;

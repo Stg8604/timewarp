@@ -1,6 +1,4 @@
 interface PlayerState {
-	playerMovementSpeed: number;
-	fireballPower: number;
 	day: number;
 	tutorialCompleted: boolean | undefined;
 	score: number;

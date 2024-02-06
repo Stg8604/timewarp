@@ -6,8 +6,7 @@ import { toggleEditor } from "@slices/index";
 import { phaserConfig } from "@phaserGame/game";
 import BackBtn from "../../../components/BackBtn";
 import PasskeyBox from "../../../components/SoundPuzzle/PasskeyBox";
-import { InfoBox, ReactPy } from "@components/index";
-import Inventory from "../../../components/Inventory";
+import { InfoBox, ReactPy, Inventory } from "@components/index";
 import {
 	toggleHintBox,
 	updateSoundParams,
@@ -110,10 +109,6 @@ const SoundPuzzle = () => {
 
 	// const defaultInput = `'''Class:Sound\nadd_sound(param) - adds audio files to be played,\nremove_sound - removes audio files from array\nplay_audio() - plays audio files in order'''`;
 	const defaultInput = `# Object: Sound\n# play_audio() - function to play multiple audio files in the order of their addition. \n#\t\t\t - per execution the audio file is played only at the last time it is called \n# add_sound("audio_clip_name") - adds audio files to list of files to be played\n# remove_sound("audio_clip_name") - removes the specified audio file from list of audio files to be played\n`;
-
-	useEffect(() => {
-		setInitialize(true);
-	}, []);
 
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {

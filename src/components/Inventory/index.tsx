@@ -42,6 +42,7 @@ const Inventory = () => {
 										onClick={() => {
 											setActiveItem(itemCode);
 										}}
+										key={index}
 									>
 										<img src={item} className="w-[30px] h-[30px]" />
 									</div>

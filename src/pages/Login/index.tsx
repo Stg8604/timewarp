@@ -48,7 +48,7 @@ const Login = () => {
 			if (!loggedIn) {
 				setIsLoading(false);
 			} else {
-				Toast("toastGreen", "Welcome Back!");
+				Toast(TOAST_SUCCESS, "Welcome Back!");
 				navigate("/dashboard");
 			}
 		}

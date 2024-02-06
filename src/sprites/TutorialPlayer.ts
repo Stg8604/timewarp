@@ -327,13 +327,12 @@ export class TutorialPlayer extends Phaser.Physics.Arcade.Sprite {
 
 	preUpdate(time: number, delta: number) {
 		super.preUpdate(time, delta);
+		this.pauseMovement = false;
 		if (store.getState().player.inventoryOpen) {
 			this.pauseMovement = true;
-			return;
 		}
 		if (store.getState().editor.isOpen) {
 			this.pauseMovement = true;
-			return;
 		}
 		// Player movement
 		this.setVelocity(0, 0);
@@ -361,6 +360,7 @@ export class TutorialPlayer extends Phaser.Physics.Arcade.Sprite {
 			this.playerMoving = false;
 		}
 
+		// Unpauses movement after close UI animation is finished
 		if (
 			this.anims.currentAnim?.key === "closeUI" &&
 			this.anims.getProgress() === 1

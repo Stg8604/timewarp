@@ -20,3 +20,6 @@ export { default as TextBox } from "./Lobby/TextBox/index";
 export { default as Leaderboard } from "./Lobby/Leaderboard/index";
 export { default as LevelProps } from "./LevelSelector/LevelProps";
 export { default as LevelProps2 } from "./LevelSelector/LevelProps2";
+export { default as StegInfo } from "./Steg/StegInfo";
+export { default as StegPasskeyBox } from "./Steg/StegPassKey";
+export { default as Inventory } from "./Inventory/index";

@@ -59,9 +59,7 @@ const Interpretor: FC<IInterpretorProps> = ({
 		editor.renderer.setScrollMargin(10, 10, 0, 0);
 		editor.moveCursorTo(0, 0);
 	};
-	const [input, setInput] = useState<string>(
-		`def function(): \n\t# write your code here`
-	);
+	const [input, setInput] = useState<string>(defaultInput);
 	const [delayedOpen, setDelayedOpen] = useState<boolean>(false);
 
 	// const editorConfigHandler = () => {

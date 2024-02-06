@@ -1,5 +1,4 @@
 export { default as Dummy } from "./Dummy/index";
-export { default as DummyPydiode } from "./DummyPydiode/index";
 export { default as Login } from "./Login/index";
 export { default as Register } from "./Register/index";
 export { default as ForgotPassword } from "./ForgotPassword/index";
@@ -9,3 +8,4 @@ export { default as PhasorRouter } from "./Phasor/PhasorRouter/index";
 export { default as Dashboard } from "./Dashboard/index";
 export { default as Landing } from "./Landing/index";
 export { default as Tutorial } from "./Tutorial/index";
+export { default as Steg } from "./Phasor/Steg/index";

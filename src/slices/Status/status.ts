@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { status } from "./statusActions";
+import { addItemToInventory, status } from "./statusActions";
 
 interface StatusState {
 	day: number;
@@ -46,6 +46,11 @@ export const statusSlice = createSlice({
 			state.score = action.payload.score;
 			state.puzzleCompletionList = action.payload.puzzleCompletionList;
 			state.inventory = action.payload.inventory;
+		});
+
+		builder.addCase(addItemToInventory.fulfilled, (state, action) => {
+			// console.log("Here", action.payload, JSON.stringify(state.inventory))
+			state.inventory = [...state.inventory, ...action.payload.inventory];
 		});
 
 		builder.addDefaultCase((state) => {

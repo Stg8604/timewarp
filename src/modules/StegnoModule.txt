@@ -1,0 +1,4 @@
+class Stegno:
+    def __init__(self, params):
+        self.leftImage = params["leftImage"]
+        self.rightImage = params["rightImage"]
