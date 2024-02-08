@@ -48,7 +48,7 @@ const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
 			{lobby.isFuturePortalOpen && (
 				<LevelSelector
 					title1="Computer"
-					title2="Future2"
+					title2="Emoji"
 					title3="Future3"
 					currentTime="future"
 					switchScene={switchScene}

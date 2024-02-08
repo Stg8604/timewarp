@@ -11,7 +11,7 @@ import Computer from "../Computer";
 import SoundPuzzle from "../SoundPuzzle";
 import WaterMorse from "../WaterMorse";
 import Steg from "../Steg";
-
+import Emoji from "../Emoji";
 const PhasorRouter = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
@@ -74,6 +74,8 @@ const PhasorRouter = () => {
 				<WaterMorse />
 			) : map === "Steg" ? (
 				<Steg />
+			) : map === "Emoji" ? (
+				<Emoji />
 			) : (
 				<Tutorial />
 			)}{" "}

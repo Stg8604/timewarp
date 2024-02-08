@@ -1,0 +1,30 @@
+/* styles.css */
+/* Add your custom scrollbar styles here */
+/* You can import this file into your React component */
+
+/* Set the width of the scrollbar */
+::-webkit-scrollbar {
+	width: 12px;
+}
+
+/* Set the track color (background) */
+::-webkit-scrollbar-track {
+	background-color: #2ba09780;
+	border-radius: 6px;
+}
+
+/* Set the thumb color (handle) */
+::-webkit-scrollbar-thumb {
+	background-color: #34bdeb;
+	border-radius: 6px; /* Set the border radius to round the edges of the thumb */
+}
+
+/* Change the thumb color on hover */
+::-webkit-scrollbar-thumb:hover {
+	background-color: #34c6eb;
+}
+
+/* Set the corner (junction between the track and thumb) color */
+::-webkit-scrollbar-corner {
+	background-color: #f1f1f1;
+}

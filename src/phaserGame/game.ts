@@ -6,6 +6,7 @@ import { WaterMorseScene } from "../scenes/waterMorse";
 import { SoundPuzzle } from "../scenes/soundPuzzle";
 import { LobbyScene } from "../scenes/lobby";
 import { StegScene } from "../scenes/steg";
+import { EmojiScene } from "../scenes/emoji";
 
 export const phaserConfig: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
@@ -33,5 +34,6 @@ export const phaserConfig: Phaser.Types.Core.GameConfig = {
 		WaterMorseScene,
 		LobbyScene,
 		StegScene,
+		EmojiScene,
 	],
 };

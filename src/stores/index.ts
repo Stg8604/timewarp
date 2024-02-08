@@ -12,6 +12,7 @@ import {
 	SoundPuzzleReducer,
 	LobbyReducer,
 	StegReducer,
+	emojiPuzzleReducer,
 } from "../slices/index";
 
 // add all the reducers here
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
 	soundPuzzle: SoundPuzzleReducer,
 	lobby: LobbyReducer,
 	steg: StegReducer,
+	emoji: emojiPuzzleReducer,
 });
 
 export const store = configureStore({
