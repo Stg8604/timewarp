@@ -8,6 +8,7 @@ import { LobbyScene } from "../scenes/lobby";
 import { StegScene } from "../scenes/steg";
 import { EmojiScene } from "../scenes/emoji";
 import { InterceptorXScene } from "../scenes/InterceptorX";
+import { CipherScene } from "../scenes/cipher";
 
 export const phaserConfig: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
@@ -37,5 +38,6 @@ export const phaserConfig: Phaser.Types.Core.GameConfig = {
 		StegScene,
 		EmojiScene,
 		InterceptorXScene,
+		CipherScene,
 	],
 };

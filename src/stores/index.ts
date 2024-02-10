@@ -14,6 +14,7 @@ import {
 	StegReducer,
 	emojiPuzzleReducer,
 	Interceptor,
+	cipherReducer,
 } from "../slices/index";
 import { PROD } from "@config/config";
 
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
 	steg: StegReducer,
 	emoji: emojiPuzzleReducer,
 	interceptor: Interceptor,
+	cipher: cipherReducer,
 });
 
 export const store = configureStore({

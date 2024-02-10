@@ -12,6 +12,7 @@ export { default as StegReducer } from "./Steg/steg";
 export { default as SceneReducer } from "./Scene/scene";
 export { default as emojiPuzzleReducer } from "./emoji/emoji";
 export { default as Interceptor } from "./InterceptorX/InterceptorX";
+export { default as cipherReducer } from "./cipher/cipher";
 
 export {
 	loginUser,

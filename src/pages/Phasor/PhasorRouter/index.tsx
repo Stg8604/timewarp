@@ -13,6 +13,7 @@ import WaterMorse from "../WaterMorse";
 import Steg from "../Steg";
 import Emoji from "../Emoji";
 import InterceptorX from "../InterceptorX";
+import Cipher from "../Cipher";
 
 const PhasorRouter = () => {
 	const dispatch = useAppDispatch();
@@ -80,6 +81,8 @@ const PhasorRouter = () => {
 				<InterceptorX />
 			) : map === "Emoji" ? (
 				<Emoji />
+			) : map === "Cipher" ? (
+				<Cipher />
 			) : (
 				<Tutorial />
 			)}{" "}
