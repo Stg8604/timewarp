@@ -13,6 +13,7 @@ import {
 	LobbyReducer,
 	StegReducer,
 	emojiPuzzleReducer,
+	Interceptor,
 } from "../slices/index";
 
 // add all the reducers here
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
 	lobby: LobbyReducer,
 	steg: StegReducer,
 	emoji: emojiPuzzleReducer,
+	interceptor: Interceptor,
 });
 
 export const store = configureStore({

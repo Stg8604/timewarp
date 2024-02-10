@@ -23,3 +23,4 @@ export { default as LevelProps2 } from "./LevelSelector/LevelProps2";
 export { default as StegInfo } from "./Steg/StegInfo";
 export { default as StegPasskeyBox } from "./Steg/StegPassKey";
 export { default as Inventory } from "./Inventory/index";
+export { default as hintBox } from "./InterceptorX/HintBox";

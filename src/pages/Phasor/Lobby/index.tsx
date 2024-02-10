@@ -49,7 +49,7 @@ const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
 				<LevelSelector
 					title1="Computer"
 					title2="Emoji"
-					title3="Future3"
+					title3="InterceptorX"
 					currentTime="future"
 					switchScene={switchScene}
 				/>

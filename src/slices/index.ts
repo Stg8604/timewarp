@@ -11,6 +11,7 @@ export { default as LobbyReducer } from "./Lobby/Lobby";
 export { default as StegReducer } from "./Steg/steg";
 export { default as SceneReducer } from "./Scene/scene";
 export { default as emojiPuzzleReducer } from "./emoji/emoji";
+export { default as Interceptor } from "./InterceptorX/InterceptorX";
 
 export {
 	loginUser,

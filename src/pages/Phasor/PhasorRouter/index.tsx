@@ -12,6 +12,8 @@ import SoundPuzzle from "../SoundPuzzle";
 import WaterMorse from "../WaterMorse";
 import Steg from "../Steg";
 import Emoji from "../Emoji";
+import InterceptorX from "../InterceptorX";
+
 const PhasorRouter = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
@@ -74,6 +76,8 @@ const PhasorRouter = () => {
 				<WaterMorse />
 			) : map === "Steg" ? (
 				<Steg />
+			) : map === "InterceptorX" ? (
+				<InterceptorX />
 			) : map === "Emoji" ? (
 				<Emoji />
 			) : (

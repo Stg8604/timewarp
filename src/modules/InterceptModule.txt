@@ -1,0 +1,169 @@
+
+import base64
+update1 = [
+    "[Subject]: Project Update",
+    "[TO]:(IP: 10.0.0.15)",
+    "",
+    "Dear [Recipient],",
+    "",
+    "I hope this email finds you well. I wanted to inform you that we've successfully completed the planning phase of our project. The team is excited about the progress, and we're now moving on to the next stage.",
+    "",
+    "If you have any questions or need clarification, please don't hesitate to ask.",
+    "",
+    "Best regards,",
+    "",
+    "[Your Name]",
+    "[Your Position]",
+    "[Your Company]"
+]
+
+update2 = [
+    "[Subject]: Project Update",
+    "[TO]:  (IP: 10.0.0.15)",
+    "",
+    "Dear [Recipient],",
+    "",
+    "I trust this email finds you well. I'm pleased to share that we've successfully completed the development phase of our project. The team has put in a lot of effort, and we're now gearing up for testing and quality assurance.",
+    "",
+    "Feel free to reach out if you have any questions or suggestions.",
+    "",
+    "Best regards,",
+    "",
+    "[Your Name]",
+    "[Your Position]",
+    "[Your Company]"
+]
+
+
+
+data_intercepted1 = [
+    "[Subject]: Project Update",
+    "[To]: IP: 10.0.0.22",
+    "",
+    "Dear [Recipient],",
+    "",
+    "I hope this email finds you well. I wanted to provide you with a quick update on the progress of our ongoing project.",
+    "We have successfully completed the initial phase and are moving forward as planned.",
+    "",
+    "If you have any questions or require further information, please feel free to reach out.",
+    "The key you need to access the Lab is successfully generated and renamed as you mentioned.",
+    "",
+    "Best regards,",
+    ""
+]
+
+data_intercepted2 = [
+    "[Subject]: Project Update",
+    "[To]: IP: 10.0.0.25",
+    "",
+    "Thank you."
+]
+
+received_response1 = [
+    "[Subject]: Re: Project Update",
+    "[FROM]: IP: 10.0.0.15",
+    "",
+    "Dear [Your Name],",
+    "",
+    "Thank you for the project update. It's great to hear about the progress, and I appreciate your detailed overview of the completed phases.",
+    "",
+    "I have a few questions regarding the upcoming testing phase. Could we schedule a brief meeting to discuss these points further?",
+    "",
+    "Looking forward to your response.",
+    "",
+    "Best regards,",
+    "",
+    "[Recipient]"
+]
+
+received_response2 = [
+    "[Subject]: Re: Project Update",
+    "[FROM]: IP: 10.0.0.15",
+    "",
+    "Dear [Your Name],",
+    "",
+    "Thank you for the latest project update. It's excellent news that the development phase is now complete. I've reviewed the progress, and the team is excited about the next steps.",
+    "",
+    "Do you have an estimated timeline for the testing phase? Any additional information would be helpful for our planning.",
+    "",
+    "Looking forward to your reply.",
+    "",
+    "Best regards,",
+    "",
+    "[Recipient]"
+]
+
+s = "Sfrj%ymj%pj~%fx%[r5}i6V}\]qXgLWuZr6th6[w[rK_[r}[r6LfrONVpm]f6^|^ZZ}h6SxgK_S[p^[Z_TV5:]X]u\[7WvYYKfS[ixZYWVZY5>NJq5h~Gzg8Vl^rK_Y^5%Gjxy%wjlfwix"
+
+
+received_response3 = [
+    "Error Detected: Hamming code received : 1011011",
+    "[Subject]: Re: Project Update",
+    "[FROM]: IP: 10.0.0.15",
+    "",
+    "Dear [Your Name],",
+    "",
+    s
+]
+
+
+def convert(sample_string):
+    sample_string_bytes = sample_string.encode("ascii") 
+    base64_bytes = base64.b64encode(sample_string_bytes) 
+    base64_string = base64_bytes.decode("ascii") 
+    print(f"Encoded string: {base64_string}")
+    
+
+messages_investor = [update1,data_intercepted1,update2]
+messages_manager = [received_response1,data_intercepted2,received_response2,received_response3]
+
+class Interceptor:
+    def __init__(self,params):
+        self.message_id_ip_defaut = 0
+        self.message_id_ip_investor = 0
+        self.message_id_ip_manager = 0
+        self.partsLocation = params["partsLocation"]
+        self.collected = params["parts"]
+    def intercept(self,ip = "10.0.0.15"):
+        if self.collected != 4:
+            print("Interceptor Not Found")
+            return
+        if ip == "10.0.0.15":
+            if self.message_id_ip_defaut == 0:
+                print("Intercepting messages .....")
+                for i in data_intercepted1:
+                    print(i)
+                self.message_id_ip_defaut = 1
+            elif self.message_id_ip_defaut == 1:
+                print("Intercepting messages .....")
+                for i in data_intercepted2:
+                    print(i)
+                self.message_id_ip_defaut = 2
+            else:
+                print("Intercepting messages .....")
+                print("No Messages found")
+
+        if ip == "10.0.0.22":
+            print("Intercepting messages .....")
+            if self.message_id_ip_investor >= len(messages_investor):
+                print("No Messages found")
+                return
+            for i in messages_investor[self.message_id_ip_investor]:
+                print(i)
+            self.message_id_ip_investor += 1
+        if ip == "10.0.0.25":
+            print("Intercepting messages .....")
+            if self.message_id_ip_manager >= len(messages_manager):
+                print("No Messages found")
+                return
+            for i in messages_manager[self.message_id_ip_manager]:
+                print(i)
+            self.message_id_ip_manager += 1
+        else:
+            print("IP not found")
+    
+
+
+
+
+        
