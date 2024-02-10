@@ -1,0 +1,3 @@
+interface IUserBar {
+	userRankDetails: LeaderBoardResponse;
+}

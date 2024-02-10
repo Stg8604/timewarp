@@ -7,6 +7,7 @@ interface PlayerState {
 }
 
 interface Status {
+	userName: string;
 	day: number;
 	tutorialCompleted?: boolean;
 	score: number;

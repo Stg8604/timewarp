@@ -1,21 +1,48 @@
-.header {
-	position: sticky;
-	text-align: center;
-	top: 0;
-	background-color: var(--mantine-color-body);
-	transition: box-shadow 150ms ease;
+.heading {
+	background: url("assets/leaderboard/Item Desc.svg") no-repeat;
+	background-size: cover;
+	font-size: 21px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+}
 
-	&::after {
-		content: "";
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		border-bottom: rem(1px) solid
-			light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-3));
+.BoxPseudo {
+	height: 80vh;
+	background: url("assets/bgcard.svg") center;
+	background-size: 80vw 80vh;
+	background-repeat: no-repeat;
+	display: flex;
+	justify-content: space-between;
+	flex-flow: column nowrap;
+	align-items: center;
+	border-radius: 20px;
+	width: 80%;
+	padding: 1rem;
+}
+
+.Box {
+	width: 62%;
+}
+
+.Nav {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1rem;
+}
+
+@media (max-width: 1250px) {
+	.Box,
+	.Nav {
+		width: 75%;
 	}
 }
 
-.scrolled {
-	box-shadow: var(--mantine-shadow-sm);
+@media (max-width: 1200px) {
+	.BoxPseudo {
+		height: 70vh;
+		background-size: contain;
+	}
 }

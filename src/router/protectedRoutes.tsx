@@ -1,4 +1,4 @@
-import { PhasorRouter, Dashboard } from "@pages/index";
+import { PhasorRouter, Dashboard, LeaderBoard } from "@pages/index";
 
 const protectedRoutes: Routes[] = [
 	{
@@ -12,6 +12,12 @@ const protectedRoutes: Routes[] = [
 		path: "/game",
 		description: "Game",
 		element: <PhasorRouter />,
+	},
+	{
+		title: "Leaderboard",
+		path: "/leaderboard",
+		description: "Leaderboard Page",
+		element: <LeaderBoard />,
 	},
 ];
 

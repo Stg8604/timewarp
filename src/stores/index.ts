@@ -15,6 +15,7 @@ import {
 	emojiPuzzleReducer,
 	Interceptor,
 	cipherReducer,
+	LeaderBoardReducer,
 } from "../slices/index";
 import { PROD } from "@config/config";
 
@@ -36,6 +37,7 @@ const rootReducer = combineReducers({
 	emoji: emojiPuzzleReducer,
 	interceptor: Interceptor,
 	cipher: cipherReducer,
+	leaderboard: LeaderBoardReducer,
 });
 
 export const store = configureStore({

@@ -13,6 +13,7 @@ export { default as SceneReducer } from "./Scene/scene";
 export { default as emojiPuzzleReducer } from "./emoji/emoji";
 export { default as Interceptor } from "./InterceptorX/InterceptorX";
 export { default as cipherReducer } from "./cipher/cipher";
+export { default as LeaderBoardReducer } from "./Leaderboard/LeaderBoard";
 
 export {
 	loginUser,
@@ -40,3 +41,4 @@ export { setEditorOptions, toggleEditor } from "./Editor/Editor";
 
 export { userSelector } from "./User/User";
 export { editorSelector } from "./Editor/Editor";
+export { getLeaderBoard } from "./Leaderboard/LeaderBoardActions";

@@ -1,0 +1,180 @@
+.base {
+	background: url("assets/greenbg.svg") no-repeat center center fixed;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+}
+
+.heading {
+	background: url("assets/leaderboard/Item Desc.svg") no-repeat;
+	background-size: cover;
+	font-size: 43px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	margin-bottom: 2%;
+	padding: 1rem;
+}
+
+.BoxPseudo {
+	height: 80vh;
+	background: url("assets/bgcard.svg") center;
+	background-size: 80vw 80vh;
+	background-repeat: no-repeat;
+	display: flex;
+	justify-content: space-between;
+	flex-flow: column nowrap;
+	align-items: center;
+	border-radius: 20px;
+	width: 80%;
+	padding: 1rem;
+}
+
+.Box {
+	width: 62%;
+}
+
+.Nav {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1rem;
+}
+
+@media (max-width: 1250px) {
+	.Box,
+	.Nav {
+		width: 75%;
+	}
+}
+
+@media (max-width: 1200px) {
+	.BoxPseudo {
+		height: 70vh;
+		background-size: contain;
+	}
+}
+
+@media (max-width: 1000px) and (min-height: 800px) {
+	.Box {
+		padding-top: 2rem;
+	}
+	.Nav {
+		margin-bottom: 2rem;
+	}
+}
+
+@media (max-width: 900px) and (min-height: 800px) {
+	.Box {
+		padding-top: 4rem;
+	}
+	.Nav {
+		margin-bottom: 4rem;
+	}
+}
+
+@media (max-width: 900px) and (max-height: 800px) {
+	.Box {
+		padding-top: 2rem;
+	}
+	.Nav {
+		margin-bottom: 2rem;
+	}
+}
+
+@media (max-width: 800px) and (min-height: 800px) {
+	.Box {
+		padding-top: 5rem;
+	}
+	.Nav {
+		margin-bottom: 6rem;
+	}
+}
+
+@media (max-width: 800px) and (max-height: 800px) {
+	.Box {
+		padding-top: 4rem;
+	}
+	.Nav {
+		margin-bottom: 4rem;
+	}
+}
+
+@media (max-width: 720px) and (min-height: 800px) {
+	.Box {
+		padding-top: 6rem;
+	}
+	.Nav {
+		margin-bottom: 7rem;
+	}
+}
+
+@media (max-width: 720px) and (max-height: 800px) {
+	.Box {
+		padding-top: 5rem;
+	}
+	.Nav {
+		margin-bottom: 6rem;
+	}
+}
+
+@media (max-width: 625px) {
+	.BoxPseudo {
+		background: url("assets/bgcardextended.svg") no-repeat center center;
+		background-size: contain;
+	}
+	.Box,
+	.Nav {
+		width: 67%;
+		margin: 0 1rem 3rem 0;
+		padding: 0;
+	}
+	.heading {
+		background: url("assets/leaderboard/mob_Item Desc.svg") no-repeat center center;
+		background-size: contain;
+		font-size: 20px;
+	}
+}
+
+@media (max-width: 548px) {
+	.Box,
+	.Nav {
+		width: 80%;
+		margin: 0 1rem 0 0;
+	}
+}
+
+@media (max-width: 480px) {
+	.Box {
+		width: 95%;
+		padding-top: 7vh;
+	}
+	.Nav {
+		width: 95%;
+		margin-bottom: 9vh;
+	}
+}
+
+@media (min-height: 800px) and (min-width: 1400px) {
+	.Box,
+	.Nav {
+		width: 62%;
+	}
+}
+
+@media (max-height: 750px) and (min-width: 1400px) {
+	.Box,
+	.Nav {
+		width: 52%;
+		padding: 0;
+	}
+}
+
+@media (max-height: 680px) and (min-width: 1400px) {
+	.Box,
+	.Nav {
+		width: 35%;
+	}
+}

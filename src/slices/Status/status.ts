@@ -5,6 +5,7 @@ interface StatusState {
 	day: number;
 	tutorialComplete: boolean | undefined;
 	score: number;
+	userName: string;
 	puzzleCompletionList: {
 		[key: string]: boolean;
 	};
@@ -15,6 +16,7 @@ const initialState: StatusState = {
 	day: 1,
 	tutorialComplete: false,
 	score: 0,
+	userName: "",
 	puzzleCompletionList: {},
 	inventory: [],
 };
@@ -38,6 +40,9 @@ export const statusSlice = createSlice({
 		setInventory: (state, action) => {
 			state.inventory = action.payload;
 		},
+		setUsername: (state, action) => {
+			state.userName = action.payload;
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(status.fulfilled, (state, action) => {
@@ -46,6 +51,7 @@ export const statusSlice = createSlice({
 			state.score = action.payload.score;
 			state.puzzleCompletionList = action.payload.puzzleCompletionList;
 			state.inventory = action.payload.inventory;
+			state.userName = action.payload.userName;
 		});
 
 		builder.addCase(addItemToInventory.fulfilled, (state, action) => {
@@ -65,5 +71,6 @@ export const {
 	setScore,
 	setPuzzleCompletionList,
 	setInventory,
+	setUsername,
 } = statusSlice.actions;
 export default statusSlice.reducer;

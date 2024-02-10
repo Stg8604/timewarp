@@ -7,6 +7,7 @@ export { default as Password } from "./Auth/Input/Password";
 export { default as Regprops } from "./RegBox/RegProps";
 export { default as Reguser } from "./Auth/Input/RegUser";
 export { default as Regpassword } from "./Auth/Input/RegPassword";
+export { NavigationButtons, Bars, UserBar } from "./Leaderboard";
 export { default as Loader } from "./Loader/index";
 export { default as BackBtn } from "./BackBtn/index";
 export { default as ReactPy } from "./ReactPy/index";

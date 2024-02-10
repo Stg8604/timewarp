@@ -6,6 +6,7 @@ import {
 	ResetPassword,
 	Landing,
 	Steg,
+	LeaderBoard,
 } from "@pages/index";
 import LevelSelector from "../components/LevelSelector";
 
@@ -51,6 +52,12 @@ const routes: Routes[] = [
 		path: "/steg",
 		description: "Steganography Game",
 		element: <Steg />,
+	},
+	{
+		title: "Leaderboard",
+		path: "/leaderboard",
+		description: "Leaderboard Page",
+		element: <LeaderBoard />,
 	},
 ];
 
