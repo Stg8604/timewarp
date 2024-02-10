@@ -1,10 +1,10 @@
-import { userSelector } from "../../../slices/index";
+import { userSelector } from "@slices/index";
 import { FC, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import Loader from "../../Loader/index.tsx";
-import Toast from "../../Toast/index.tsx";
+import { Loader, Toast } from "@components/index";
+import { TOAST_SUCCESS } from "@utils/ToastStatus";
 
 const AuthWrapper: FC<AuthProps> = ({ children }) => {
 	const navigate = useNavigate();
@@ -15,7 +15,7 @@ const AuthWrapper: FC<AuthProps> = ({ children }) => {
 			if (!loggedIn) {
 				setIsLoading(false);
 			} else {
-				Toast("toastGreen", "Welcome Back!");
+				Toast(TOAST_SUCCESS, "Welcome Back!");
 				navigate("/home");
 			}
 		}

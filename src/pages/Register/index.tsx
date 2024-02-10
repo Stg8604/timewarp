@@ -10,11 +10,10 @@ import timewarp from "/assets/timewarpbg.svg";
 import earth from "/assets/icon.png";
 import bgcardextended from "/assets/regcardextended.svg";
 import { registerUser } from "@slices/index";
-import { Toast } from "@components/";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./styles.module.css";
-import { Regprops } from "@components/";
+import { Regprops, Toast } from "@components/";
 
 const Register = () => {
 	const dispatch = useAppDispatch();

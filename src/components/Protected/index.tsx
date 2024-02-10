@@ -1,8 +1,9 @@
 import { Loader, Toast } from "@components/index";
-import { userSelector } from "../../slices";
+import { userSelector } from "@slices/index";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { TOAST_ERROR } from "@utils/ToastStatus";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Protected = (props: any) => {
 	const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Protected = (props: any) => {
 			if (loggedIn) {
 				setIsLoading(false);
 			} else {
-				Toast("toastRed", "Oops! You are not signed in!");
+				Toast(TOAST_ERROR, "Oops! You are not signed in!");
 				setIsLoading(false);
 			}
 		}

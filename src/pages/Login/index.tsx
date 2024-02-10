@@ -6,7 +6,7 @@ import timewarp from "/assets/timewarpbg.svg";
 import earth from "/assets/icon.png";
 import authsignin from "/assets/authsignin.svg";
 import bgcardextended from "/assets/bgcardextended.svg";
-import { BACKEND_URL } from "../../config/config.ts";
+import { BACKEND_URL } from "@config/config";
 import {
 	Username,
 	Password,

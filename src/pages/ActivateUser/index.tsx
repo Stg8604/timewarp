@@ -1,11 +1,9 @@
-import { useAppDispatch } from "@stores/hooks";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-
+import { useLocation, useNavigate } from "react-router-dom";
 import { Toast } from "@components/index";
+import { useAppDispatch } from "@stores/hooks";
 import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
-import { activateUser } from "../../slices";
+import { activateUser } from "@slices/index";
 
 const ActivateUser = () => {
 	const location = useLocation();

@@ -1,17 +1,14 @@
-import { Toast } from "@components/index";
 import { forgotPasswordUser } from "@slices/index";
 import { useAppDispatch } from "@stores/hooks";
-import { isEmailValid } from "@utils/index";
-import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
+import { TOAST_ERROR, TOAST_SUCCESS, isEmailValid } from "@utils/index";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bgcard from "/assets/bgcard.svg";
 import timewarp from "/assets/timewarpbg.svg";
 import earth from "/assets/icon.png";
 import regnext from "/assets/regnext.svg";
-import { Text } from "@mantine/core";
-import { Username, AuthWrapper } from "@components/index";
-import { Button } from "@mantine/core";
+import { Text, Button } from "@mantine/core";
+import { Username, AuthWrapper, Toast } from "@components/index";
 import styles from "./styles.module.css";
 const ForgotPassword = () => {
 	const navigate = useNavigate();

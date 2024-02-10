@@ -15,6 +15,7 @@ import {
 	emojiPuzzleReducer,
 	Interceptor,
 } from "../slices/index";
+import { PROD } from "@config/config";
 
 // add all the reducers here
 
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
 
 export const store = configureStore({
 	reducer: rootReducer,
+	devTools: !PROD,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

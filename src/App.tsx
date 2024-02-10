@@ -9,7 +9,7 @@ import "@mantine/notifications/styles.css";
 import { ErrorBoundary } from "react-error-boundary";
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
-import { Fallback } from "./components/index.tsx";
+import { Fallback } from "@components/index";
 import { PythonProvider } from "react-py";
 import { theme } from "@utils/index.ts";
 

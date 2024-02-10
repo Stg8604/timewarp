@@ -4,9 +4,8 @@ import { Loader } from "@mantine/core";
 import { useAppDispatch, useAppSelector } from "@stores/hooks";
 import { toggleEditor } from "@slices/index";
 import { phaserConfig } from "@phaserGame/game";
-import BackBtn from "../../../components/BackBtn";
 import PasskeyBox from "../../../components/SoundPuzzle/PasskeyBox";
-import { InfoBox, ReactPy, Inventory } from "@components/index";
+import { InfoBox, ReactPy, Inventory, BackBtn } from "@components/index";
 import {
 	toggleHintBox,
 	updateSoundParams,

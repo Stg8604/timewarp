@@ -1,4 +1,4 @@
-import { PhasorRouter, Dummy, Dashboard } from "@pages/index";
+import { PhasorRouter, Dashboard } from "@pages/index";
 
 const protectedRoutes: Routes[] = [
 	{
@@ -12,12 +12,6 @@ const protectedRoutes: Routes[] = [
 		path: "/game",
 		description: "Game",
 		element: <PhasorRouter />,
-	},
-	{
-		title: "Dummy",
-		path: "/redux",
-		description: "redux",
-		element: <Dummy />,
 	},
 ];
 

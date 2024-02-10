@@ -1,20 +1,17 @@
-import Computer from "../../Phasor/Computer";
-import Tutorial from "../../Phasor/Tutorial";
 import { useState, useRef, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@stores/hooks";
-import { Portal, TextBox, Leaderboard } from "@components/index";
-import BackBtn from "../../../components/BackBtn";
+import { useAppSelector } from "@stores/hooks";
 import { IonPhaser } from "@ion-phaser/react";
 import { phaserConfig } from "@phaserGame/game";
-import LevelSelector from "../../../components/LevelSelector";
+import {
+	LevelSelector,
+	BackBtn,
+	TextBox,
+	Leaderboard,
+} from "@components/index";
 
 const loreText = "lore blah blah";
-const pastText = "past";
-const presentText = "present";
-const futureText = "future";
 
 const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
-	const dispatch = useAppDispatch();
 	const lobby = useAppSelector((state) => state.lobby);
 	const [initialize, setInitialize] = useState(false);
 	const gameRef = useRef(null);

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { userSelector } from "@slices/index";
 import { Toast, Loader } from "@components/index";
+import { TOAST_SUCCESS } from "@utils/ToastStatus";
 
 const Landing = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +15,7 @@ const Landing = () => {
 			if (!loggedIn) {
 				setIsLoading(false);
 			} else {
-				Toast("toastGreen", "Welcome Back!");
+				Toast(TOAST_SUCCESS, "Welcome Back!");
 				navigate("/dashboard");
 			}
 		}

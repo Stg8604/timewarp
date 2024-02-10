@@ -1,6 +1,6 @@
 import { TOAST_ERROR } from "@utils/index";
 import { useEffect, useState } from "react";
-import { LevelProps, Loader, Toast } from "@components/index";
+import { Loader, Toast } from "@components/index";
 import { useAppDispatch, useAppSelector } from "@stores/hooks";
 import { status } from "@slices/Status/statusActions";
 import { useNavigate } from "react-router-dom";

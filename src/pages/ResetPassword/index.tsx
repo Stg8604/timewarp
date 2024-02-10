@@ -1,4 +1,3 @@
-import { Toast } from "@components/index";
 import { resetPasswordUser } from "@slices/index";
 import { useAppDispatch } from "@stores/hooks";
 import { useState } from "react";
@@ -9,7 +8,7 @@ import timewarp from "/assets/timewarpbg.svg";
 import earth from "/assets/icon.png";
 import bgcardextended from "/assets/bgcardextended.svg";
 import confirm from "/assets/confirm.svg";
-import { Password } from "@components/index";
+import { Password, Toast } from "@components/index";
 import { Button } from "@mantine/core";
 import styles from "./styles.module.css";
 const ResetPassword = () => {

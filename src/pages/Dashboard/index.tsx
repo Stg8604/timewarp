@@ -1,23 +1,19 @@
+import { useEffect } from "react";
 import { useCookies } from "react-cookie";
-import {
-	checkStegPasskey,
-	getStegImages,
-	initStegPuzzle,
-	logoutUser,
-} from "@slices/index";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "@components/index";
 import { useAppDispatch, useAppSelector } from "@stores/hooks";
+
+import { status } from "@slices/Status/statusActions";
 import { setScene } from "@slices/Scene/scene";
-import { useEffect } from "react";
-import { status } from "../../slices/Status/statusActions";
+import { logoutUser } from "@slices/index";
 import { TOAST_ERROR } from "@utils/ToastStatus";
 
 const Dashboard = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 
-	const [cookie, setCookie, removeCookie] = useCookies();
+	const [_, setCookie, removeCookie] = useCookies();
 	const handleLogOut = async () => {
 		const logoutDispatch = await dispatch(logoutUser());
 		if (logoutUser.fulfilled.match(logoutDispatch)) {
@@ -32,6 +28,7 @@ const Dashboard = () => {
 		(async () => {
 			dispatch(status());
 		})();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	const switchScene = () => {
 		navigate("/game");
@@ -61,14 +58,14 @@ const Dashboard = () => {
 				>
 					Computer Game
 				</button> */}
-				<button
+				{/* <button
 					onClick={() => {
 						dispatch(setScene("GameScene"));
 						navigate("/redux");
 					}}
 				>
 					Redux Test
-				</button>
+				</button> */}
 				<button onClick={handleLogOut}>Logout</button>
 			</div>
 		</>

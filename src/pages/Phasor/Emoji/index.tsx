@@ -2,13 +2,19 @@ import { useRef, useState, useEffect } from "react";
 import { IonPhaser } from "@ion-phaser/react";
 import { Loader } from "@mantine/core";
 import { useAppDispatch, useAppSelector } from "@stores/hooks";
-import { InfoBox, Inventory, Toast } from "@components/index";
 import { toggleEditor } from "@slices/index";
 import { phaserConfig } from "@phaserGame/game";
-import { BackBtn } from "@components/index";
+import {
+	BackBtn,
+	ReactPy,
+	PasskeyBox,
+	InfoBox,
+	Inventory,
+	Toast,
+	ClueBox,
+	MainPortal,
+} from "@components/index";
 import EmojiModule from "@modules/EmojiModule.txt";
-import { ReactPy } from "@components/index";
-import { PasskeyBox } from "@components/index";
 import {
 	toggleHintBox,
 	toggleMainPortalKey,
@@ -17,11 +23,9 @@ import {
 	toggleProp3,
 	toggleProp4,
 	updateEmojiParams,
+	togglePortalKey,
 } from "@slices/emoji/emoji";
-import { togglePortalKey } from "@slices/emoji/emoji";
-import { TOAST_ERROR, TOAST_INFO, TOAST_SUCCESS } from "@utils/ToastStatus";
-import MainPortal from "../../../components/MainPortal";
-import ClueBox from "../../../components/ClueBox";
+import { TOAST_ERROR, TOAST_INFO, TOAST_SUCCESS } from "@utils/index";
 import { checkEmojiSolution, emojiStatus } from "@slices/emoji/emojiAction";
 
 const Emoji = () => {

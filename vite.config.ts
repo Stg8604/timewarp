@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig, splitVendorChunkPlugin } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { VitePWA } from "vite-plugin-pwa";
@@ -10,6 +10,10 @@ export default defineConfig({
 	},
 	optimizeDeps: {
 		exclude: ["@ion-phaser/core/loader"],
+	},
+	build:{
+		minify: true,
+		sourcemap: false
 	},
 	resolve: {
 		alias: [
@@ -64,5 +68,5 @@ export default defineConfig({
 		],
 	},
 	base: "",
-	plugins: [react(), VitePWA({ registerType: "autoUpdate" })],
+	plugins: [react(), VitePWA({ registerType: "autoUpdate" }), splitVendorChunkPlugin()],
 });
