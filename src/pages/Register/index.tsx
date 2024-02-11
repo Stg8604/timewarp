@@ -11,9 +11,10 @@ import earth from "/assets/icon.png";
 import bgcardextended from "/assets/regcardextended.svg";
 import { registerUser } from "@slices/index";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import styles from "./styles.module.css";
 import { Regprops, Toast } from "@components/";
+import { GoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const Register = () => {
 	const dispatch = useAppDispatch();
@@ -22,6 +23,7 @@ const Register = () => {
 		navigate("/login");
 	};
 
+	const [token, setToken] = useState<string>("");
 	const [registerCredentials, setRegisterCredentials] = useState<IRegister>({
 		username: "",
 		email: "",
@@ -61,7 +63,7 @@ const Register = () => {
 					username: registerCredentials.username,
 					email: registerCredentials.email,
 					password: registerCredentials.password,
-					token: "",
+					token: token,
 					college: registerCredentials.college,
 					phonenumber: registerCredentials.phonenumber,
 				})
@@ -75,6 +77,11 @@ const Register = () => {
 			}
 		}
 	};
+
+	const onVerify = useCallback((token: string) => {
+		setToken(token);
+	}, []);
+
 	return (
 		<>
 			<div className={styles.your_class}>
@@ -96,6 +103,8 @@ const Register = () => {
 						src={earth}
 						className="w-[35%] md:w-[16%] xl:w-[16%] absolute top-[4%] sm:top-[2%] xl:top-[0%] z-5"
 					/>
+					<GoogleReCaptcha onVerify={onVerify} />
+
 					<div className="w-[65%] pl-8 pr-8 sm:w-[50%] md:w-[45%] xl:w-[30%] absolute top-[22%] sm:top-[20%] xl:top-[30%] flex flex-col justify-center line-clamp-2">
 						<Regprops
 							input={updateregisterCredentials}
