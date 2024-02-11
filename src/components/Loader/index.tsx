@@ -75,7 +75,10 @@ const Loader = () => {
 					/>
 				</g>
 			</svg>
-			<Text className="text-white fixed top-[50%] left-[50%] translate-x-[-40%] translate-y-[100%] font-pressStart2P text-xl"> Loading...</Text>
+			<Text className="text-white fixed top-[50%] left-[50%] translate-x-[-40%] translate-y-[100%] font-pressStart2P text-xl">
+				{" "}
+				Loading...
+			</Text>
 		</div>
 	);
 };

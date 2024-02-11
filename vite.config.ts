@@ -11,9 +11,9 @@ export default defineConfig({
 	optimizeDeps: {
 		exclude: ["@ion-phaser/core/loader"],
 	},
-	build:{
+	build: {
 		minify: true,
-		sourcemap: false
+		sourcemap: false,
 	},
 	resolve: {
 		alias: [
@@ -68,5 +68,9 @@ export default defineConfig({
 		],
 	},
 	base: "",
-	plugins: [react(), VitePWA({ registerType: "autoUpdate" }), splitVendorChunkPlugin()],
+	plugins: [
+		react(),
+		VitePWA({ registerType: "autoUpdate" }),
+		splitVendorChunkPlugin(),
+	],
 });

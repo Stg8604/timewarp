@@ -9,3 +9,4 @@ export { default as Landing } from "./Landing/index";
 export { default as Tutorial } from "./Tutorial/index";
 export { default as Steg } from "./Phasor/Steg/index";
 export { default as LeaderBoard } from "./Leaderboard/LeaderBoard";
+export { default as Oauth } from "./Oauth/index";

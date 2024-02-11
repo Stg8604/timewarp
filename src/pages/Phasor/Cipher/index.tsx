@@ -18,7 +18,8 @@ import { TOAST_ERROR, TOAST_INFO, TOAST_SUCCESS } from "@utils/ToastStatus";
 import { togglePortalKey } from "@slices/cipher/cipher";
 import { PasskeyBox } from "@components/index";
 
-const text_1 = "Hi Traveller, There is only one person who knows the key. But he is insane right now. Good Luck!";
+const text_1 =
+	"Hi Traveller, There is only one person who knows the key. But he is insane right now. Good Luck!";
 const text_2 = "hi God";
 
 const Cipher = () => {

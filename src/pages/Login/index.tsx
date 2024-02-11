@@ -165,7 +165,6 @@ const Login = () => {
 							<GoogleReCaptcha onVerify={onVerify} />
 							<a
 								className="w-fit mx-auto h-12 sm:h-14 xl:h-14  object-cover transition-transform transform hover:scale-110"
-								target="_blank"
 								rel="noopener noreferrer"
 								href={BACKEND_URL + "oauth2/authorization/google"}
 							>

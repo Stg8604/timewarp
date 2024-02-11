@@ -132,7 +132,8 @@
 		padding: 0;
 	}
 	.heading {
-		background: url("assets/leaderboard/mob_Item Desc.svg") no-repeat center center;
+		background: url("assets/leaderboard/mob_Item Desc.svg") no-repeat center
+			center;
 		background-size: contain;
 		font-size: 20px;
 	}

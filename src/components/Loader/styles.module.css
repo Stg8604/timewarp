@@ -1,5 +1,5 @@
 .loader-container {
-	background-image: url('/assets/loader-bg.png');
+	background-image: url("/assets/loader-bg.png");
 	background-position: center;
 	background-repeat: no-repeat;
 	width: 100vw;

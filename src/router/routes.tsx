@@ -7,6 +7,7 @@ import {
 	Landing,
 	Steg,
 	LeaderBoard,
+	Oauth,
 } from "@pages/index";
 import LevelSelector from "../components/LevelSelector";
 
@@ -58,6 +59,12 @@ const routes: Routes[] = [
 		path: "/leaderboard",
 		description: "Leaderboard Page",
 		element: <LeaderBoard />,
+	},
+	{
+		title: "Oauth Redirect",
+		path: "/oauth",
+		description: "Oauth Redirect Page",
+		element: <Oauth />,
 	},
 ];
 

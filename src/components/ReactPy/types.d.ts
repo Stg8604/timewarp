@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 interface Edge {
 	source: number;
 	target: number;
@@ -14,7 +16,7 @@ interface IReactPy {
 			| ((params: {
 					// eslint-disable-next-line @typescript-eslint/no-explicit-any
 					[key: string]: any;
-			}) => UnknownAction)
+			  }) => UnknownAction)
 			| null;
 	}[];
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
