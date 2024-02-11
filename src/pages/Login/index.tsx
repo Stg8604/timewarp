@@ -39,7 +39,7 @@ const Login = () => {
 		token: "",
 		type: "",
 	});
-	const [_token, setToken] = useState<string>("");
+	const [token, setToken] = useState<string>("");
 	const [isLoading, setIsLoading] = useState(true);
 	const { loggedIn, isUserFetching } = useSelector(userSelector);
 
@@ -58,6 +58,7 @@ const Login = () => {
 	const updateCredentials = (type: string, value: string) => {
 		const updateCredentials: ILogin = { ...loginCredentials };
 		updateCredentials[type] = value.trim();
+		updateCredentials.token = token;
 		setLoginCredentials(updateCredentials);
 	};
 

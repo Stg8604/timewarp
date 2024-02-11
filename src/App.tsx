@@ -12,6 +12,8 @@ import { Notifications } from "@mantine/notifications";
 import { Fallback } from "@components/index";
 import { PythonProvider } from "react-py";
 import { theme } from "@utils/index.ts";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import { ReCAPTCHA_SITE_KEY } from "@config/config";
 
 function App() {
 	useEffect(() => {
@@ -31,14 +33,16 @@ function App() {
 			<ErrorBoundary fallbackRender={Fallback}>
 				<PythonProvider>
 					<MantineProvider theme={theme}>
-						<Notifications
-							position="bottom-right"
-							zIndex={1000}
-							autoClose={5000}
-						/>
-						<Provider store={store}>
-							<Router />
-						</Provider>
+						<GoogleReCaptchaProvider reCaptchaKey={ReCAPTCHA_SITE_KEY}>
+							<Notifications
+								position="bottom-right"
+								zIndex={1000}
+								autoClose={5000}
+							/>
+							<Provider store={store}>
+								<Router />
+							</Provider>
+						</GoogleReCaptchaProvider>
 					</MantineProvider>
 				</PythonProvider>
 			</ErrorBoundary>
