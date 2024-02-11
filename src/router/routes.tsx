@@ -49,12 +49,6 @@ const routes: Routes[] = [
 		element: <Landing />,
 	},
 	{
-		title: "Steganography Game",
-		path: "/steg",
-		description: "Steganography Game",
-		element: <Steg />,
-	},
-	{
 		title: "Leaderboard",
 		path: "/leaderboard",
 		description: "Leaderboard Page",

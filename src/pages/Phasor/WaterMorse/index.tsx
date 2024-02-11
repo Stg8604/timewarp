@@ -26,7 +26,11 @@ const clue =
 const clue2 =
 	"A gentle chime, a signal clear, the water speaks, its code draws near. Let each drop's soft tap unlock the way, and follow the rhythm, where secrets play.";
 
-const WaterMorse = () => {
+const WaterMorse = ({
+	switchScene,
+}: {
+	switchScene: (key: string) => void;
+}) => {
 	const [initialize, setInitialize] = useState(false);
 	const [passkey, setPasskey] = useState("");
 	const gameRef = useRef(null);
@@ -74,6 +78,7 @@ const WaterMorse = () => {
 		if (response.type === "watermorse/checkFlag/fulfilled") {
 			dispatch(toggleWaterMorsePortal());
 			Toast(TOAST_SUCCESS, response.payload?.message);
+			switchScene("Lobby");
 		} else if (response.type === "watermorse/checkFlag/rejected") {
 			Toast(TOAST_ERROR, response.payload?.message);
 		}

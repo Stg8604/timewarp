@@ -15,7 +15,7 @@ import { TOAST_ERROR, TOAST_INFO, TOAST_SUCCESS } from "@utils/ToastStatus";
 const text_1 =
 	"Unravel the network's secrets: Bridge the gap from Computer 1 to Computer 11,navigating a labyrinth of echoes. The key lies in the serpentine route with digits that mirror reality. Decipher the shortest path and pass on the message.";
 
-const Computer = () => {
+const Computer = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const [initialize, setInitialize] = useState(false);
 	const gameRef = useRef(null);
 	const computer = useAppSelector((state) => state.computer);
@@ -63,6 +63,7 @@ const Computer = () => {
 			dispatch(toggleComputerPortalKey());
 			if (response.payload && response.payload.correct) {
 				Toast(TOAST_SUCCESS, response.payload?.message);
+				switchScene("Lobby");
 			} else {
 				Toast(TOAST_INFO, response.payload?.message);
 			}

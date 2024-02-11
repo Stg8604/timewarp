@@ -20,7 +20,11 @@ const hashmap: { [key: string]: string } = {
 	audio_clip_6: "/assets/6.np3",
 };
 
-const SoundPuzzle = () => {
+const SoundPuzzle = ({
+	switchScene,
+}: {
+	switchScene: (key: string) => void;
+}) => {
 	const [initialize, setInitialize] = useState(false);
 	const gameRef = useRef(null);
 	const sound = useAppSelector((state) => state.soundPuzzle);
@@ -148,7 +152,7 @@ const SoundPuzzle = () => {
 					Hint
 				</div>
 			)}
-			{sound.isPortalKeyOpen && <PasskeyBox />}
+			{sound.isPortalKeyOpen && <PasskeyBox switchScene={switchScene} />}
 			{!initialize && (
 				<div className="flex justify-center items-center h-[100vh]">
 					<Loader size={100} />

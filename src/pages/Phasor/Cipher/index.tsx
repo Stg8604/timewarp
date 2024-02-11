@@ -22,7 +22,7 @@ const text_1 =
 	"Hi Traveller, There is only one person who knows the key. But he is insane right now. Good Luck!";
 const text_2 = "hi God";
 
-const Cipher = () => {
+const Cipher = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const [initialize, setInitialize] = useState(false);
 	const gameRef = useRef(null);
 	const [passkey, setPasskey] = useState("");
@@ -71,6 +71,7 @@ const Cipher = () => {
 			dispatch(togglePortalKey());
 			if (response.payload && response.payload.correct) {
 				Toast(TOAST_SUCCESS, response.payload?.message);
+				switchScene("Lobby");
 			} else {
 				Toast(TOAST_INFO, response.payload?.message);
 			}

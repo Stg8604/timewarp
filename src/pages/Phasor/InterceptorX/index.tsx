@@ -38,7 +38,11 @@ const text_4 = "You collected 4th part";
 const text_5 =
 	"Hey Traveller, There are lot of signals flowing through this room. Maybe you can intercept using this tool.";
 
-const InterceptorX = () => {
+const InterceptorX = ({
+	switchScene,
+}: {
+	switchScene: (key: string) => void;
+}) => {
 	const [initialize, setInitialize] = useState(false);
 	const gameRef = useRef(null);
 	const [passkey, setPasskey] = useState("");
@@ -77,6 +81,7 @@ const InterceptorX = () => {
 			dispatch(togglePortalKey());
 			if (response.payload && response.payload.correct) {
 				Toast(TOAST_SUCCESS, response.payload?.message);
+				switchScene("Lobby");
 			} else {
 				Toast(TOAST_INFO, response.payload?.message);
 			}

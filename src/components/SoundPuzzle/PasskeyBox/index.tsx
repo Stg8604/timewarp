@@ -5,7 +5,11 @@ import { checkSolution } from "../../../slices/SoundPuzzle/soundPuzzleActions";
 import { Toast } from "../..";
 import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
 
-const PasskeyBox = () => {
+const PasskeyBox = ({
+	switchScene,
+}: {
+	switchScene: (key: string) => void;
+}) => {
 	const [passkey, setPasskey] = useState("");
 	const dispatch = useAppDispatch();
 
@@ -31,6 +35,7 @@ const PasskeyBox = () => {
 								.then((res) => {
 									if (res.correct) {
 										Toast(TOAST_SUCCESS, "Correct PassKey!");
+										switchScene("Lobby");
 									} else {
 										Toast(TOAST_ERROR, "Incorrect PassKey!");
 									}

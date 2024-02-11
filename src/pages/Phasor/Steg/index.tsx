@@ -13,7 +13,7 @@ import {
 	BackBtn,
 } from "@components/index";
 
-const Steg = () => {
+const Steg = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const [initialize, setInitialize] = useState(false);
 	const gameRef = useRef(null);
 	const steg = useAppSelector((state) => state.steg);
@@ -63,7 +63,7 @@ const Steg = () => {
 			{player.inventoryOpen && <Inventory />}
 			{steg.isInfoOpen && <StegInfo text={steg.text} />}
 
-			{steg.isPortalKeyOpen && <StegPasskeyBox />}
+			{steg.isPortalKeyOpen && <StegPasskeyBox switchScene={switchScene} />}
 
 			{!initialize && (
 				<div className="flex justify-center items-center h-[100vh]">

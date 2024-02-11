@@ -23,7 +23,7 @@ import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
 const text =
 	"Hello Player! You are in the year 2049. Technology has went far and beyond making it possible to have portals to different time period. The world is run by machine now. So you have to utilize the machine tools to get things done. Press 'E' anytime to open or close your weapon - the code editor.";
 
-const Tutorial = () => {
+const Tutorial = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const [initialize, setInitialize] = useState(false);
 	const [passkey, setPasskey] = useState("");
 	const gameRef = useRef(null);
@@ -69,6 +69,7 @@ const Tutorial = () => {
 			if ((response.payload as TutorialFlagResponse).correct) {
 				dispatch(togglePortalKey());
 				Toast(TOAST_SUCCESS, "You have solved the puzzle!");
+				switchScene("Lobby");
 			} else {
 				Toast(TOAST_ERROR, "Incorrect passkey!");
 			}

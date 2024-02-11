@@ -6,7 +6,11 @@ import { Toast } from "../..";
 import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
 import { useNavigate } from "react-router-dom";
 
-const StegPasskeyBox = () => {
+const StegPasskeyBox = ({
+	switchScene,
+}: {
+	switchScene: (key: string) => void;
+}) => {
 	const [passkey, setPasskey] = useState("");
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
@@ -35,6 +39,7 @@ const StegPasskeyBox = () => {
 								const ans: any = res.payload;
 								if (ans.correct == true) {
 									Toast(TOAST_SUCCESS, "Correct PassKey!");
+									switchScene("Lobby");
 									// Add Dispatch to change scene to lobby here
 									setTimeout(() => {
 										window.location.reload();

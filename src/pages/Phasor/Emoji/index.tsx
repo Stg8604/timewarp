@@ -28,7 +28,7 @@ import {
 import { TOAST_ERROR, TOAST_INFO, TOAST_SUCCESS } from "@utils/index";
 import { checkEmojiSolution, emojiStatus } from "@slices/emoji/emojiAction";
 
-const Emoji = () => {
+const Emoji = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const [initialize, setInitialize] = useState(false);
 	const gameRef = useRef(null);
 	const [passkey, setPasskey] = useState("");
@@ -78,6 +78,7 @@ const Emoji = () => {
 			dispatch(togglePortalKey());
 			if (response.payload && response.payload.correct) {
 				Toast(TOAST_SUCCESS, response.payload?.message);
+				switchScene("Lobby");
 			} else {
 				Toast(TOAST_INFO, response.payload?.message);
 			}
