@@ -1,10 +1,11 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	isOpen: false,
-	fontSize: 18,
+	fontSize: 20,
 	theme: "monokai",
 	showLineNumbers: true,
 	tabSize: 2,
+	value: "",
 } as IEditorConfig;
 
 export const editorSlice = createSlice({
@@ -17,13 +18,17 @@ export const editorSlice = createSlice({
 			state.showLineNumbers = action.payload.showLineNumbers;
 			state.theme = action.payload.theme;
 		},
+		setEditorValue: (state, action: PayloadAction<string>) => {
+			state.value = action.payload;
+		},
 		toggleEditor: (state) => {
 			state.isOpen = !state.isOpen;
 		},
 	},
 });
 
-export const { setEditorOptions, toggleEditor } = editorSlice.actions;
+export const { setEditorOptions, toggleEditor, setEditorValue } =
+	editorSlice.actions;
 export const editorSelector = (state: { editor: IEditorConfig }) =>
 	state.editor;
 export default editorSlice.reducer;

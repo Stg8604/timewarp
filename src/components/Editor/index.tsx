@@ -18,6 +18,8 @@ import {
 	IconPlayerStop,
 	IconSettings,
 } from "@tabler/icons-react";
+import { useAppDispatch, useAppSelector } from "@stores/hooks";
+import { setEditorValue } from "@slices/Editor/Editor";
 
 const Interpretor: FC<IInterpretorProps> = ({
 	run,
@@ -29,6 +31,9 @@ const Interpretor: FC<IInterpretorProps> = ({
 	closeEditor,
 	defaultInput,
 }) => {
+	const editor = useAppSelector((state) => state.editor);
+	const dispatch = useAppDispatch();
+	const [input, setInput] = useState<string>("");
 	const editorOnLoad = (editor: {
 		setOptions: (arg0: {
 			enableBasicAutocompletion: boolean;
@@ -59,7 +64,6 @@ const Interpretor: FC<IInterpretorProps> = ({
 		editor.renderer.setScrollMargin(10, 10, 0, 0);
 		editor.moveCursorTo(0, 0);
 	};
-	const [input, setInput] = useState<string>(defaultInput);
 	const [delayedOpen, setDelayedOpen] = useState<boolean>(false);
 
 	// const editorConfigHandler = () => {
@@ -97,7 +101,14 @@ const Interpretor: FC<IInterpretorProps> = ({
 	}, [config.isOpen]);
 
 	return (
-		<Drawer opened={delayedOpen} size="lg" onClose={() => closeEditor()}>
+		<Drawer
+			opened={delayedOpen}
+			size="lg"
+			onClose={() => {
+				dispatch(setEditorValue(input));
+				closeEditor();
+			}}
+		>
 			<Group
 				styles={() => ({
 					root: {
@@ -157,7 +168,7 @@ const Interpretor: FC<IInterpretorProps> = ({
 					setInput(value);
 				}}
 				onLoad={editorOnLoad}
-				defaultValue={defaultInput}
+				defaultValue={editor.value === "" ? defaultInput : editor.value}
 			/>
 			{isLoading ? <p>Loading...</p> : <p>Ready!</p>}
 			<code>{error}</code>

@@ -8,12 +8,6 @@ import { useEffect } from "react";
 import { getUser } from "@slices/index";
 
 const Router = () => {
-	const dispatch = useAppDispatch();
-	useEffect(() => {
-		(async () => {
-			await dispatch(getUser());
-		})();
-	}, [dispatch]);
 	return (
 		<>
 			<BrowserRouter basename={BASEPATH}>

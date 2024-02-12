@@ -12,4 +12,5 @@ interface IEditorConfig {
 	theme: EditorThemes;
 	showLineNumbers: boolean;
 	tabSize: number;
+	value: string;
 }
