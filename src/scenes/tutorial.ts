@@ -1,7 +1,7 @@
 import { TutorialPlayer } from "../sprites/TutorialPlayer";
 import { store } from "../stores/index";
 import { toggleInfo, togglePortalKey } from "../slices/Tutorial/tutorial";
-import BulletSprite from "@assets/tutorial/trail.png";
+// import BulletSprite from "@assets/tutorial/trail.png";
 
 export class TutorialScene extends Phaser.Scene {
 	constructor() {
@@ -16,7 +16,7 @@ export class TutorialScene extends Phaser.Scene {
 	preload() {
 		// Loading all necessary assets
 		this.load.image("tileset", "assets/tutorial/tileset.png");
-		this.load.image("bullet", BulletSprite);
+		this.load.image("bullet", "assets/tutorial/trail.png");
 		this.load.tilemapTiledJSON("tilemap", "assets/tutorial/tutorialMap.json");
 		this.load.spritesheet("player", "assets/tutorial/player.png", {
 			frameWidth: 64,

@@ -47,7 +47,6 @@ export const statusSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-
 		builder.addCase(status.pending, (state) => {
 			state.isLoading = true;
 		});
@@ -63,7 +62,6 @@ export const statusSlice = createSlice({
 			state.userName = action.payload.userName;
 			state.isLoading = false;
 		});
-
 
 		builder.addCase(addItemToInventory.fulfilled, (state, action) => {
 			// console.log("Here", action.payload, JSON.stringify(state.inventory))

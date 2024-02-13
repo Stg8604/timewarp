@@ -10,6 +10,7 @@ import {
 	Oauth,
 } from "@pages/index";
 import LevelSelector from "../components/LevelSelector";
+import LandingPage from "@pages/LandingPage/LandingPage";
 
 const routes: Routes[] = [
 	{
@@ -46,7 +47,7 @@ const routes: Routes[] = [
 		title: "Landing Page",
 		path: "/",
 		description: "Landing Page",
-		element: <Landing />,
+		element: <LandingPage />,
 	},
 	{
 		title: "Leaderboard",

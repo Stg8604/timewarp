@@ -163,7 +163,6 @@ export class CipherScene extends Phaser.Scene {
 		this.physics.add.collider(this.fire1, this.player!);
 		this.physics.add.collider(this.fire3, this.player!);
 
-
 		// this.gate = this.physics.add.sprite(620, 1055, "gate");
 		// this.gate.setImmovable(true);
 		// this.gate.setSize(32, 32);

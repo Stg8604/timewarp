@@ -6,7 +6,7 @@ interface CipherState {
 	isGodInfo: boolean;
 	correct: boolean;
 	isPortalKeyOpen: boolean;
-	isFire:boolean;
+	isFire: boolean;
 	params: { [key: string]: string | number | Edge[] };
 }
 
@@ -14,7 +14,7 @@ const initialState: CipherState = {
 	isMessengerInfoo: false,
 	isGodInfo: false,
 	correct: false,
-	isFire:false,
+	isFire: false,
 	isPortalKeyOpen: false,
 	params: { data: "none" },
 };

@@ -19,9 +19,9 @@ import { TOAST_ERROR, TOAST_INFO, TOAST_SUCCESS } from "@utils/ToastStatus";
 import { togglePortalKey } from "@slices/cipher/cipher";
 import { PasskeyBox } from "@components/index";
 
-const text_1 =
-	"Hello, traveler. Please, talk to me";
-const text_2 = "It seems there is a pattern he follows; try communicating with him using letters";
+const text_1 = "Hello, traveler. Please, talk to me";
+const text_2 =
+	"It seems there is a pattern he follows; try communicating with him using letters";
 
 const text_3 = "Clever Ants Eagerly Search Exotic Resources";
 
@@ -106,9 +106,7 @@ const Cipher = ({ switchScene }: { switchScene: (key: string) => void }) => {
 				<InfoBox text={text_1} onClose={handleMessengerClose} />
 			)}
 
-			{cipher.isFire && (
-				<InfoBox text={text_3} onClose={handlefireClose} />
-			)}
+			{cipher.isFire && <InfoBox text={text_3} onClose={handlefireClose} />}
 
 			{cipher.isPortalKeyOpen && (
 				<PasskeyBox
