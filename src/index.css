@@ -216,3 +216,7 @@ body {
 		opacity: 1;
 	}
 }
+
+.grecaptcha-badge {
+	display: none;
+}

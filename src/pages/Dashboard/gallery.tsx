@@ -6,7 +6,7 @@ interface GalleryProps {
 
 const sceneAssetsMap: { [key: string]: string } = {
 	WaterMorse: "assets/Dashboard/WaterMorse.svg",
-	Lobby: "assets/Dashboard/lobby.svg",
+	Lobby: "assets/Dashboard/play.svg",
 	SoundPuzzle: "assets/Dashboard/Sound.svg",
 	Cipher: "assets/Dashboard/RevEng.svg",
 	Steg: "assets/Dashboard/Steg.svg",
@@ -19,7 +19,7 @@ const Gallery: React.FC<GalleryProps> = ({ onClick }) => {
 	const [scene, setScene] = useState<string>("Lobby");
 
 	useEffect(() => {
-		setScene(localStorage.getItem("scene") ?? "Computer");
+		setScene(localStorage.getItem("scene") ?? "Lobby");
 	}, []);
 	return (
 		<>

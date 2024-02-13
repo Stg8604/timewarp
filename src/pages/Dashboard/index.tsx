@@ -2,20 +2,16 @@ import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "@components/index";
-import { useAppDispatch, useAppSelector } from "@stores/hooks";
+import { useAppDispatch } from "@stores/hooks";
 import { status } from "@slices/Status/statusActions";
 import { setScene } from "@slices/Scene/scene";
 import { logoutUser } from "@slices/index";
 import { TOAST_ERROR } from "@utils/ToastStatus";
-import { Center, Flex } from "@mantine/core";
-import { url } from "inspector";
-import { relative } from "path";
 import Base from "./base";
 import Card from "./card";
 import Gallery from "./gallery";
 import CardButton from "./cardButton";
-import { store } from "@stores/index";
-import { Landing } from "..";
+import bgImg from "../../assets/Dashboard/background.svg";
 
 const Dashboard = () => {
 	const navigate = useNavigate();
@@ -72,23 +68,15 @@ const Dashboard = () => {
 
 	return (
 		<>
-			<style>
-				{`
-                    .grecaptcha-badge {
-                        display:"none"
-                    }
-                `}
-			</style>
 			<div
-				className="bg-[url('assets/Dashboard/background.svg')]"
 				style={{
+					backgroundImage: `url(${bgImg})`,
 					display: "flex",
 					alignItems: "center",
 					width: "100vw",
 					height: "100vh",
 					maxWidth: "100vw",
 					maxHeight: "100vh",
-					backgroundImage: "assets/Dashboard/background.svg",
 				}}
 			>
 				<div
