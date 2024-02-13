@@ -6,7 +6,7 @@ const TextBox = (props: { text: string; type: string }) => {
 
 	return (
 		<div className="absolute flex justify-center items-center h-screen w-screen z-50">
-			<div className=" bg-tutorialUiBlue/80 border border-whites select-none animate-fadeIn font-pixelifySans leading-5 text-white text-center flex flex-col gap-5 w-[50vh] rounded-lg px-10 py-5">
+			<div className=" bg-tutorialUiBlue/80 border border-whites select-none animate-fadeIn font-pixelifySans leading-5 text-white text-center flex flex-col gap-5 w-[80vw] rounded-lg px-10 py-5">
 				<span>{props.text}</span>
 				<button
 					onClick={() => {

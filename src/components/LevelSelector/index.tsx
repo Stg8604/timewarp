@@ -11,7 +11,7 @@ const LevelSelector = ({
 }: {
 	title1: string;
 	title2: string;
-	title3: string;
+	title3?: string;
 	currentTime: string;
 	switchScene: (key: string) => void;
 }) => {
@@ -27,7 +27,11 @@ const LevelSelector = ({
 					<div className="flex flex-col mt-16 items-center">
 						<LevelProps title={title1} switchScene={switchScene} />
 						<LevelProps title={title2} switchScene={switchScene} />
-						<LevelProps title={title3} switchScene={switchScene} />
+						{title3 ? (
+							<LevelProps title={title3} switchScene={switchScene} />
+						) : (
+							<></>
+						)}
 						<LevelProps2 text={currentTime} type={currentTime} />
 					</div>
 				</div>

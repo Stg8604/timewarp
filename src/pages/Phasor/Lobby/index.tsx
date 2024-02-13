@@ -9,7 +9,9 @@ import {
 	Leaderboard,
 } from "@components/index";
 
-const loreText = "lore blah blah";
+const loreText = `You are now standing at the feet of an ancient coder from a distant era. Legends whisper that he crafted a Code Editor so powerful that it allows him to manipulate the very fabric of reality. It taps into the fundamental coding principles that exist in every era, making it the key to unlocking the mysteries of each puzzle. Now, the weapon has been passed on to you, and with it comes the heavy responsibility. 
+
+Press E to open your mighty weapon and solve every puzzle to save Time itself. Godspeed, young traveller, and welcome to Timewarp.`;
 
 const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const lobby = useAppSelector((state) => state.lobby);
@@ -28,7 +30,6 @@ const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
 				<LevelSelector
 					title1="WaterMorse"
 					title2="SoundPuzzle"
-					title3="Past3"
 					currentTime="past"
 					switchScene={switchScene}
 				/>
