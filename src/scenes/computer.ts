@@ -363,7 +363,9 @@ export class ComputerScene extends Phaser.Scene {
 		for (const wire of wires) {
 			const wireParsed: string =
 				String(wire.source) + "," + String(wire.target);
-			turnOn[wireParsed]!.setDepth(101);
+			if (turnOn[wireParsed]) {
+				turnOn[wireParsed]!.setDepth(101);
+			}
 		}
 	}
 }
