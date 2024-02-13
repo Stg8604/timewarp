@@ -20,11 +20,14 @@ import {
 import { checkFlag, status } from "@slices/WaterMorse/waterMorseActions";
 import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
 
+const hint =
+	"This is a silent country side of the past. A pristine place to relax and to listen to the sounds of nature. A place to meditate and block out external interferences and focus on what is important.";
+
 const clue =
-	"Seek the hidden symphony within silence; silence the cacophony around, and let the whispers guide you to the key.";
+	"Seek the hidden symphony within the sounds of nature. Silence the cacophony around, and let the whispers guide you to the key.";
 
 const clue2 =
-	"A gentle chime, a signal clear, the water speaks, its code draws near. Let each drop's soft tap unlock the way, and follow the rhythm, where secrets play.";
+	"A gentle chime marks a beginning, the water speaks, its code draws near. Drops land, tapping short or long like a telegraph and unlock the way. Follow the rhythm, where secrets play.";
 
 const WaterMorse = ({
 	switchScene,
@@ -116,6 +119,10 @@ const WaterMorse = ({
 
 			{waterMorse.infoBox[1] && (
 				<InfoBox text={clue2} onClose={() => dispatch(toggleInfoBox(1))} />
+			)}
+
+			{waterMorse.infoBox[2] && (
+				<InfoBox text={hint} onClose={() => dispatch(toggleInfoBox(2))} />
 			)}
 
 			<IonPhaser

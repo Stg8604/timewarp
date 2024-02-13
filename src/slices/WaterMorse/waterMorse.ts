@@ -14,9 +14,9 @@ const initialState: WaterMorseState = {
 	params: {
 		forest: "",
 		wind: "",
-		water: "",
+		river: "",
 	},
-	infoBox: [false, false],
+	infoBox: [false, false, true],
 };
 
 export const waterMorseSlice = createSlice({

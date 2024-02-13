@@ -51,7 +51,7 @@ export class WaterMorseScene extends Phaser.Scene {
 			if (params.wind === "pause") wind.pause();
 			else wind.resume();
 
-			if (params.water === "pause") water.pause();
+			if (params.river === "pause") water.pause();
 			else water.resume();
 
 			if (!this.flagStarted && store.getState().waterMorse.audioID !== -1) {

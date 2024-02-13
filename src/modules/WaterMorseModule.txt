@@ -1,6 +1,6 @@
 class Background:
     # Private variable (kinda)
-    __keys = ["forest", "water", "wind"]
+    __keys = ["forest", "river", "wind"]
     
     def __init__(self, params):
         pass
