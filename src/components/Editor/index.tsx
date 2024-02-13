@@ -11,14 +11,13 @@ import "ace-builds/src-noconflict/theme-xcode";
 import "ace-builds/src-noconflict/theme-tomorrow";
 
 import "ace-builds/src-noconflict/ext-language_tools";
-import { Button, Drawer, Group } from "@mantine/core";
+import { Button, Modal, Group, Image } from "@mantine/core";
 
-import {
-	IconPlayerPlay,
-	IconPlayerStop,
-	IconSettings,
-} from "@tabler/icons-react";
 import { useAppDispatch, useAppSelector } from "@stores/hooks";
+import "./styles.css";
+import playImg from "../../assets/Editor/Play.svg";
+import stopImg from "../../assets/Editor/Stop.svg";
+
 import { setEditorValue } from "@slices/Editor/Editor";
 
 const Interpretor: FC<IInterpretorProps> = ({
@@ -101,12 +100,19 @@ const Interpretor: FC<IInterpretorProps> = ({
 	}, [config.isOpen]);
 
 	return (
-		<Drawer
+		<Modal
 			opened={delayedOpen}
 			size="lg"
-			onClose={() => {
-				dispatch(setEditorValue(input));
-				closeEditor();
+			onClose={() => closeEditor()}
+			withCloseButton={false}
+			styles={{
+				content: {
+					backgroundImage: 'url("assets/editorbg.png")',
+					backgroundPosition: "center",
+					backgroundRepeat: "no-repeat",
+					backgroundSize: "100% 100%",
+					backgroundColor: "transparent",
+				},
 			}}
 		>
 			<Group
@@ -116,42 +122,15 @@ const Interpretor: FC<IInterpretorProps> = ({
 						alignItems: "center",
 						padding: "1%",
 						margin: 0,
-						gap: "1%",
 					},
 				})}
 			>
-				<Button
-					onClick={() => run(input)}
-					styles={(theme) => ({
-						root: {
-							background: theme.colors.lightGrey[0],
-						},
-					})}
-				>
-					<IconPlayerPlay size={20} />
-				</Button>
-				<Button
-					onClick={() => stop()}
-					styles={(theme) => ({
-						root: {
-							background: theme.colors.lightGrey[0],
-						},
-					})}
-				>
-					<IconPlayerStop size={20} />
-				</Button>
-				<Button
-					onClick={() => {
-						return;
-					}}
-					styles={(theme) => ({
-						root: {
-							background: theme.colors.lightGrey[0],
-						},
-					})}
-				>
-					<IconSettings size={20} />
-				</Button>
+				<Group onClick={() => run(input)} className="cursor-pointer w-12">
+					<Image src={playImg} />
+				</Group>
+				<Group onClick={() => stop()} className="cursor-pointer w-12">
+					<Image src={stopImg} />
+				</Group>
 			</Group>
 			<AceEditor
 				placeholder="Timewarp Editor"
@@ -161,7 +140,7 @@ const Interpretor: FC<IInterpretorProps> = ({
 				fontSize={config.fontSize}
 				width="100%"
 				minLines={20}
-				maxLines={100}
+				maxLines={20}
 				editorProps={{ $blockScrolling: true }}
 				value={input}
 				onChange={(value) => {
@@ -173,7 +152,7 @@ const Interpretor: FC<IInterpretorProps> = ({
 			{isLoading ? <p>Loading...</p> : <p>Ready!</p>}
 			<code>{error}</code>
 			<code>{output}</code>
-		</Drawer>
+		</Modal>
 	);
 };
 
