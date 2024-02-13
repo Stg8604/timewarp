@@ -22,6 +22,7 @@ export default {
 			darkBrown: "#451B0B",
 			brown: "#BC8C61",
 			browntwo: "#F5F5AC",
+			card: "#333C57",
 		},
 		fontFamily: {
 			pressStart2P: ["PressStart2P", "sans-serif"],
