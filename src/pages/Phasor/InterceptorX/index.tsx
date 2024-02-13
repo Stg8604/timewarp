@@ -50,7 +50,7 @@ const InterceptorX = ({
 	const config = useAppSelector((state) => state.editor);
 	const dispatch = useAppDispatch();
 
-	const defaultInput = `#Objects available\n# - Interceptor\nprint(Interceptor)\n#Interceptor.intercept(<optional ip string>)`;
+	const defaultInput = `#Objects available\n# - Interceptor\nprint(Interceptor)\n#Interceptor.intercept(<optional ip string>)\nimport base64`;
 	const navigate = useNavigate();
 	useEffect(() => {
 		dispatch(interceptorStatus());

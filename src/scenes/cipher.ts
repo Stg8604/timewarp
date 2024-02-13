@@ -1,4 +1,5 @@
 import {
+	toggleFireInfo,
 	toggleGodInfo,
 	toggleMessengerInfo,
 	togglePortalKey,
@@ -24,6 +25,7 @@ export class CipherScene extends Phaser.Scene {
 	isMessengerInfoo = store.getState().cipher.isMessengerInfoo;
 	isGodInfo = store.getState().cipher.isGodInfo;
 	isPortalKeyOpen = store.getState().cipher.isPortalKeyOpen;
+	isFire = store.getState().cipher.isFire;
 
 	preload() {
 		// Loading all necessary assets
@@ -159,13 +161,13 @@ export class CipherScene extends Phaser.Scene {
 		this.player.setScale(1.5);
 
 		this.physics.add.collider(this.fire1, this.player!);
-		this.physics.add.collider(this.fire2, this.player!);
 		this.physics.add.collider(this.fire3, this.player!);
 
-		this.gate = this.physics.add.sprite(620, 1055, "gate");
-		this.gate.setImmovable(true);
-		this.gate.setSize(32, 32);
-		this.physics.add.collider(this.gate, this.player);
+
+		// this.gate = this.physics.add.sprite(620, 1055, "gate");
+		// this.gate.setImmovable(true);
+		// this.gate.setSize(32, 32);
+		// this.physics.add.collider(this.gate, this.player);
 
 		this.god = this.physics.add.sprite(320, 1055, "god");
 		this.god.setImmovable(true);
@@ -209,6 +211,12 @@ export class CipherScene extends Phaser.Scene {
 		this.physics.add.collider(this.player, this.portal, () => {
 			if (!store.getState().cipher.isPortalKeyOpen) {
 				store.dispatch(togglePortalKey());
+			}
+		});
+
+		this.physics.add.collider(this.fire2, this.player, () => {
+			if (!store.getState().cipher.isFire) {
+				store.dispatch(toggleFireInfo());
 			}
 		});
 

@@ -3,6 +3,7 @@ import { addItemToInventory, status } from "./statusActions";
 
 interface StatusState {
 	day: number;
+	isLoading: boolean;
 	tutorialComplete: boolean | undefined;
 	score: number;
 	userName: string;
@@ -14,6 +15,7 @@ interface StatusState {
 
 const initialState: StatusState = {
 	day: 1,
+	isLoading: false,
 	tutorialComplete: false,
 	score: 0,
 	userName: "",
@@ -45,6 +47,13 @@ export const statusSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
+
+		builder.addCase(status.pending, (state) => {
+			state.isLoading = true;
+		});
+		builder.addCase(status.rejected, (state) => {
+			state.isLoading = true;
+		});
 		builder.addCase(status.fulfilled, (state, action) => {
 			state.day = action.payload.day;
 			state.tutorialComplete = action.payload.tutorialCompleted;
@@ -52,7 +61,9 @@ export const statusSlice = createSlice({
 			state.puzzleCompletionList = action.payload.puzzleCompletionList;
 			state.inventory = action.payload.inventory;
 			state.userName = action.payload.userName;
+			state.isLoading = false;
 		});
+
 
 		builder.addCase(addItemToInventory.fulfilled, (state, action) => {
 			// console.log("Here", action.payload, JSON.stringify(state.inventory))

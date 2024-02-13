@@ -46,7 +46,7 @@ data_intercepted1 = [
     "We have successfully completed the initial phase and are moving forward as planned.",
     "",
     "If you have any questions or require further information, please feel free to reach out.",
-    "The key you need to access the Lab is successfully generated and renamed as you mentioned.",
+    "******Do you think that encoding in base64 is a safe option?******",
     "",
     "Best regards,",
     ""
@@ -55,7 +55,7 @@ data_intercepted1 = [
 data_intercepted2 = [
     "[Subject]: Project Update",
     "[To]: IP: 10.0.0.25",
-    "",
+    "******We are encountering a peculiar error that involves shifting the characters of the message based on the error detected in the Hamming code.******",
     "Thank you."
 ]
 
@@ -84,8 +84,6 @@ received_response2 = [
     "",
     "Thank you for the latest project update. It's excellent news that the development phase is now complete. I've reviewed the progress, and the team is excited about the next steps.",
     "",
-    "Do you have an estimated timeline for the testing phase? Any additional information would be helpful for our planning.",
-    "",
     "Looking forward to your reply.",
     "",
     "Best regards,",
@@ -97,7 +95,7 @@ s = "Sfrj%ymj%pj~%fx%[r5}i6V}\]qXgLWuZr6th6[w[rK_[r}[r6LfrONVpm]f6^|^ZZ}h6SxgK_
 
 
 received_response3 = [
-    "Error Detected: Hamming code received : 1011011",
+    "Error Detected: Hamming code received : 1011011. Error is 5",
     "[Subject]: Re: Project Update",
     "[FROM]: IP: 10.0.0.15",
     "",

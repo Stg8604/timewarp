@@ -7,6 +7,7 @@ import { toggleEditor } from "@slices/index";
 import { phaserConfig } from "@phaserGame/game";
 import { InfoBox } from "@components/index";
 import {
+	toggleFireInfo,
 	toggleGodInfo,
 	toggleMessengerInfo,
 	updateRevEngParams,
@@ -19,8 +20,10 @@ import { togglePortalKey } from "@slices/cipher/cipher";
 import { PasskeyBox } from "@components/index";
 
 const text_1 =
-	"Hi Traveller, There is only one person who knows the key. But he is insane right now. Good Luck!";
-const text_2 = "hi God";
+	"Hello, traveler. Please, talk to me";
+const text_2 = "It seems there is a pattern he follows; try communicating with him using letters";
+
+const text_3 = "Clever Ants Eagerly Search Exotic Resources";
 
 const Cipher = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const [initialize, setInitialize] = useState(false);
@@ -91,12 +94,20 @@ const Cipher = ({ switchScene }: { switchScene: (key: string) => void }) => {
 		dispatch(toggleGodInfo());
 	};
 
+	const handlefireClose = () => {
+		dispatch(toggleFireInfo());
+	};
+
 	return (
 		<>
 			<BackBtn />
 
 			{cipher.isMessengerInfoo && (
 				<InfoBox text={text_1} onClose={handleMessengerClose} />
+			)}
+
+			{cipher.isFire && (
+				<InfoBox text={text_3} onClose={handlefireClose} />
 			)}
 
 			{cipher.isPortalKeyOpen && (

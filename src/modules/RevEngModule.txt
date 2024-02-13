@@ -5,19 +5,17 @@
 
 class ReverseEng:
     def __init__(self,params):
-        self.plainText = "Flag"
+        self.plainText = "µÊÎÆ²ÖÂÌÆ"
 
     def talk(self,key):
         try:
-            value = key[:max(5,len(key))]
+            value = key
             key_value = 0
             for i in value:
                 key_value += ord(i)
             cipherText = list(self.plainText)
             for i in range(len(cipherText)):
                 cipherText[i] = chr((ord(cipherText[i]) + key_value)%256)
-
-
             return "".join(cipherText)
         except:
             return "Error: Invalid Key, it should be a string"
