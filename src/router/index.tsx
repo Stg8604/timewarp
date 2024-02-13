@@ -4,10 +4,11 @@ import protectedRoutes from "./protectedRoutes";
 import { Protected } from "@components/index";
 import { BASEPATH } from "@config/config";
 import { useAppDispatch } from "@stores/hooks";
-import { useEffect } from "react";
 import { getUser } from "@slices/index";
 
 const Router = () => {
+	const dispatch = useAppDispatch();
+	dispatch(getUser())
 	return (
 		<>
 			<BrowserRouter basename={BASEPATH}>
