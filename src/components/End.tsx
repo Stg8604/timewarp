@@ -82,9 +82,9 @@ const End: FC = () => {
 					<img src={Glow} className="absolute z-0" />
 				</div>
 			</div>
-			<div className="eleHover w-[300px] mr-[100px] mt-[200px]">
+			<div className="eleHover w-[300px] ml-[120px] mt-[200px]">
 				<button
-					className="landingButton flex pt-2 pb-2 w-full  justify-center items-center gap-2 text-black text-[1.2rem] font-light mont"
+					className="landingButton flex pt-2 pb-2 w-full absolute justify-center items-center gap-2 text-black text-[1.2rem] font-light mont"
 					onClick={() => navigate("/login")}
 				>
 					Begin

@@ -9,8 +9,19 @@ const Navbar: FC = () => {
 		<div className="h-30px text-[1.2rem]  w-full text-white flex items-center justify-between p-6 ">
 			<div className="flex justify-start items-center w-[80%] gap-8">
 				<div className="font-semibold">Time Warp</div>
-				<div className="text-[1.1rem]">Docs</div>
-				<div className="text-[1.1rem]">Leaderboard</div>
+				<div className="text-[1.1rem] hover:cursor-pointer">
+					<a href="https://docs-timewarp.netlify.app" target="_blank">
+						Docs
+					</a>
+				</div>
+				<div
+					className="text-[1.1rem] hover:cursor-pointer"
+					onClick={() => {
+						navigate("/leaderboard");
+					}}
+				>
+					Leaderboard
+				</div>
 			</div>
 			<div className="eleHover">
 				<button

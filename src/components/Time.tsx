@@ -55,15 +55,18 @@ const Time: FC = () => {
 				className="w-[40%] flex flex-col gap-2 pl-8 pb-8"
 			>
 				<div className="items-start justify-center text-[3.2rem]">
-					<span className="text-[#22D1EE] mr-3">Time</span>
-					<span>At Your Disposal</span>
+					<span className="text-[#22D1EE] mr-3">Unscramble</span>
+					<span>The Clues</span>
+				</div>
+				<div className="Outfit font-thin w-[80%]">
+					Use any tool in your disposal
 				</div>
 				<div className="eleHover w-[200px] mt-10">
 					<button
-						className="landingButton flex pt-2 pb-2 w-full justify-center items-center gap-2 text-black text-[1.2rem] font-light mont"
+						className="landingButton flex p-2 w-full justify-center items-center gap-2 text-black text-[1.2rem] font-light mont"
 						onClick={() => navigate("/login")}
 					>
-						Hack Time Now
+						Get Crackin' Now
 					</button>
 				</div>
 			</motion.div>

@@ -28,19 +28,19 @@ const Defeat: FC = () => {
 				className="w-[50%] flex flex-col gap-2"
 			>
 				<div className="flex flex-col items-start justify-center text-[4rem]">
-					<span>Defeat</span>
-					<span className="text-[#22D1EE]">Anomolies</span>
+					<span className="text-[#22D1EE]">Race</span>
+					<span>Against Time</span>
 				</div>
 				<div className="Outfit font-thin w-[80%]">
-					Aenean non vulputate quam, eu dictum est. Aliquam erat volutpat.
-					Suspendisse bibendum felis ullamcorper mauris ullamcorper
+					Nothing is unsolvable, with enough time. But will there be enough time
+					?
 				</div>
 				<div className="eleHover w-[260px] mt-10">
 					<button
-						className="landingButton flex pt-2 pb-2 w-full justify-center items-center gap-2 text-black text-[1.2rem] font-light mont"
+						className="landingButton flex p-2 w-full justify-center items-center gap-2 text-black text-[1.2rem] font-light mont"
 						onClick={() => navigate("/login")}
 					>
-						Restore Balance Now
+						Are You Ready ?
 					</button>
 				</div>
 			</motion.div>

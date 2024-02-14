@@ -20,10 +20,10 @@ const Hero: FC = () => {
 				className="w-[60%] h-full flex flex-col gap-[7rem] justify-center items-start"
 			>
 				<div className="text-[4rem] font-bold leading-[70px] tracking-wider">
-					CODE YOUR WAY THROUGH
+					EMBARK ON A CODING JOURNEY
 				</div>
 				<div className="text-[1.2rem] font-thin w-[80%]">
-					Hurry to join the journey and solve the puzzles as fast as you can
+					Solve the puzzles as fast as you can, before time runs out
 				</div>
 			</motion.div>
 			<div className="w-full h-[100vh] absolute top-0 left-0 flex justify-center items-center ">
@@ -73,10 +73,14 @@ const Hero: FC = () => {
 					</div>
 					<div className="eleHover absolute bottom-0 right-0 w-[calc(50%+1px)] h-[calc(40%+1px)] flex justify-center items-center pt-4 pl-4">
 						<button
-							className=" absolute flex bottom-[1px] pt-2 pb-2 left-[10px] w-[200%] justify-center items-center gap-2 text-[1.2rem] font-thin mont"
+							className=" absolute firstButton flex bottom-[1px] pt-2 pb-2 pr-4 left-[10px] justify-center items-center gap-2 text-[1.2rem] font-thin mont"
 							onClick={() => navigate("/login")}
 						>
-							Join The Journey
+							<div className="noBreak">
+								<span>Join</span>
+								<span>The</span>
+								<span>Journey</span>
+							</div>
 							<img src={ArrowRight} alt="arrow" className="ml-1 opacity-0" />
 						</button>
 					</div>

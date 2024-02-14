@@ -15,10 +15,10 @@ const Router = () => {
 
 	if (isMobile || isTablet) {
 		return (
-			<div className=" h-screen w-full  text-white relative flex justify-center items-center">
+			<div className=" h-screen w-full  text-white relative flex justify-center items-center overflow-clip">
 				<h1 className="orbitron text-[2rem] w-[80%] text-center">
 					Your Device Can't travel through the Time Space Continuum. Try a
-					different Device
+					laptop or a desktop.
 				</h1>
 				<img
 					src={Glow}

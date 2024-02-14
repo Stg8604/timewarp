@@ -37,6 +37,12 @@ const Home: FC = () => {
 			}
 			iterations += 1;
 		}, 20);
+
+		return () => {
+			clearInterval(interval);
+			setText("TIME WARP");
+			setAnim(false);
+		};
 	}, []);
 
 	return (
@@ -50,7 +56,7 @@ const Home: FC = () => {
 					{anim && (
 						<motion.div
 							initial={{
-								y: 40,
+								y: -30,
 								opacity: 0,
 							}}
 							whileInView={{

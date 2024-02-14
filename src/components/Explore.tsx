@@ -31,15 +31,14 @@ const Explore: FC = () => {
 					<span className="text-[#22D1EE]">Timelines</span>
 				</div>
 				<div className="Outfit font-thin w-[80%]">
-					Aenean non vulputate quam, eu dictum est. Aliquam erat volutpat.
-					Suspendisse bibendum felis ullamcorper mauris ullamcorper
+					Different eras, different settings, puzzles in all flavors
 				</div>
 				<div className="eleHover w-[200px] mt-10">
 					<button
-						className="landingButton flex pt-2 pb-2 w-full justify-center items-center gap-2 text-black text-[1.2rem] font-light mont"
+						className="landingButton flex p-2 w-full justify-center items-center gap-2 text-black text-[1.2rem] font-light mont"
 						onClick={() => navigate("/login")}
 					>
-						Go To Lobby
+						Warp To Lobby ?
 					</button>
 				</div>
 			</motion.div>

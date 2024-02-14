@@ -121,8 +121,9 @@ body {
 
 .landing button {
 	position: relative;
-	word-break: keep-all;
-	word-wrap: break-word;
+	word-break: keep-all !important;
+	word-wrap: break-word !important;
+	width: fit-content;
 	text-decoration: none;
 	text-align: center;
 	color: var(--color-white);
@@ -130,6 +131,21 @@ body {
 	color: #22d1ee !important;
 	border: 1px solid var(--color-red);
 }
+
+.firstButton {
+	margin-left: 90px;
+	padding-left: 10px;
+	margin-bottom: 5px;
+}
+
+.noBreak {
+	word-break: keep-all !important;
+	word-wrap: break-word !important;
+	padding-left: 10px;
+	display: flex;
+	gap: 10px;
+}
+
 .landing button:hover {
 	border: 1px solid transparent;
 	background: var(--color-red) url("/assets/btnAnim2.png");
