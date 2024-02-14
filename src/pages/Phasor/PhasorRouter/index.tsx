@@ -14,6 +14,7 @@ import Steg from "../Steg";
 import Emoji from "../Emoji";
 import InterceptorX from "../InterceptorX";
 import Cipher from "../Cipher";
+import TrapsPuzzle from "../Traps";
 
 const PhasorRouter = () => {
 	const dispatch = useAppDispatch();
@@ -83,6 +84,8 @@ const PhasorRouter = () => {
 				<Emoji switchScene={switchScene} />
 			) : map === "Cipher" ? (
 				<Cipher switchScene={switchScene} />
+			) : map === "Traps" ? (
+				<TrapsPuzzle />
 			) : (
 				<Tutorial switchScene={switchScene} />
 			)}{" "}

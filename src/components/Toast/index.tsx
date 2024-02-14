@@ -30,19 +30,19 @@ const Toast = (status: string, message = "") => {
 		title: StatusToTitle(status),
 		message: message,
 		color: status,
-		styles : ({
+		styles: {
 			root: {
 				border: "4px solid " + "#795436",
 				height: 80,
 				minHeight: 80,
-				borderRadius:25,
+				borderRadius: 25,
 				marginTop: 0,
 				color: "black",
-				background:"#FEFECB",
+				background: "#FEFECB",
 				fontFamily: "pixelifySans",
 				font: "bold",
-			}
-		})
+			},
+		},
 	});
 };
 

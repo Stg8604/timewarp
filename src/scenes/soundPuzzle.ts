@@ -326,11 +326,6 @@ export class SoundPuzzle extends Phaser.Scene {
 		largePots.get(16 * 29 - 7, 16 * 30 - 12, "largePot").setImmovable(true);
 		largePots.get(16 * 29 - 7, 16 * 26 - 12, "largePot").setImmovable(true);
 
-		this.input.keyboard!.on("keydown-SPACE", () => {
-			if (!this.player) return;
-			this.player.shoot();
-		});
-
 		walls?.setCollisionByProperty({ collides: true });
 		desk1?.setCollisionByProperty({ collides: true });
 		desk2?.setCollisionByProperty({ collides: true });

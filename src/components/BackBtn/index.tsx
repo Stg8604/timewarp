@@ -11,13 +11,13 @@ const BackBtn = () => {
 				onClick={() => {
 					dispatch(toggleInventory());
 				}}
-				className="absolute hover:scale-105 bg-tutorialUiBlue text-white cursor-pointer top-5 left-5 px-4 py-1 font-pixelifySans rounded-full"
+				className="absolute z-[1000] hover:scale-105 bg-tutorialUiBlue text-white cursor-pointer top-5 left-5 px-4 py-1 font-pixelifySans rounded-full"
 			>
 				Inventory
 			</div>
 			<a
 				onClick={() => navigate("/dashboard")}
-				className="absolute hover:scale-105 bg-tutorialUiBlue text-white cursor-pointer top-5 right-5 px-4 py-1 font-pixelifySans rounded-full"
+				className="absolute z-[1000] hover:scale-105 bg-tutorialUiBlue text-white cursor-pointer top-5 right-5 px-4 py-1 font-pixelifySans rounded-full"
 			>
 				Main Menu
 			</a>

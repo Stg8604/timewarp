@@ -3,6 +3,7 @@ import { TutorialScene } from "../scenes/tutorial";
 import { LoadingScene } from "../scenes/loading";
 import { ComputerScene } from "../scenes/computer";
 import { WaterMorseScene } from "../scenes/waterMorse";
+import { TrapsScene } from "../scenes/traps";
 import { SoundPuzzle } from "../scenes/soundPuzzle";
 import { LobbyScene } from "../scenes/lobby";
 import { StegScene } from "../scenes/steg";
@@ -30,7 +31,7 @@ export const phaserConfig: Phaser.Types.Core.GameConfig = {
 	},
 	scene: [
 		LoadingScene,
-		SoundPuzzle,
+		TrapsScene,
 		TutorialScene,
 		ComputerScene,
 		WaterMorseScene,
@@ -39,5 +40,6 @@ export const phaserConfig: Phaser.Types.Core.GameConfig = {
 		EmojiScene,
 		InterceptorXScene,
 		CipherScene,
+		SoundPuzzle,
 	],
 };

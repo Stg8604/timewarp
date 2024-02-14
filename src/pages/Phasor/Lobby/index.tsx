@@ -41,7 +41,7 @@ const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
 				<LevelSelector
 					title1="Cipher"
 					title2="Steg"
-					title3="Present3"
+					title3="Traps"
 					currentTime="present"
 					switchScene={switchScene}
 				/>

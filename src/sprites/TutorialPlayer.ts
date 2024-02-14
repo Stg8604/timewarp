@@ -43,6 +43,9 @@ export class TutorialPlayer extends Phaser.Physics.Arcade.Sprite {
 		this.scene = scene;
 		this.scene.physics.world.enable(this);
 		this.scene.add.existing(this);
+		this.bullets = this.scene.physics.add.group({
+			classType: Phaser.Physics.Arcade.Sprite,
+		});
 		this.scale = scale;
 		this.weapons = [
 			{
@@ -79,6 +82,30 @@ export class TutorialPlayer extends Phaser.Physics.Arcade.Sprite {
 			frameWidth: 64,
 			frameHeight: 64,
 		});
+		this.scene.load.spritesheet(
+			"playerTakeGun",
+			"assets/Player/TakeGun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.scene.load.spritesheet(
+			"playerShoot1",
+			"assets/Player/ShootGun02/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.scene.load.spritesheet(
+			"playerShoot2",
+			"assets/Player/Shoot01Gun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
 		this.scene.load.spritesheet(
 			"playerCloseUI",
 			"assets/tutorial/playerCloseUI.png",
@@ -315,8 +342,8 @@ export class TutorialPlayer extends Phaser.Physics.Arcade.Sprite {
 			this.y + this.scale * this.weapons[this.activeWeapon - 1].yOffset,
 			this.weapons[this.activeWeapon - 1].bullet
 		) as Phaser.Physics.Arcade.Sprite;
-		bullet.setVelocityX(this.flipX ? -250 : 250);
-		bullet.setScale(0.12);
+		bullet.setVelocityX(this.flipX ? -250 : 250 * this.scale);
+		bullet.setScale(0.12 * this.scale);
 		bullet.flipX = !this.flipX;
 		// bullet.setVelocityX(this.flipX ? -900 : 900);
 

@@ -16,6 +16,7 @@ import {
 	Interceptor,
 	cipherReducer,
 	LeaderBoardReducer,
+	TrapsReducer,
 } from "../slices/index";
 import { PROD } from "@config/config";
 
@@ -38,6 +39,7 @@ const rootReducer = combineReducers({
 	interceptor: Interceptor,
 	cipher: cipherReducer,
 	leaderboard: LeaderBoardReducer,
+	traps: TrapsReducer,
 });
 
 export const store = configureStore({
