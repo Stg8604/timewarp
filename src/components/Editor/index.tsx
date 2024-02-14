@@ -32,7 +32,6 @@ const Interpretor: FC<IInterpretorProps> = ({
 }) => {
 	const editor = useAppSelector((state) => state.editor);
 	const dispatch = useAppDispatch();
-	const [input, setInput] = useState<string>("");
 	const editorOnLoad = (editor: {
 		setOptions: (arg0: {
 			enableBasicAutocompletion: boolean;
@@ -103,7 +102,7 @@ const Interpretor: FC<IInterpretorProps> = ({
 		<Modal
 			opened={delayedOpen}
 			size="lg"
-			onClose={() => closeEditor()}
+			onClose={() => {closeEditor();}}
 			withCloseButton={false}
 			styles={{
 				content: {
@@ -125,7 +124,7 @@ const Interpretor: FC<IInterpretorProps> = ({
 					},
 				})}
 			>
-				<Group onClick={() => run(input)} className="cursor-pointer w-12">
+				<Group onClick={() => run(editor.value)} className="cursor-pointer w-12">
 					<Image src={playImg} />
 				</Group>
 				<Group onClick={() => stop()} className="cursor-pointer w-12">
@@ -142,14 +141,13 @@ const Interpretor: FC<IInterpretorProps> = ({
 				minLines={20}
 				maxLines={20}
 				editorProps={{ $blockScrolling: true }}
-				value={input}
+				value={editor.value === ""? defaultInput: editor.value}
 				onChange={(value) => {
-					setInput(value);
+					dispatch(setEditorValue(value))
 				}}
 				onLoad={editorOnLoad}
 				defaultValue={editor.value === "" ? defaultInput : editor.value}
 			/>
-			{isLoading ? <p>Loading...</p> : <p>Ready!</p>}
 			<code>{error}</code>
 			<code>{output}</code>
 		</Modal>
