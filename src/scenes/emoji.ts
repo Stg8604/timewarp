@@ -17,6 +17,7 @@ export class EmojiScene extends Phaser.Scene {
 
 	player: TutorialPlayer | undefined;
 	portal: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
+	bullets: Phaser.Physics.Arcade.Group | undefined;
 	preload() {
 		// Loading all necessary assets
 		this.load.image("tileset", "assets/Emoji/tilesetscifi.png");
@@ -43,6 +44,32 @@ export class EmojiScene extends Phaser.Scene {
 			frameWidth: 64,
 			frameHeight: 64,
 		});
+
+		this.load.image("bullet", "assets/tutorial/trail.png");
+		this.load.spritesheet(
+			"playerTakeGun",
+			"assets/Player/TakeGun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.load.spritesheet(
+			"playerShoot1",
+			"assets/Player/ShootGun02/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.load.spritesheet(
+			"playerShoot2",
+			"assets/Player/Shoot01Gun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
 
 		// Info Component Variables.
 	}
@@ -130,6 +157,25 @@ export class EmojiScene extends Phaser.Scene {
 		map.setCollisionFromCollisionGroup(true, true, layer6!);
 		map.setCollisionFromCollisionGroup(true, true, layer7!);
 		map.setCollisionFromCollisionGroup(true, true, layer8!);
+
+		this.bullets = this.physics.add.group({
+			classType: Phaser.Physics.Arcade.Sprite,
+		});
+
+		this.input.keyboard!.on("keydown-SPACE", () => {
+			if (!this.player) return;
+			this.player.shoot();
+		});
+
+		this.bullets = this.physics.add.group({
+			classType: Phaser.Physics.Arcade.Sprite,
+		});
+
+		this.physics.add.collider(this.bullets, layer3!, (obj1) => {
+			obj1.destroy();
+		});
+
+		this.player.bullets = this.bullets;
 
 		// Configuring camera
 		const camera = this.cameras.main.setZoom(1.5, 1.5);

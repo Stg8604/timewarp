@@ -26,6 +26,7 @@ export class CipherScene extends Phaser.Scene {
 	isGodInfo = store.getState().cipher.isGodInfo;
 	isPortalKeyOpen = store.getState().cipher.isPortalKeyOpen;
 	isFire = store.getState().cipher.isFire;
+	bullets: Phaser.Physics.Arcade.Group | undefined;
 
 	preload() {
 		// Loading all necessary assets
@@ -74,6 +75,31 @@ export class CipherScene extends Phaser.Scene {
 			frameWidth: 64,
 			frameHeight: 64,
 		});
+		this.load.image("bullet", "assets/tutorial/trail.png");
+		this.load.spritesheet(
+			"playerTakeGun",
+			"assets/Player/TakeGun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.load.spritesheet(
+			"playerShoot1",
+			"assets/Player/ShootGun02/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.load.spritesheet(
+			"playerShoot2",
+			"assets/Player/Shoot01Gun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
 	}
 
 	create() {
@@ -224,6 +250,25 @@ export class CipherScene extends Phaser.Scene {
 		// Adding collision between player and map
 		this.physics.add.collider(this.player!, wall!);
 		this.map.setCollisionFromCollisionGroup(true, true, wall!);
+
+		this.bullets = this.physics.add.group({
+			classType: Phaser.Physics.Arcade.Sprite,
+		});
+
+		this.input.keyboard!.on("keydown-SPACE", () => {
+			if (!this.player) return;
+			this.player.shoot();
+		});
+
+		this.bullets = this.physics.add.group({
+			classType: Phaser.Physics.Arcade.Sprite,
+		});
+
+		this.physics.add.collider(this.bullets, wall!, (obj1) => {
+			obj1.destroy();
+		});
+
+		this.player.bullets = this.bullets;
 
 		// Configuring camera
 		const camera = this.cameras.main.setZoom(1.5, 1.5);

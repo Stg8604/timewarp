@@ -16,9 +16,11 @@ export class StegScene extends Phaser.Scene {
 	chestLeft: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
 	chestRight: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
 	chestOpen: number | undefined;
+	bullets: Phaser.Physics.Arcade.Group | undefined;
 
 	preload() {
 		this.load.image("tileset_1", "assets/steg/$piano.png");
+		this.load.image("bullet", "assets/tutorial/trail.png");
 		this.load.image("tileset_2", "assets/steg/cyanide_artdeco1s8kzn.png");
 		this.load.image("tileset_3", "assets/steg/cyanide_tilemix_14twj2p.png");
 		this.load.image("tileset_4", "assets/steg/NES Mansion Tile Set (1).png");
@@ -33,6 +35,31 @@ export class StegScene extends Phaser.Scene {
 			frameHeight: 32,
 			startFrame: 56,
 		});
+
+		this.load.spritesheet(
+			"playerTakeGun",
+			"assets/Player/TakeGun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.load.spritesheet(
+			"playerShoot1",
+			"assets/Player/ShootGun02/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.load.spritesheet(
+			"playerShoot2",
+			"assets/Player/Shoot01Gun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
 
 		this.load.tilemapTiledJSON("tilemap", "assets/steg/steg.json");
 
@@ -102,7 +129,7 @@ export class StegScene extends Phaser.Scene {
 			tileset7!,
 		]);
 
-		const layer2 = map.createLayer("walls", [
+		const walls = map.createLayer("walls", [
 			tileset1!,
 			tileset2!,
 			tileset3!,
@@ -362,7 +389,7 @@ export class StegScene extends Phaser.Scene {
 		});
 		this.portal.anims.play("idle", true);
 
-		layer2!.setCollisionByExclusion([-1]);
+		walls!.setCollisionByExclusion([-1]);
 		layer3!.setCollisionByExclusion([-1]);
 		layer5!.setCollisionByExclusion([-1]);
 		layer6!.setCollisionByExclusion([-1]);
@@ -375,7 +402,7 @@ export class StegScene extends Phaser.Scene {
 
 		this.player!.setAlpha(1);
 
-		this.physics.add.collider(this.player!, layer2!);
+		this.physics.add.collider(this.player!, walls!);
 		this.physics.add.collider(this.player!, layer11!);
 		this.physics.add.collider(this.player!, layer10!);
 
@@ -550,5 +577,20 @@ export class StegScene extends Phaser.Scene {
 
 		const camera = this.cameras.main.setZoom(3, 3);
 		camera.startFollow(this.player, false, 0.5, 0.5);
+
+		this.input.keyboard!.on("keydown-SPACE", () => {
+			if (!this.player) return;
+			this.player.shoot();
+		});
+
+		this.bullets = this.physics.add.group({
+			classType: Phaser.Physics.Arcade.Sprite,
+		});
+
+		this.physics.add.collider(this.bullets, walls!, (obj1) => {
+			obj1.destroy();
+		});
+
+		this.player.bullets = this.bullets;
 	}
 }

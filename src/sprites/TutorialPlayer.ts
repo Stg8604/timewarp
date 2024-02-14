@@ -198,7 +198,11 @@ export class TutorialPlayer extends Phaser.Physics.Arcade.Sprite {
 				this.pauseMovement = true;
 				return;
 			}
-			this.shoot();
+			if (
+				localStorage.getItem("scene") != "Computer" &&
+				localStorage.getItem("scene") != "Tutorial"
+			)
+				this.shoot();
 		});
 
 		this.SPACEKey?.on("up", () => {

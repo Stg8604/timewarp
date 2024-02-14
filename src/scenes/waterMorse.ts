@@ -14,9 +14,35 @@ export class WaterMorseScene extends Phaser.Scene {
 	chests: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody[] = [];
 	chestStatus = [false];
 	flagStarted: boolean = false;
+	bullets: Phaser.Physics.Arcade.Group | undefined;
 
 	preload() {
 		this.loadAssets();
+		this.load.image("bullet", "assets/tutorial/trail.png");
+		this.load.spritesheet(
+			"playerTakeGun",
+			"assets/Player/TakeGun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.load.spritesheet(
+			"playerShoot1",
+			"assets/Player/ShootGun02/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.load.spritesheet(
+			"playerShoot2",
+			"assets/Player/Shoot01Gun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
 	}
 
 	create() {
@@ -208,6 +234,25 @@ export class WaterMorseScene extends Phaser.Scene {
 				}
 			});
 		});
+
+		this.bullets = this.physics.add.group({
+			classType: Phaser.Physics.Arcade.Sprite,
+		});
+
+		this.input.keyboard!.on("keydown-SPACE", () => {
+			if (!this.player) return;
+			this.player.shoot();
+		});
+
+		this.bullets = this.physics.add.group({
+			classType: Phaser.Physics.Arcade.Sprite,
+		});
+
+		this.physics.add.collider(this.bullets, layer2!, (obj1) => {
+			obj1.destroy();
+		});
+
+		this.player.bullets = this.bullets;
 	}
 
 	createCamera() {

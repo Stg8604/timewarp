@@ -15,6 +15,7 @@ export class LobbyScene extends Phaser.Scene {
 	}
 
 	player: TutorialPlayer | undefined;
+	bullets: Phaser.Physics.Arcade.Group | undefined;
 	lore: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
 	leaderboard: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
 	past_portal: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
@@ -59,6 +60,7 @@ export class LobbyScene extends Phaser.Scene {
 	isFuturePortalOpen = store.getState().lobby.isFuturePortalOpen;
 
 	preload() {
+		this.load.image("bullet", "assets/tutorial/trail.png");
 		this.load.image("tileset_1", "assets/lobby/Nura_alterTempel_A1.png");
 		this.load.image("tileset_2", "assets/lobby/Nura_alterTempel_A1new.png");
 		this.load.image("tileset_3", "assets/lobby/Nura_alterTempel_A2new.png");
@@ -149,6 +151,31 @@ export class LobbyScene extends Phaser.Scene {
 				frameWidth: 64,
 				frameHeight: 160,
 				startFrame: 1,
+			}
+		);
+
+		this.load.spritesheet(
+			"playerTakeGun",
+			"assets/Player/TakeGun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.load.spritesheet(
+			"playerShoot1",
+			"assets/Player/ShootGun02/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.load.spritesheet(
+			"playerShoot2",
+			"assets/Player/Shoot01Gun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
 			}
 		);
 	}
@@ -486,6 +513,25 @@ export class LobbyScene extends Phaser.Scene {
 		map.setCollisionFromCollisionGroup(true, true, border!);
 		map.setCollisionFromCollisionGroup(true, true, wall_props!);
 		map.setCollisionFromCollisionGroup(true, true, wall!);
+
+		this.bullets = this.physics.add.group({
+			classType: Phaser.Physics.Arcade.Sprite,
+		});
+
+		this.input.keyboard!.on("keydown-SPACE", () => {
+			if (!this.player) return;
+			this.player.shoot();
+		});
+
+		this.bullets = this.physics.add.group({
+			classType: Phaser.Physics.Arcade.Sprite,
+		});
+
+		this.physics.add.collider(this.bullets, border!, (obj1) => {
+			obj1.destroy();
+		});
+
+		this.player.bullets = this.bullets;
 
 		const camera = this.cameras.main.setZoom(1.5, 1.5);
 		camera.startFollow(this.player, false, 0.5, 0.5);

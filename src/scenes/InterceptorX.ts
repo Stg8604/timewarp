@@ -22,6 +22,7 @@ export class InterceptorXScene extends Phaser.Scene {
 	portal: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
 	isPortalKeyOpen = store.getState().interceptor.isPortalKeyOpen;
 	isDummyOpen = store.getState().interceptor.isDummyOpen;
+	bullets: Phaser.Physics.Arcade.Group | undefined;
 
 	preload() {
 		this.load.image("tileset_1", "assets/interceptorX/Space station._32_2.png");
@@ -71,6 +72,31 @@ export class InterceptorXScene extends Phaser.Scene {
 			frameHeight: 48,
 			startFrame: 0,
 		});
+		this.load.image("bullet", "assets/tutorial/trail.png");
+		this.load.spritesheet(
+			"playerTakeGun",
+			"assets/Player/TakeGun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.load.spritesheet(
+			"playerShoot1",
+			"assets/Player/ShootGun02/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
+		this.load.spritesheet(
+			"playerShoot2",
+			"assets/Player/Shoot01Gun01/spritesheet.png",
+			{
+				frameWidth: 64,
+				frameHeight: 64,
+			}
+		);
 	}
 
 	create() {
@@ -232,6 +258,25 @@ export class InterceptorXScene extends Phaser.Scene {
 			32 * 15 - 16,
 			"player"
 		);
+
+		this.bullets = this.physics.add.group({
+			classType: Phaser.Physics.Arcade.Sprite,
+		});
+
+		this.input.keyboard!.on("keydown-SPACE", () => {
+			if (!this.player) return;
+			this.player.shoot();
+		});
+
+		this.bullets = this.physics.add.group({
+			classType: Phaser.Physics.Arcade.Sprite,
+		});
+
+		this.physics.add.collider(this.bullets, layer1!, (obj1) => {
+			obj1.destroy();
+		});
+
+		this.player.bullets = this.bullets;
 
 		this.physics.add.collider(this.player, this.portal, () => {
 			if (!store.getState().interceptor.isPortalKeyOpen) {
