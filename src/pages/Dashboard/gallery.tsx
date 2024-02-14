@@ -23,41 +23,21 @@ const Gallery: React.FC<GalleryProps> = ({ onClick }) => {
 	}, []);
 	return (
 		<>
-			<div
-				style={{
-					display: "flex",
-					justifyContent: "center",
-					width: "100%",
-					height: "auto",
-				}}
-			>
-				<div
+			{true && (
+				<img
+					className="hover:scale-110 duration-75"
+					src={sceneAssetsMap[scene]}
+					alt=""
 					style={{
-						display: "flex",
-						flexDirection: "column",
-						justifyContent: "center",
-						alignItems: "center",
-						width: "100%",
-						height: "auto",
+						width: "40%",
+						position: "relative",
+						left: "-1%",
+						top: "-8%",
+						cursor: "pointer",
 					}}
-				>
-					{true && (
-						<img
-							className="hover:scale-110 duration-75"
-							src={sceneAssetsMap[scene]}
-							alt=""
-							style={{
-								width: "43%",
-								position: "relative",
-								left: "-1%",
-								top: "-8%",
-								cursor: "pointer",
-							}}
-							onClick={onClick}
-						/>
-					)}
-				</div>
-			</div>
+					onClick={onClick}
+				/>
+			)}
 		</>
 	);
 };

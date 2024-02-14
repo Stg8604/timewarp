@@ -55,7 +55,7 @@ const Dashboard = () => {
 	};
 
 	const handleLanding = () => {
-		navigate("/");
+		navigate("/leaderboard");
 		window.location.reload();
 	};
 
@@ -87,7 +87,7 @@ const Dashboard = () => {
 						height: "auto",
 					}}
 				>
-					<CardButton text="Landing" onClick={handleLanding}></CardButton>
+					<CardButton text="Leaderboard" onClick={handleLanding}></CardButton>
 					<CardButton text="Discord" onClick={handleClick1}></CardButton>
 				</div>
 
@@ -107,25 +107,16 @@ const Dashboard = () => {
 						<Base></Base>
 					</div>
 					<div
+						className="flex justify-center w-full"
 						style={{
-							width: "100%",
+							// width: "80%",
 							position: "absolute",
 							top: "30%",
-							left: "-25%",
+							// left: "-25%",
 							scale: "1.2",
 						}}
 					>
 						<Card onClick={switchScene}></Card>
-					</div>
-					<div
-						style={{
-							width: "100%",
-							position: "absolute",
-							top: "33.5%",
-							left: "29%",
-							scale: "1.2",
-						}}
-					>
 						<Gallery onClick={handleGame}></Gallery>
 					</div>
 				</div>

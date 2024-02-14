@@ -41,6 +41,7 @@ const CardButton: React.FC<CardButtonProps> = ({ text, onClick }) => {
 							top: "-48%",
 							left: "0.1%",
 							cursor: "pointer",
+							scale: "1.2",
 						}}
 						onClick={onClick}
 					/>

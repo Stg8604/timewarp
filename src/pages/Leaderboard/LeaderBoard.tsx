@@ -4,7 +4,8 @@ import { getLeaderBoard } from "@slices/index";
 import { status } from "../../slices/Status/statusActions";
 import { useAppDispatch, useAppSelector } from "@stores/hooks";
 import { useEffect, useState } from "react";
-
+import leaderBg from "../../assets/Leaderboard/greenbg.svg";
+import header from "../../assets/Leaderboard/header.svg";
 import styles from "./styles.module.css";
 
 const LeaderBoard = () => {
@@ -36,8 +37,18 @@ const LeaderBoard = () => {
 			{isFetching && <Loader />}
 
 			{!isFetching && (
-				<div className={styles.base}>
-					<div className={`${styles.heading} font-pressStart2P`}>
+				<div
+					className={styles.base}
+					style={{
+						background: `url(${leaderBg}) no-repeat center center fixed`,
+					}}
+				>
+					<div
+						className={`${styles.heading} font-pressStart2P`}
+						style={{
+							background: `url(${header}) no-repeat`,
+						}}
+					>
 						LEADERBOARD
 					</div>
 					<div className={styles.BoxPseudo}>

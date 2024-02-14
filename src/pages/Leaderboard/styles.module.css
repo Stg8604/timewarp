@@ -1,5 +1,5 @@
 .base {
-	background: url("assets/greenbg.svg") no-repeat center center fixed;
+	/* background: url("assets/greenbg.svg") ; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -7,7 +7,6 @@
 }
 
 .heading {
-	background: url("assets/leaderboard/Item Desc.svg") no-repeat;
 	background-size: cover;
 	font-size: 43px;
 	display: flex;
@@ -20,7 +19,6 @@
 
 .BoxPseudo {
 	height: 80vh;
-	background: url("assets/bgcard.svg") center;
 	background-size: 80vw 80vh;
 	background-repeat: no-repeat;
 	display: flex;

@@ -1,5 +1,4 @@
 .image {
-	background-image: url("assets/brownbtn.svg");
 	background-size: auto;
 	background-position: center;
 	padding: 12px;
@@ -11,7 +10,6 @@
 
 @media (max-width: 750px) or (max-height: 650px) {
 	.image {
-		background-image: url("assets/leaderboard/mob_brownbtn.svg");
 		background-size: contain;
 	}
 }
