@@ -35,13 +35,11 @@ const PhasorRouter = () => {
 				if (playerDetails.tutorialComplete) {
 					// setMap("Computer");
 					// dispatch(setScene("ComputerScene"));
-					const storedScene = localStorage.getItem("scene");
 					setMap(storedScene!);
 					dispatch(setScene(storedScene + "Scene"));
 				} else {
 					setMap("Tutorial");
 					dispatch(setScene("Tutorial" + "Scene"));
-					// window.location.reload();
 					// setMap("InterceptorX");
 					// dispatch(setScene("InterceptorXScene"));
 				}
