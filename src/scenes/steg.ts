@@ -349,18 +349,18 @@ export class StegScene extends Phaser.Scene {
 		});
 
 		// Adding and configuring the portal
-		// this.portal = this.physics.add.sprite(32 * 26 - 16, 32 * 7 - 16, "portal");
-		// this.portal.setImmovable(true);
-		// this.portal.setSize(32, 32);
+		this.portal = this.physics.add.sprite(530, 520, "portal");
+		this.portal.setImmovable(true);
+		this.portal.setSize(20, 20);
 
-		// // Portal animations
-		// this.portal.anims.create({
-		// 	key: "idle",
-		// 	frames: this.anims.generateFrameNumbers("portal", { start: 0, end: 7 }),
-		// 	frameRate: 10,
-		// 	repeat: -1,
-		// });
-		// this.portal.anims.play("idle", true);
+		// Portal animations
+		this.portal.anims.create({
+			key: "idle",
+			frames: this.anims.generateFrameNumbers("portal", { start: 0, end: 7 }),
+			frameRate: 10,
+			repeat: -1,
+		});
+		this.portal.anims.play("idle", true);
 
 		layer2!.setCollisionByExclusion([-1]);
 		layer3!.setCollisionByExclusion([-1]);
@@ -371,6 +371,7 @@ export class StegScene extends Phaser.Scene {
 		layer9!.setCollisionByExclusion([-1]);
 		layer10!.setCollisionByExclusion([-1]);
 		layer12!.setCollisionByExclusion([-1]);
+		layer17!.setCollisionByExclusion([-1]);
 
 		this.player!.setAlpha(1);
 
@@ -379,11 +380,11 @@ export class StegScene extends Phaser.Scene {
 		this.physics.add.collider(this.player!, layer10!);
 
 		// // Collider callback between player and portal
-		// this.physics.add.collider(this.player, this.portal, () => {
-		// 	if (!store.getState().steg.isPortalKeyOpen) {
-		// 		store.dispatch(togglePortalKey());
-		// 	}
-		// });
+		this.physics.add.collider(this.player, this.portal, () => {
+			if (!store.getState().steg.isPortalKeyOpen) {
+				store.dispatch(togglePortalKey());
+			}
+		});
 
 		this.physics.add.collider(this.player, this.chestLeft, () => {
 			// console.log(store.getState().status.inventory)
@@ -476,7 +477,7 @@ export class StegScene extends Phaser.Scene {
 			if (!store.getState().steg.isInfoOpen) {
 				store.dispatch(
 					setText(
-						"Explore the strokes, the subtle dance of the artist's hand. Amidst the seemingly identical canvases, find the brushstroke that tells a different tale."
+						"Explore the strokes, the subtle dance of the artist's hand. Amidst the seemingly identical canvases, take the difference of the brushstrokes and see the tale."
 					)
 				);
 				store.dispatch(toggleInfo());
@@ -515,11 +516,14 @@ export class StegScene extends Phaser.Scene {
 			}
 		});
 
-		this.physics.add.collider(this.player, layer9!, () => {
-			if (!store.getState().steg.isPortalKeyOpen) {
-				store.dispatch(togglePortalKey());
-			}
-		});
+		// this.physics.add.collider(this.player, layer9!, () => {
+		// 	if (!store.getState().steg.isPortalKeyOpen) {
+		// 		store.dispatch(togglePortalKey());
+		// 	}
+		// });
+
+		this.physics.add.collider(this.player, layer9!);
+		this.physics.add.collider(this.player, layer17!);
 
 		this.physics.add.collider(this.player, layer12!, () => {
 			if (!store.getState().steg.isInfoOpen) {

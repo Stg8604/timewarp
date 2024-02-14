@@ -11,10 +11,10 @@ const StegInfo = (props: { text: string }) => {
 				<img
 					src={StegInfoImage}
 					alt="Steg Info"
-					className="w-[50vh] rounded-lg"
+					className="w-[29vw] rounded-lg"
 				/>
-				<div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center text-white text-center">
-					<div style={{ maxWidth: "80%", marginBottom: "3rem" }}>
+				<div className="absolute top-4 left-0 right-0 bottom-0 flex flex-col justify-center items-center text-white text-center">
+					<div style={{ maxWidth: "80%", marginBottom: "0.5rem" }}>
 						<span className="font-pixelifySans" style={{ color: "black" }}>
 							{props.text}
 						</span>
