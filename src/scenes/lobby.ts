@@ -408,17 +408,17 @@ export class LobbyScene extends Phaser.Scene {
 				store.dispatch(toggleLeaderboard());
 			}
 		});
-		this.physics.add.overlap(this.player, this.past_portal, () => {
+		this.physics.add.collider(this.player, this.past_portal, () => {
 			if (!store.getState().lobby.isPastPortalOpen) {
 				store.dispatch(togglePastPortal());
 			}
 		});
-		this.physics.add.overlap(this.player, this.present_portal, () => {
+		this.physics.add.collider(this.player, this.present_portal, () => {
 			if (!store.getState().lobby.isPresentPortalOpen) {
 				store.dispatch(togglePresentPortal());
 			}
 		});
-		this.physics.add.overlap(this.player, this.future_portal, () => {
+		this.physics.add.collider(this.player, this.future_portal, () => {
 			if (!store.getState().lobby.isFuturePortalOpen) {
 				store.dispatch(toggleFuturePortal());
 			}
