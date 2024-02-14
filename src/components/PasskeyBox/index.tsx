@@ -14,7 +14,7 @@ const PasskeyBox = (props: PasskeyBoxProps) => {
 					type="number"
 					value={props.passkey}
 					onChange={(e) => {
-						if (e.target.value.length <= 4) {
+						if (e.target.value.length <= 30) {
 							props.setPasskey(e.target.value);
 						}
 					}}

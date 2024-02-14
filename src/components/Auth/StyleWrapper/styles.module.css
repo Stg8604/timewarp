@@ -1,0 +1,7 @@
+.bg0 {
+	flex-direction: column;
+	justify-content: center;
+	object-fit: fill;
+	min-height: max-content;
+	height: 100vh;
+}

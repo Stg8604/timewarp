@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { addItemToInventory, status } from "./statusActions";
 
 interface StatusState {
+	totalScore: number;
 	day: number;
 	isLoading: boolean;
 	tutorialComplete: boolean | undefined;
@@ -18,6 +19,7 @@ const initialState: StatusState = {
 	isLoading: false,
 	tutorialComplete: false,
 	score: 0,
+	totalScore: 0,
 	userName: "",
 	puzzleCompletionList: {},
 	inventory: [],
@@ -35,6 +37,9 @@ export const statusSlice = createSlice({
 		},
 		setScore: (state, action) => {
 			state.score = action.payload;
+		},
+		setTotalScore: (state, action) => {
+			state.totalScore = action.payload;
 		},
 		setPuzzleCompletionList: (state, action) => {
 			state.puzzleCompletionList = action.payload;
@@ -57,6 +62,7 @@ export const statusSlice = createSlice({
 			state.day = action.payload.day;
 			state.tutorialComplete = action.payload.tutorialCompleted;
 			state.score = action.payload.score;
+			state.totalScore = action.payload.totalScore;
 			state.puzzleCompletionList = action.payload.puzzleCompletionList;
 			state.inventory = action.payload.inventory;
 			state.userName = action.payload.userName;

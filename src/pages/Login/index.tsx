@@ -1,11 +1,19 @@
 import { useCookies } from "react-cookie";
 import { useAppDispatch } from "@stores/hooks";
-import cta from "/assets/login.svg";
-import bgcard from "/assets/bgcard.svg";
+import login1 from "/assets/login.svg";
+import login2 from "/assets/login2.svg";
+import login3 from "/assets/login3.svg";
+import bgcard0 from "/assets/bgcard.svg";
+import bgcard1 from "/assets/bluebgcard.svg";
+import bgcard2 from "/assets/greybgcard.svg";
 import timewarp from "/assets/timewarpbg.svg";
 import earth from "/assets/icon.png";
 import authsignin from "/assets/authsignin.svg";
+import authsignin2 from "/assets/authsign2.svg";
+import authsignin3 from "/assets/authsign3.svg";
 import bgcardextended from "/assets/bgcardextended.svg";
+import bluebgcardextended from "/assets/bluebgcardextended.svg";
+import greybgcardextended from "/assets/greybgcardextended.svg";
 import { BACKEND_URL } from "@config/config";
 import {
 	Username,
@@ -42,6 +50,21 @@ const Login = () => {
 	const [token, setToken] = useState<string>("");
 	const [isLoading, setIsLoading] = useState(true);
 	const { loggedIn, isUserFetching } = useSelector(userSelector);
+	const [classIndex, setClassIndex] = useState(1);
+	const classes = [styles.greenbg, styles.bluebg, styles.greybg];
+	const classes2 = [bgcard0, bgcard1, bgcard2];
+	const classes3 = [login1, login3, login2];
+	const classes4 = [authsignin, authsignin3, authsignin2];
+	const classes5 = [bgcardextended, bluebgcardextended, greybgcardextended];
+
+	useEffect(() => {
+		const setRandomClassIndex = () => {
+			const randomIndex = Math.floor(Math.random() * 3);
+			setClassIndex(randomIndex);
+		};
+
+		setRandomClassIndex();
+	}, []);
 
 	useEffect(() => {
 		if (!isUserFetching) {
@@ -98,18 +121,18 @@ const Login = () => {
 	) : (
 		<>
 			<>
-				<div className={styles.your_class}>
+				<div className={`${styles.bg0} ${classes[classIndex]}`}>
 					<div className="relative h-full flex flex-col items-center">
 						<img
 							src={timewarp}
 							className="w-[80%] sm:w-[65%] absolute top-[4%] sm:top-[2%] xl:top-[0%] z-10"
 						/>
 						<img
-							src={bgcardextended}
+							src={classes5[classIndex]}
 							className="w-[100%] absolute top-[10%] sm:invisible"
 						/>
 						<img
-							src={bgcard}
+							src={classes2[classIndex]}
 							className="h-[90%] xl:h-[90%] absolute top-[20%] sm:top-[8%] lg:top-[8%] invisible sm:visible"
 						/>
 						<img
@@ -129,7 +152,7 @@ const Login = () => {
 								styles={(theme) => ({
 									root: {
 										fontSize: theme.fontSizes.md,
-										backgroundColor: theme.colors.paleYellow[0],
+										backgroundColor: "transparent",
 										fontFamily: "pixelifySans",
 										color: theme.colors.dayZerobrown[0],
 										textAlign: "right",
@@ -144,7 +167,11 @@ const Login = () => {
 								className="w-fit mx-auto h-10  sm:h-14 mt-2 object-cover transition-transform transform hover:scale-110 "
 								onClick={emailLoginHandler}
 							>
-								<img src={cta} alt="Original Image" className="w-full h-full" />
+								<img
+									src={classes3[classIndex]}
+									alt="Original Image"
+									className="w-full h-full"
+								/>
 							</Button>
 							<div className="w-[100%] flex flex-row justify-start mt-4">
 								<hr className="w-[50%] mt-8"></hr>
@@ -153,7 +180,7 @@ const Login = () => {
 									styles={(theme) => ({
 										root: {
 											fontSize: theme.fontSizes.xl,
-											backgroundColor: theme.colors.paleYellow[0],
+											backgroundColor: "transparent",
 											fontFamily: "pixelifySans",
 											color: theme.colors.dayZerobrown[0],
 										},
@@ -169,7 +196,7 @@ const Login = () => {
 								rel="noopener noreferrer"
 								href={BACKEND_URL + "oauth2/authorization/google"}
 							>
-								<img src={authsignin} className="w-full h-full" />
+								<img src={classes4[classIndex]} className="w-full h-full" />
 							</a>
 							<Button
 								className="flex justify-center sm:mx-auto  mt-2"
@@ -180,9 +207,9 @@ const Login = () => {
 									styles={(theme) => ({
 										root: {
 											fontSize: theme.fontSizes.md,
-											backgroundColor: theme.colors.paleYellow[0],
+											backgroundColor: "transparent",
 											fontFamily: "pixelifySans",
-											color: theme.colors.blue[0],
+											color: theme.colors.dayZerobrown[0],
 										},
 									})}
 								>

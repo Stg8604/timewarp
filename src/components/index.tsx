@@ -28,3 +28,5 @@ export { default as hintBox } from "./InterceptorX/HintBox";
 export { default as ClueBox } from "./ClueBox/index";
 export { default as MainPortal } from "./MainPortal/index";
 export { default as LevelSelector } from "./LevelSelector/index";
+export { default as StyleWrapper } from "./Auth/StyleWrapper/index";
+export { default as Popup } from "./CompletionPopUp/index";

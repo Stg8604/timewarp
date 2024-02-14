@@ -7,6 +7,7 @@ interface InterceptStatusData {
 interface InterceptCheckResponseDTO {
 	correct: boolean;
 	score: number;
+	totalScore: number;
 	message: string;
 }
 
@@ -22,4 +23,6 @@ interface InterceptStatusResponseDTO {
 interface APIError {
 	message: string;
 	correct: boolean;
+	totalScore: number;
+	score: number;
 }

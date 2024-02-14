@@ -6,6 +6,7 @@ interface InterceptorX {
 	isInfoOpen_2: boolean;
 	isInfoOpen_3: boolean;
 	isInfoOpen_4: boolean;
+	isOpenPopUp: boolean;
 	isPortalKeyOpen: boolean;
 	isDude: boolean;
 	isDummyOpen: boolean;
@@ -19,6 +20,7 @@ const initialState: InterceptorX = {
 	isInfoOpen_2: false,
 	isInfoOpen_3: false,
 	isInfoOpen_4: false,
+	isOpenPopUp: false,
 	isDummyOpen: false,
 	isPortalKeyOpen: false,
 	isDude: false,
@@ -68,6 +70,9 @@ export const InterceptorXSlice = createSlice({
 		togglePortalKey: (state) => {
 			state.isPortalKeyOpen = !state.isPortalKeyOpen;
 		},
+		toggleOpenBox: (state) => {
+			state.isOpenPopUp = !state.isOpenPopUp;
+		},
 		updateInterceptParams: (state, action) => {
 			state.params.partsLocation = action.payload.partsLocation;
 		},
@@ -85,6 +90,7 @@ export const {
 	toggleInfo_2,
 	toggleInfo_3,
 	toggleInfo_4,
+	toggleOpenBox,
 	togglePortalKey,
 	toggleDummyState,
 	toggleDudeState,

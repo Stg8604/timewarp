@@ -8,9 +8,8 @@ import timewarp from "/assets/timewarpbg.svg";
 import earth from "/assets/icon.png";
 import bgcardextended from "/assets/bgcardextended.svg";
 import confirm from "/assets/confirm.svg";
-import { Password, Toast } from "@components/index";
+import { Password, StyleWrapper, Toast } from "@components/index";
 import { Button } from "@mantine/core";
-import styles from "./styles.module.css";
 const ResetPassword = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
@@ -57,50 +56,52 @@ const ResetPassword = () => {
 
 	return (
 		<>
-			<div className={styles.your_class}>
-				<div className="h-full flex flex-col items-center">
-					<img
-						src={timewarp}
-						className="absolute top-16 sm:top-0 xl:top-0 z-10"
-					/>
-					<img
-						src={bgcardextended}
-						className="absolute top-[14%] sm:invisible"
-					/>
-					<img
-						src={bgcard}
-						className="h-[60%] sm:h-[65%] absolute top-[20%] sm:top-[20%] xl:top-[30%] invisible sm:visible"
-					/>
-					<img
-						src={earth}
-						className="w-[45%] sm:w-[20%] absolute top-16 sm:top-8 xl:top-0"
-					/>
-					<div className="w-[60%] sm:w-[45%] xl:w-[30%] absolute top-[35%] sm:top-[35%] xl:top-[45%] flex flex-col justify-center">
-						<Password
-							field="password"
-							save={updatePasswords}
-							title="New Password"
+			<StyleWrapper>
+				<div>
+					<div className="h-full flex flex-col items-center">
+						<img
+							src={timewarp}
+							className="absolute top-16 sm:top-0 xl:top-0 z-10"
 						/>
-
-						<Password
-							field="confirm"
-							save={updatePasswords}
-							title="Confirm Password"
+						<img
+							src={bgcardextended}
+							className="absolute top-[14%] sm:invisible"
 						/>
-
-						<Button
-							className="w-fit mx-auto h-12 sm:h-12  mt-16 object-cover transition-transform transform hover:scale-110 "
-							onClick={resetPassword}
-						>
-							<img
-								src={confirm}
-								alt="Original Image"
-								className="w-full h-full"
+						<img
+							src={bgcard}
+							className="h-[60%] sm:h-[65%] absolute top-[20%] sm:top-[20%] xl:top-[30%] invisible sm:visible"
+						/>
+						<img
+							src={earth}
+							className="w-[45%] sm:w-[20%] absolute top-16 sm:top-8 xl:top-0"
+						/>
+						<div className="w-[60%] sm:w-[45%] xl:w-[30%] absolute top-[35%] sm:top-[35%] xl:top-[45%] flex flex-col justify-center">
+							<Password
+								field="password"
+								save={updatePasswords}
+								title="New Password"
 							/>
-						</Button>
+
+							<Password
+								field="confirm"
+								save={updatePasswords}
+								title="Confirm Password"
+							/>
+
+							<Button
+								className="w-fit mx-auto h-12 sm:h-12  mt-16 object-cover transition-transform transform hover:scale-110 "
+								onClick={resetPassword}
+							>
+								<img
+									src={confirm}
+									alt="Original Image"
+									className="w-full h-full"
+								/>
+							</Button>
+						</div>
 					</div>
 				</div>
-			</div>
+			</StyleWrapper>
 		</>
 	);
 };

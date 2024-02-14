@@ -23,7 +23,7 @@ const Username: FC<AuthInputProps> = ({ field, save, title }) => {
 					font: "bold",
 				},
 				input: {
-					backgroundColor: theme.colors.peach[0],
+					backgroundColor: "transparent",
 					color: theme.colors.dayZerobrown[0],
 					fontFamily: "pixelifySans",
 					borderBottomColor: "black",

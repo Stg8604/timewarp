@@ -6,6 +6,7 @@ interface StegState {
 	isLoading: boolean;
 	isInfoOpen: boolean;
 	isPortalKeyOpen: boolean;
+	isOpenPopUp: boolean;
 	text: string;
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	params: { [key: string]: any };
@@ -14,6 +15,7 @@ interface StegState {
 const initialState: StegState = {
 	isLoading: false,
 	isInfoOpen: false,
+	isOpenPopUp: false,
 	isPortalKeyOpen: false,
 	text: "",
 	params: {
@@ -31,6 +33,9 @@ export const stegSlice = createSlice({
 		},
 		togglePortalKey: (state) => {
 			state.isPortalKeyOpen = !state.isPortalKeyOpen;
+		},
+		toggleOpenBox: (state) => {
+			state.isOpenPopUp = !state.isOpenPopUp;
 		},
 		setText: (state, action: PayloadAction<string>) => {
 			state.text = action.payload;
@@ -64,5 +69,6 @@ export const stegSlice = createSlice({
 	},
 });
 
-export const { toggleInfo, togglePortalKey, setText } = stegSlice.actions;
+export const { toggleInfo, togglePortalKey, setText, toggleOpenBox } =
+	stegSlice.actions;
 export default stegSlice.reducer;

@@ -24,20 +24,27 @@ import {
 	toggleProp4,
 	updateEmojiParams,
 	togglePortalKey,
+	toggleOpenBox,
 } from "@slices/emoji/emoji";
 import { TOAST_ERROR, TOAST_INFO, TOAST_SUCCESS } from "@utils/index";
 import { checkEmojiSolution, emojiStatus } from "@slices/emoji/emojiAction";
+import CompletionPopUp from "../../../components/CompletionPopUp";
+import { useNavigate } from "react-router-dom";
+import { setScene } from "@slices/Scene/scene";
 
 const Emoji = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const [initialize, setInitialize] = useState(false);
 	const gameRef = useRef(null);
 	const [passkey, setPasskey] = useState("");
+	const [totalScore, setTotalScore] = useState<number>(0);
+	const [score, setScore] = useState<number>(0);
 	const emoji = useAppSelector((state) => state.emoji);
 	const config = useAppSelector((state) => state.editor);
 	const player = useAppSelector((state) => state.player);
 	const computer = useAppSelector((state) => state.computer);
+	const status = useAppSelector((state) => state.status);
 	const dispatch = useAppDispatch();
-
+	const navigate = useNavigate();
 	const seederParams = [
 		{
 			moduleName: "emoji",
@@ -65,7 +72,12 @@ const Emoji = ({ switchScene }: { switchScene: (key: string) => void }) => {
 
 		return () => window.removeEventListener("keydown", handleKeyDown);
 	}, [dispatch, config.isOpen]);
-
+	const switchScene2 = () => {
+		navigate("/game");
+		localStorage.setItem("scene", "Lobby");
+		dispatch(setScene("Lobby" + "Scene"));
+		window.location.reload();
+	};
 	//temporary, got this from mst
 	const handleSubmit = async () => {
 		const response = await dispatch(
@@ -77,8 +89,11 @@ const Emoji = ({ switchScene }: { switchScene: (key: string) => void }) => {
 		if (response.type === "emoji/checkEmojiSolution/fulfilled") {
 			dispatch(togglePortalKey());
 			if (response.payload && response.payload.correct) {
-				Toast(TOAST_SUCCESS, response.payload?.message);
-				switchScene("Lobby");
+				setScore(response.payload.score);
+				setTotalScore(response.payload.totalScore);
+				dispatch(togglePortalKey());
+				dispatch(toggleOpenBox());
+				console.log(emoji.isPortalKeyOpen);
 			} else {
 				Toast(TOAST_INFO, response.payload?.message);
 			}
@@ -195,6 +210,15 @@ i ⬅️➗ 3`;
 						dispatch(togglePortalKey());
 						setPasskey("");
 					}}
+				/>
+			)}
+			{emoji.isOpenPopUp && (
+				<CompletionPopUp
+					title1={"Emoji Puzzle"}
+					title2={"Completed"}
+					title3={":" + totalScore.toString()}
+					title4={"(+" + score.toString() + ")"}
+					onclick={switchScene2}
 				/>
 			)}
 

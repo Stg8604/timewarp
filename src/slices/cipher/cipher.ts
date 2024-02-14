@@ -7,11 +7,13 @@ interface CipherState {
 	correct: boolean;
 	isPortalKeyOpen: boolean;
 	isFire: boolean;
+	isOpenPopUp: boolean;
 	params: { [key: string]: string | number | Edge[] };
 }
 
 const initialState: CipherState = {
 	isMessengerInfoo: false,
+	isOpenPopUp: false,
 	isGodInfo: false,
 	correct: false,
 	isFire: false,
@@ -38,6 +40,9 @@ export const cipherSlice = createSlice({
 		toggleFireInfo: (state) => {
 			state.isFire = !state.isFire;
 		},
+		toggleOpenBox: (state) => {
+			state.isOpenPopUp = !state.isOpenPopUp;
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(cipherStatus.fulfilled, (state, action) => {
@@ -49,6 +54,7 @@ export const cipherSlice = createSlice({
 export const {
 	toggleMessengerInfo,
 	toggleGodInfo,
+	toggleOpenBox,
 	updateRevEngParams,
 	togglePortalKey,
 	toggleFireInfo,

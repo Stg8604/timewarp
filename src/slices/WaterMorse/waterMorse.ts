@@ -3,6 +3,7 @@ import { status } from "./waterMorseActions";
 
 interface WaterMorseState {
 	audioID: number;
+	isOpenPopUp: boolean;
 	isPortalOpen: boolean;
 	params: { [key: string]: string | number };
 	infoBox: boolean[];
@@ -11,6 +12,7 @@ interface WaterMorseState {
 const initialState: WaterMorseState = {
 	audioID: -1,
 	isPortalOpen: false,
+	isOpenPopUp: false,
 	params: {
 		forest: "",
 		wind: "",
@@ -29,6 +31,9 @@ export const waterMorseSlice = createSlice({
 		toggleWaterMorsePortal: (state) => {
 			state.isPortalOpen = !state.isPortalOpen;
 		},
+		toggleOpenBox: (state) => {
+			state.isOpenPopUp = !state.isOpenPopUp;
+		},
 		toggleInfoBox: (state, action: { payload: number; type: string }) => {
 			state.infoBox[action.payload] = !state.infoBox[action.payload];
 		},
@@ -40,6 +45,10 @@ export const waterMorseSlice = createSlice({
 	},
 });
 
-export const { updateWaterMorseParams, toggleWaterMorsePortal, toggleInfoBox } =
-	waterMorseSlice.actions;
+export const {
+	updateWaterMorseParams,
+	toggleWaterMorsePortal,
+	toggleInfoBox,
+	toggleOpenBox,
+} = waterMorseSlice.actions;
 export default waterMorseSlice.reducer;

@@ -8,7 +8,10 @@ import { ReactPy } from "@components/index";
 import HintBox from "../../../components/InterceptorX/HintBox";
 import PasskeyBox from "../../../components/InterceptorX/PasskeyBox";
 import { BackBtn } from "@components/index";
-import { updateInterceptParams } from "@slices/InterceptorX/InterceptorX";
+import {
+	toggleOpenBox,
+	updateInterceptParams,
+} from "@slices/InterceptorX/InterceptorX";
 import {
 	toggleDudeState,
 	toggleInfo_1,
@@ -30,6 +33,8 @@ import {
 import { Toast } from "@components/index";
 import { TOAST_ERROR, TOAST_INFO, TOAST_SUCCESS } from "@utils/ToastStatus";
 import { useNavigate } from "react-router-dom";
+import CompletionPopUp from "../../../components/CompletionPopUp";
+import { setScene } from "@slices/Scene/scene";
 
 const text_1 = "You collected 1st part";
 const text_2 = "You collected 2nd part";
@@ -45,8 +50,11 @@ const InterceptorX = ({
 }) => {
 	const [initialize, setInitialize] = useState(false);
 	const gameRef = useRef(null);
+	const status = useAppSelector((state) => state.status);
 	const [passkey, setPasskey] = useState("");
 	const interceptorX = useAppSelector((state) => state.interceptor);
+	const [score, setScore] = useState<number>(0);
+	const [totalScore, setTotalScore] = useState<number>(0);
 	const config = useAppSelector((state) => state.editor);
 	const dispatch = useAppDispatch();
 
@@ -69,7 +77,12 @@ const InterceptorX = ({
 
 		return () => window.removeEventListener("keydown", handleKeyDown);
 	}, [dispatch, config.isOpen]);
-
+	const switchScene2 = () => {
+		navigate("/game");
+		localStorage.setItem("scene", "Lobby");
+		dispatch(setScene("Lobby" + "Scene"));
+		window.location.reload();
+	};
 	const handleSubmit = async () => {
 		const response = await dispatch(
 			checkInterceptorFlag({
@@ -80,8 +93,9 @@ const InterceptorX = ({
 		if (response.type === "interceptor/checkInterceptorFlag/fulfilled") {
 			dispatch(togglePortalKey());
 			if (response.payload && response.payload.correct) {
-				Toast(TOAST_SUCCESS, response.payload?.message);
-				switchScene("Lobby");
+				setScore(response.payload.score);
+				setTotalScore(response.payload.totalScore);
+				dispatch(toggleOpenBox());
 			} else {
 				Toast(TOAST_INFO, response.payload?.message);
 			}
@@ -175,6 +189,15 @@ const InterceptorX = ({
 						dispatch(togglePortalKey());
 						setPasskey("");
 					}}
+				/>
+			)}
+			{interceptorX.isOpenPopUp && (
+				<CompletionPopUp
+					title1={"Interceptor Puzzle"}
+					title2={"Completed"}
+					title3={":" + totalScore.toString()}
+					title4={"(+" + score.toString() + ")"}
+					onclick={switchScene2}
 				/>
 			)}
 

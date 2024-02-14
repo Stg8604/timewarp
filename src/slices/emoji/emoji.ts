@@ -3,6 +3,7 @@ import { emojiStatus } from "./emojiAction";
 
 const initialState: EmojiPuzzleState = {
 	isMainPortalOpen: false,
+	isOpenPopUp: false,
 	isProp1Open: false,
 	isProp2Open: false,
 	isProp3Open: false,
@@ -40,6 +41,9 @@ export const emojiPuzzleSlice = createSlice({
 		toggleHintBox: (state) => {
 			state.isHintBoxOpen = !state.isHintBoxOpen;
 		},
+		toggleOpenBox: (state) => {
+			state.isOpenPopUp = !state.isOpenPopUp;
+		},
 		updateEmojiParams: (state, action) => {
 			state.params = { ...action.payload };
 		},
@@ -59,6 +63,7 @@ export const {
 	toggleProp3,
 	toggleProp4,
 	togglePortalKey,
+	toggleOpenBox,
 	updateEmojiParams,
 	toggleHintBox,
 } = emojiPuzzleSlice.actions;

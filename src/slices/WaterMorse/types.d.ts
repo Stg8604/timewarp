@@ -13,5 +13,6 @@ interface WaterMorseFlagResponse {
 	audioID: number;
 	correct: boolean;
 	score: number;
+	totalScore: number;
 	message: string;
 }

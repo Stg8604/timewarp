@@ -13,7 +13,7 @@ import { registerUser } from "@slices/index";
 import { useNavigate } from "react-router-dom";
 import { useCallback, useState } from "react";
 import styles from "./styles.module.css";
-import { Regprops, Toast } from "@components/";
+import { Regprops, StyleWrapper, Toast } from "@components/";
 import { GoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const Register = () => {
@@ -84,36 +84,38 @@ const Register = () => {
 
 	return (
 		<>
-			<div className={styles.your_class}>
-				<div className="relative h-full flex flex-col items-center">
-					<img
-						src={timewarp}
-						className="w-[80%] sm:w-[65%] absolute top-[6%] sm:top-[2%] xl:top-[0%] z-10"
-					/>
-
-					<img
-						src={bgcardextended}
-						className=" w-[100%] absolute top-[14%] sm:invisible"
-					/>
-					<img
-						src={bgcard}
-						className="h-[90%] xl:h-[90%] absolute top-[20%] sm:top-[8%] lg:top-[8%] invisible sm:visible"
-					/>
-					<img
-						src={earth}
-						className="w-[35%] md:w-[16%] xl:w-[16%] absolute top-[4%] sm:top-[2%] xl:top-[0%] z-5"
-					/>
-					<GoogleReCaptcha onVerify={onVerify} />
-
-					<div className="w-[65%] pl-8 pr-8 sm:w-[50%] md:w-[45%] xl:w-[30%] absolute top-[22%] sm:top-[20%] xl:top-[30%] flex flex-col justify-center line-clamp-2">
-						<Regprops
-							input={updateregisterCredentials}
-							onButtonClick={emailRegisterHandler}
-							onButtonClick2={nav}
+			<StyleWrapper>
+				<div className={styles.bg0}>
+					<div className="relative h-full flex flex-col items-center">
+						<img
+							src={timewarp}
+							className="w-[80%] sm:w-[65%] absolute top-[6%] sm:top-[2%] xl:top-[0%] z-10"
 						/>
+
+						<img
+							src={bgcardextended}
+							className=" w-[100%] absolute top-[14%] sm:invisible"
+						/>
+						<img
+							src={bgcard}
+							className="h-[90%] xl:h-[90%] absolute top-[20%] sm:top-[8%] lg:top-[8%] invisible sm:visible"
+						/>
+						<img
+							src={earth}
+							className="w-[35%] md:w-[16%] xl:w-[16%] absolute top-[4%] sm:top-[2%] xl:top-[0%] z-5"
+						/>
+						<GoogleReCaptcha onVerify={onVerify} />
+
+						<div className="w-[65%] pl-8 pr-8 sm:w-[50%] md:w-[45%] xl:w-[30%] absolute top-[22%] sm:top-[20%] xl:top-[30%] flex flex-col justify-center line-clamp-2">
+							<Regprops
+								input={updateregisterCredentials}
+								onButtonClick={emailRegisterHandler}
+								onButtonClick2={nav}
+							/>
+						</div>
 					</div>
 				</div>
-			</div>
+			</StyleWrapper>
 		</>
 	);
 };

@@ -11,6 +11,11 @@ import {
 } from "@pages/index";
 import LevelSelector from "../components/LevelSelector";
 import LandingPage from "@pages/LandingPage/LandingPage";
+import { Popup } from "../components";
+import audiobox from "../assets/audiobox.svg";
+import painting from "../assets/painting.svg";
+import CompletionProps from "../components/CompletionPopUp/CompletionProps";
+import CompletionPopUp from "../components/CompletionPopUp";
 
 const routes: Routes[] = [
 	{

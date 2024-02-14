@@ -1,5 +1,5 @@
-.your_class {
-	background: url("/assets/greenbg.svg");
+/* styles.module.css */
+.bg0 {
 	flex-direction: column;
 	justify-content: center;
 	object-fit: fill;
@@ -8,8 +8,14 @@
 	overflow-y: hidden;
 	overflow-x: hidden;
 }
-.your_class2 {
-	background: url("./bgcard.svg");
-	object-fit: fill;
-	height: 60vh;
+.greenbg {
+	background: url("../../assets/greenbg.svg");
+}
+
+.bluebg {
+	background: url("../../assets/bluebg.svg");
+}
+
+.greybg {
+	background: url("../../assets/greybg.svg");
 }

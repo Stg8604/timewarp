@@ -1,6 +1,7 @@
 interface MstWeightResponse {
 	correct: boolean;
 	score: number;
+	totalScore: number;
 	message: string;
 	mapId: number;
 }
@@ -17,4 +18,6 @@ interface MSTFlagDTO {
 interface APIError {
 	message: string;
 	correct: boolean;
+	totalScore: number;
+	score: number;
 }

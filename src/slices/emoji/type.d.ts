@@ -1,4 +1,5 @@
 interface EmojiPuzzleState {
+	isOpenPopUp: boolean;
 	isMainPortalOpen: boolean;
 	isPortalKeyOpen: boolean;
 	isProp1Open: boolean;
@@ -15,6 +16,7 @@ interface EmojiResponseDTO {
 	inputKey: number;
 	correct: boolean;
 	score: number;
+	totalScore: number;
 	message: string;
 }
 
@@ -25,4 +27,6 @@ interface EmojiFlagDTO {
 interface APIError {
 	message: string;
 	correct: boolean;
+	totalScore: number;
+	score: number;
 }

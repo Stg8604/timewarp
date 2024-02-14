@@ -5,6 +5,7 @@ const sta = 0;
 
 const initialState: SoundPuzzleState = {
 	isPortalKeyOpen: false,
+	isOpenPopUp: false,
 	isHintBoxOpen: true,
 	clipsOrder: "",
 	params: {
@@ -24,6 +25,9 @@ export const soundPuzzleSlice = createSlice({
 		toggleHintBox: (state) => {
 			state.isHintBoxOpen = !state.isHintBoxOpen;
 		},
+		toggleOpenBox: (state) => {
+			state.isOpenPopUp = !state.isOpenPopUp;
+		},
 		updateClipsOrder: (state, action) => {
 			state.clipsOrder = action.payload;
 		},
@@ -41,6 +45,7 @@ export const soundPuzzleSlice = createSlice({
 export const {
 	togglePortalKey,
 	toggleHintBox,
+	toggleOpenBox,
 	updateClipsOrder,
 	updateSoundParams,
 } = soundPuzzleSlice.actions;

@@ -7,6 +7,7 @@ interface RevEngStatusData {
 interface RevEngCheckResponseDTO {
 	correct: boolean;
 	score: number;
+	totalScore: number;
 	message: string;
 }
 
@@ -22,4 +23,6 @@ interface RevEngStatusResponseDTO {
 interface APIError {
 	message: string;
 	correct: boolean;
+	score: number;
+	totalScore: number;
 }

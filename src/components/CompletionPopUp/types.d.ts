@@ -1,0 +1,3 @@
+type CompletionProp = {
+	title: string;
+};

@@ -12,7 +12,7 @@ import {
 	updateSoundParams,
 } from "../slices/SoundPuzzle/soundPuzzle";
 import { Toast } from "../components";
-import { TOAST_ERROR } from "@utils/ToastStatus";
+import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
 
 export class SoundPuzzle extends Phaser.Scene {
 	hashMap!: Record<string, string>;
@@ -441,6 +441,7 @@ export class SoundPuzzle extends Phaser.Scene {
 			(_obj1, obj2: any) => {
 				if (obj2 instanceof Collectable && obj2.scaleSet && obj2.contents) {
 					if (obj2.contents && !this.inventory.includes(obj2.contents)) {
+						Toast(TOAST_SUCCESS, obj2.contents[0] + " picked up");
 						this.inventory = [...this.inventory, obj2.contents];
 						store.dispatch(setInventory(this.inventory));
 						store.dispatch(

@@ -14,11 +14,15 @@ import {
 import WaterMorseModule from "@modules/WaterMorseModule.txt";
 import {
 	toggleInfoBox,
+	toggleOpenBox,
 	toggleWaterMorsePortal,
 	updateWaterMorseParams,
 } from "@slices/WaterMorse/waterMorse";
 import { checkFlag, status } from "@slices/WaterMorse/waterMorseActions";
-import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
+import { TOAST_ERROR, TOAST_INFO, TOAST_SUCCESS } from "@utils/ToastStatus";
+import CompletionPopUp from "../../../components/CompletionPopUp";
+import { useNavigate } from "react-router-dom";
+import { setScene } from "@slices/Scene/scene";
 
 const hint =
 	"This is a silent country side of the past. A pristine place to relax and to listen to the sounds of nature. A place to meditate and block out external interferences and focus on what is important.";
@@ -37,9 +41,13 @@ const WaterMorse = ({
 	const [initialize, setInitialize] = useState(false);
 	const [passkey, setPasskey] = useState("");
 	const gameRef = useRef(null);
+	const [score, setScore] = useState<number>(0);
+	const [totalScore, setTotalScore] = useState<number>(0);
+	const status2 = useAppSelector((state) => state.status);
 	const waterMorse = useAppSelector((state) => state.waterMorse);
 	const config = useAppSelector((state) => state.editor);
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 
 	const seederParams = [
 		{
@@ -77,14 +85,25 @@ const WaterMorse = ({
 				solution: passkey,
 			})
 		);
-
 		if (response.type === "watermorse/checkFlag/fulfilled") {
 			dispatch(toggleWaterMorsePortal());
+			dispatch(toggleOpenBox());
 			Toast(TOAST_SUCCESS, response.payload?.message);
-			switchScene("Lobby");
+			if (response.payload && response.payload.correct) {
+				setScore(response.payload.score);
+				setTotalScore(response.payload.totalScore);
+			} else {
+				Toast(TOAST_INFO, response.payload?.message);
+			}
 		} else if (response.type === "watermorse/checkFlag/rejected") {
 			Toast(TOAST_ERROR, response.payload?.message);
 		}
+	};
+	const switchScene2 = () => {
+		navigate("/game");
+		localStorage.setItem("scene", "Lobby");
+		dispatch(setScene("Lobby" + "Scene"));
+		window.location.reload();
 	};
 
 	const handleClose = () => {
@@ -125,6 +144,15 @@ const WaterMorse = ({
 				<InfoBox text={hint} onClose={() => dispatch(toggleInfoBox(2))} />
 			)}
 
+			{waterMorse.isOpenPopUp && (
+				<CompletionPopUp
+					title1={"WaterMorse Puzzle"}
+					title2={"Completed"}
+					title3={":" + totalScore.toString()}
+					title4={"(+" + score.toString() + ")"}
+					onclick={switchScene2}
+				/>
+			)}
 			<IonPhaser
 				ref={gameRef}
 				game={phaserConfig}

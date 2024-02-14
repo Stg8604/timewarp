@@ -8,6 +8,8 @@ interface PasskeyDetails {
 
 interface APIError {
 	message: string;
+	score: number;
+	totalScore: number;
 }
 
 interface InitResponse {
@@ -15,6 +17,7 @@ interface InitResponse {
 	inputkey: any;
 	correct: boolean;
 	score: number;
+	totalScore: number;
 	message: string;
 }
 

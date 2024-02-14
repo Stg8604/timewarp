@@ -6,11 +6,15 @@ import { toggleEditor } from "@slices/index";
 import { phaserConfig } from "@phaserGame/game";
 import PasskeyBox from "../../../components/SoundPuzzle/PasskeyBox";
 import { InfoBox, ReactPy, Inventory, BackBtn } from "@components/index";
+import audiobox from "../../../assets/audiobox.svg";
 import {
 	toggleHintBox,
 	updateSoundParams,
 } from "@slices/SoundPuzzle/soundPuzzle";
 import SoundPuzzleModule from "@modules/SoundPuzzle.txt";
+import CompletionPopUp from "../../../components/CompletionPopUp";
+import { setScene } from "@slices/Scene/scene";
+import { useNavigate } from "react-router-dom";
 const hashmap: { [key: string]: string } = {
 	audio_clip_1: "/assets/1.mp3",
 	audio_clip_2: "/assets/2.mp3",
@@ -28,6 +32,11 @@ const SoundPuzzle = ({
 	const [initialize, setInitialize] = useState(false);
 	const gameRef = useRef(null);
 	const sound = useAppSelector((state) => state.soundPuzzle);
+	const [totalScore, setTotalScore] = useState<number>(0);
+	const [score, setScore] = useState<number>(0);
+	const status = useAppSelector((state) => state.status);
+	const [isLoading, setIsLoading] = useState(true);
+	const navigate = useNavigate();
 	const player = useAppSelector((state) => state.player);
 	const config = useAppSelector((state) => state.editor);
 	const dispatch = useAppDispatch();
@@ -42,8 +51,13 @@ const SoundPuzzle = ({
 			dispatch: updateSoundParams,
 		},
 	];
+	let storedScene = localStorage.getItem("scene");
+	if (storedScene == null) {
+		localStorage.setItem("scene", "Lobby");
+		storedScene = "Lobby";
+	}
 	const [isPlaying, setIsPlaying] = useState(false);
-
+	const [map, setMap] = useState(storedScene);
 	const playAudioRecordings = (audioFiles: string[]) => {
 		if (isPlaying) {
 			return;
@@ -111,7 +125,7 @@ const SoundPuzzle = ({
 	}, [sound.params.play, sound.params.audioFiles]);
 
 	// const defaultInput = `'''Class:Sound\nadd_sound(param) - adds audio files to be played,\nremove_sound - removes audio files from array\nplay_audio() - plays audio files in order'''`;
-	const defaultInput = `# Object: Sound\n# play_audio() - function to play multiple audio files in the order of their addition. \n#\t\t\t - per execution the audio file is played only at the last time it is called \n# add_sound("audio_clip_name") - adds audio files to list of files to be played\n# remove_sound("audio_clip_name") - removes the specified audio file from list of audio files to be played\n`;
+	const defaultInput = `# Object: Sound\n# play_audio() - function to play multiple audio files in the order of their addition. \n# add_sound("audio_clip_name") - adds audio files to list of files to be played\n# remove_sound("audio_clip_name") - removes the specified audio file from list of audio files to be played\n`;
 
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
@@ -129,6 +143,12 @@ const SoundPuzzle = ({
 	useEffect(() => {
 		setInitialize(true);
 	}, []);
+	const switchScene2 = () => {
+		navigate("/game");
+		localStorage.setItem("scene", "Lobby");
+		dispatch(setScene("Lobby" + "Scene"));
+		window.location.reload();
+	};
 
 	return (
 		<>
@@ -136,10 +156,19 @@ const SoundPuzzle = ({
 			{player.inventoryOpen && <Inventory />}
 			{sound.isHintBoxOpen && (
 				<InfoBox
-					text="Music in order is harmony to ears. A quartet is what we seek. Drop the off key notes in the symphony and order the notes in the to fit the tune."
+					text="Music in order is harmony to ears. A quartet is what we seek. Drop the off key notes in the symphony and order the notes to fit the tune. A weapon is in your arsenal to aid you to completion. Press spacebar to use it."
 					onClose={() => {
 						dispatch(toggleHintBox());
 					}}
+				/>
+			)}
+			{sound.isOpenPopUp && (
+				<CompletionPopUp
+					title1={"Sound Puzzle"}
+					title2={"Completed"}
+					title3={":" + totalScore.toString()}
+					title4={"(+" + score.toString() + ")"}
+					onclick={switchScene}
 				/>
 			)}
 			{!sound.isHintBoxOpen && (
@@ -152,7 +181,15 @@ const SoundPuzzle = ({
 					Hint
 				</div>
 			)}
-			{sound.isPortalKeyOpen && <PasskeyBox switchScene={switchScene} />}
+			{sound.isPortalKeyOpen && (
+				<PasskeyBox
+					switchScene={switchScene2}
+					score={score}
+					setScore={setScore}
+					totalScore={totalScore}
+					setTotalScore={setTotalScore}
+				/>
+			)}
 			{!initialize && (
 				<div className="flex justify-center items-center h-[100vh]">
 					<Loader size={100} />

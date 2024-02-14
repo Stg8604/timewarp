@@ -44,6 +44,7 @@ interface Edge {
 
 interface ComputerState {
 	isInfoOpen: boolean;
+	isOpenPopUp: boolean;
 	isLeverDown: boolean;
 	isSwitchOn: boolean;
 	correct: boolean;
@@ -57,6 +58,7 @@ const currentUserEdgeList: Edge[] = [];
 const initialState: ComputerState = {
 	isInfoOpen: false,
 	isLeverDown: false,
+	isOpenPopUp: false,
 	isPortalKeyOpen: false,
 	isSwitchOn: false,
 	isCompleted: false,
@@ -83,6 +85,9 @@ export const computerSlice = createSlice({
 		},
 		toggleSwitch: (state) => {
 			state.isSwitchOn = !state.isSwitchOn;
+		},
+		toggleOpenBox: (state) => {
+			state.isOpenPopUp = !state.isOpenPopUp;
 		},
 		updateComputerParams: (
 			state,
@@ -115,6 +120,7 @@ export const computerSlice = createSlice({
 export const {
 	toggleInfo,
 	toggleLeverInfo,
+	toggleOpenBox,
 	updateComputerParams,
 	toggleComputerPortalKey,
 	toggleSwitch,

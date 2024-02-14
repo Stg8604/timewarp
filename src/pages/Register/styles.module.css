@@ -1,4 +1,4 @@
-.your_class {
+.bg0 {
 	background: url("/assets/regbg.svg");
 	flex-direction: column;
 	justify-content: center;
@@ -7,9 +7,4 @@
 	height: 100vh;
 	overflow-y: hidden;
 	overflow-x: hidden;
-}
-.your_class2 {
-	background: url("./bgcard.svg");
-	object-fit: fill;
-	height: 60vh;
 }

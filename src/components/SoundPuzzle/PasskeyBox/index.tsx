@@ -1,16 +1,29 @@
 import { useAppDispatch } from "@stores/hooks";
 import { useState } from "react";
-import { togglePortalKey } from "../../../slices/SoundPuzzle/soundPuzzle";
+import {
+	toggleOpenBox,
+	togglePortalKey,
+} from "../../../slices/SoundPuzzle/soundPuzzle";
 import { checkSolution } from "../../../slices/SoundPuzzle/soundPuzzleActions";
 import { Toast } from "../..";
 import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
+import CompletionPopUp from "../../CompletionPopUp";
 
 const PasskeyBox = ({
 	switchScene,
+	score,
+	setScore,
+	totalScore,
+	setTotalScore,
 }: {
 	switchScene: (key: string) => void;
+	score: number;
+	setScore: (key: number) => void;
+	totalScore: number;
+	setTotalScore: (key: number) => void;
 }) => {
 	const [passkey, setPasskey] = useState("");
+
 	const dispatch = useAppDispatch();
 
 	return (
@@ -34,8 +47,10 @@ const PasskeyBox = ({
 							checkSolution(passkey)
 								.then((res) => {
 									if (res.correct) {
-										Toast(TOAST_SUCCESS, "Correct PassKey!");
-										switchScene("Lobby");
+										setScore(res.score);
+										setTotalScore(res.totalScore);
+										dispatch(togglePortalKey());
+										dispatch(toggleOpenBox());
 									} else {
 										Toast(TOAST_ERROR, "Incorrect PassKey!");
 									}

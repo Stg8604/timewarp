@@ -1,6 +1,6 @@
-import { useAppDispatch } from "@stores/hooks";
+import { useAppDispatch, useAppSelector } from "@stores/hooks";
 import { useState } from "react";
-import { togglePortalKey } from "../../../slices/Steg/steg";
+import { togglePortalKey, toggleOpenBox } from "../../../slices/Steg/steg";
 import { checkStegPasskey } from "../../../slices/Steg/stegActions";
 import { Toast } from "../..";
 import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
@@ -8,12 +8,19 @@ import { useNavigate } from "react-router-dom";
 
 const StegPasskeyBox = ({
 	switchScene,
+	score,
+	setScore,
+	totalScore,
+	setTotalScore,
 }: {
 	switchScene: (key: string) => void;
+	score: number;
+	setScore: (key: number) => void;
+	totalScore: number;
+	setTotalScore: (key: number) => void;
 }) => {
 	const [passkey, setPasskey] = useState("");
 	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
 
 	return (
 		<div className="absolute h-full w-full flex flex-col justify-center items-center">
@@ -38,12 +45,11 @@ const StegPasskeyBox = ({
 								// eslint-disable-next-line @typescript-eslint/no-explicit-any
 								const ans: any = res.payload;
 								if (ans.correct == true) {
-									Toast(TOAST_SUCCESS, "Correct PassKey!");
-									switchScene("Lobby");
+									setScore(ans.score);
+									setTotalScore(ans.totalScore);
+									dispatch(togglePortalKey());
+									dispatch(toggleOpenBox());
 									// Add Dispatch to change scene to lobby here
-									setTimeout(() => {
-										window.location.reload();
-									}, 1000);
 								} else {
 									Toast(TOAST_ERROR, "Incorrect PassKey!");
 								}

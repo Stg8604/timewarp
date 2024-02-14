@@ -4,6 +4,7 @@ import { Loader } from "@mantine/core";
 import { useAppDispatch, useAppSelector } from "@stores/hooks";
 import { getStegImages, initStegPuzzle, toggleEditor } from "@slices/index";
 import { phaserConfig } from "@phaserGame/game";
+import painting from "../../../assets/painting.svg";
 import StegnoModule from "@modules/StegnoModule.txt";
 import {
 	ReactPy,
@@ -12,15 +13,22 @@ import {
 	StegInfo,
 	BackBtn,
 } from "@components/index";
+import CompletionPopUp from "../../../components/CompletionPopUp";
+import { useNavigate } from "react-router-dom";
+import { setScene } from "@slices/Scene/scene";
 
 const Steg = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const [initialize, setInitialize] = useState(false);
 	const gameRef = useRef(null);
 	const steg = useAppSelector((state) => state.steg);
+	const [score, setScore] = useState<number>(0);
+	const [totalScore, setTotalScore] = useState<number>(0);
+	const status = useAppSelector((state) => state.status);
 	const config = useAppSelector((state) => state.editor);
 	const player = useAppSelector((state) => state.player);
-	const dispatch = useAppDispatch();
 
+	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 	const seederParams = [
 		{
 			moduleName: "stegno",
@@ -43,7 +51,12 @@ const Steg = ({ switchScene }: { switchScene: (key: string) => void }) => {
 			dispatch(getStegImages());
 		});
 	}, [dispatch]);
-
+	const switchScene2 = () => {
+		navigate("/game");
+		localStorage.setItem("scene", "Lobby");
+		dispatch(setScene("Lobby" + "Scene"));
+		window.location.reload();
+	};
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
 			if (e.key.toLowerCase() === "e") {
@@ -62,8 +75,24 @@ const Steg = ({ switchScene }: { switchScene: (key: string) => void }) => {
 			<BackBtn />
 			{player.inventoryOpen && <Inventory />}
 			{steg.isInfoOpen && <StegInfo text={steg.text} />}
-
-			{steg.isPortalKeyOpen && <StegPasskeyBox switchScene={switchScene} />}
+			{steg.isPortalKeyOpen && (
+				<StegPasskeyBox
+					switchScene={switchScene}
+					score={score}
+					setScore={setScore}
+					totalScore={totalScore}
+					setTotalScore={setTotalScore}
+				/>
+			)}
+			{steg.isOpenPopUp && (
+				<CompletionPopUp
+					title1={"Steg Puzzle"}
+					title2={"Completed"}
+					title3={":" + totalScore.toString()}
+					title4={"(+" + score.toString() + ")"}
+					onclick={switchScene2}
+				/>
+			)}
 
 			{!initialize && (
 				<div className="flex justify-center items-center h-[100vh]">

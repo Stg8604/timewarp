@@ -2,11 +2,13 @@ interface PlayerState {
 	day: number;
 	tutorialCompleted: boolean | undefined;
 	score: number;
+	totalScore: number;
 	isFetching: boolean;
 	inventoryOpen: boolean;
 }
 
 interface Status {
+	totalScore: number;
 	userName: string;
 	day: number;
 	tutorialCompleted?: boolean;
