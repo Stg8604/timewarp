@@ -26,20 +26,22 @@ const PhasorRouter = () => {
 	}
 	const [map, setMap] = useState(storedScene);
 
-	const playerDetails = useAppSelector((state) => state.status);
+	const playerDetails = useAppSelector((state) => state.player);
 
 	useEffect(() => {
 		(async () => {
 			const getStatus = await dispatch(status());
-			if (status.fulfilled.match(getStatus) && !playerDetails.isLoading) {
-				if (playerDetails.tutorialComplete) {
+			if (status.fulfilled.match(getStatus)) {
+				if (playerDetails.tutorialCompleted) {
 					// setMap("Computer");
 					// dispatch(setScene("ComputerScene"));
-					setMap(storedScene!);
-					dispatch(setScene(storedScene + "Scene"));
+					// setMap(storedScene!);
+					// dispatch(setScene(storedScene + "Scene"));
 				} else {
-					setMap("Tutorial");
-					dispatch(setScene("Tutorial" + "Scene"));
+					if (map != "Fetching") {
+						dispatch(setScene(map + "Scene"));
+						// window.location.reload();
+					}
 					// setMap("InterceptorX");
 					// dispatch(setScene("InterceptorXScene"));
 				}
@@ -49,7 +51,7 @@ const PhasorRouter = () => {
 			}
 			setIsLoading(false);
 		})();
-	}, [playerDetails.tutorialComplete]);
+	}, [playerDetails.tutorialCompleted]);
 
 	const switchScene = (scene: string) => {
 		setIsLoading(true);
