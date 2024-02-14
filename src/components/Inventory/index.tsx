@@ -6,10 +6,13 @@ import item2 from "../../assets/Player/painting.svg";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 import { coords } from "./data";
 import ReactHtmlParser from "react-html-parser";
-import { useAppSelector } from "@stores/hooks";
+import { useAppDispatch, useAppSelector } from "@stores/hooks";
+import { toggleInventory } from "@slices/Player/Player";
+import { IconX } from "@tabler/icons-react";
 
 const Inventory = () => {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const dispatch = useAppDispatch();
 	const status = useAppSelector((state) => state.status);
 	const [activeItem, setActiveItem] = useState(["ITEM NAME", "ITEM DESC"]);
 
@@ -85,6 +88,12 @@ const Inventory = () => {
 						</div>
 					</div>
 				</div>
+				<button
+					onClick={() => dispatch(toggleInventory())}
+					className="px-2 py-1 mx-auto rounded-lg border absolute top-16 right-5 bg-white"
+				>
+					<IconX size={24} color="black" />
+				</button>
 			</div>
 		</>
 	);

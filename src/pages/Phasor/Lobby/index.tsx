@@ -7,6 +7,7 @@ import {
 	BackBtn,
 	TextBox,
 	Leaderboard,
+	Inventory,
 } from "@components/index";
 
 const loreText = `You are now standing at the feet of an ancient coder from a distant era. Legends whisper that he crafted a Code Editor so powerful that it allows him to manipulate the very fabric of reality. It taps into the fundamental coding principles that exist in every era, making it the key to unlocking the mysteries of each puzzle. Now, the weapon has been passed on to you, and with it comes the heavy responsibility. 
@@ -16,6 +17,7 @@ Press E to open your mighty weapon and solve every puzzle to save Time itself. G
 const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const lobby = useAppSelector((state) => state.lobby);
 	const [initialize, setInitialize] = useState(false);
+	const player = useAppSelector((state) => state.player);
 	const gameRef = useRef(null);
 
 	useEffect(() => {
@@ -25,7 +27,7 @@ const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	return (
 		<>
 			<BackBtn />
-
+			{player.inventoryOpen && <Inventory />}
 			{lobby.isPastPortalOpen && (
 				<LevelSelector
 					title1="WaterMorse"

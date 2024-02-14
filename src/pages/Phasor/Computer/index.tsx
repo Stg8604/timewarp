@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { IonPhaser } from "@ion-phaser/react";
 import { Loader } from "@mantine/core";
 import { useAppDispatch, useAppSelector } from "@stores/hooks";
-import { HintBox, Toast, ReactPy, BackBtn } from "@components/index";
+import { HintBox, Toast, ReactPy, BackBtn, Inventory } from "@components/index";
 import PasskeyBox from "../../../components/computers/PasskeyBox";
 import { toggleEditor } from "@slices/index";
 import { phaserConfig } from "@phaserGame/game";
@@ -26,6 +26,7 @@ const Computer = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const [totalScore, setTotalScore] = useState<number>(0);
 	const computer = useAppSelector((state) => state.computer);
 	const config = useAppSelector((state) => state.editor);
+	const player = useAppSelector((state) => state.player);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const seederParams = [
@@ -92,7 +93,7 @@ const Computer = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	return (
 		<>
 			<BackBtn />
-
+			{player.inventoryOpen && <Inventory />}
 			{computer.isInfoOpen && <HintBox text={text_1} />}
 
 			{computer.isPortalKeyOpen && (

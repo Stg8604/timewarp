@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { IonPhaser } from "@ion-phaser/react";
 import { Loader } from "@mantine/core";
-import { BackBtn, ReactPy } from "@components/index";
+import { BackBtn, ReactPy, Inventory } from "@components/index";
 import { useAppDispatch, useAppSelector } from "@stores/hooks";
 import { toggleEditor } from "@slices/index";
 import { status } from "@slices/Status/statusActions";
@@ -40,6 +40,7 @@ const Cipher = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const [passkey, setPasskey] = useState("");
 	const cipher = useAppSelector((state) => state.cipher);
 	const config = useAppSelector((state) => state.editor);
+	const player = useAppSelector((state) => state.player);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
@@ -118,6 +119,7 @@ const Cipher = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	return (
 		<>
 			<BackBtn />
+			{player.inventoryOpen && <Inventory />}
 
 			{cipher.isMessengerInfoo && (
 				<InfoBox text={text_1} onClose={handleMessengerClose} />

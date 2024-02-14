@@ -10,6 +10,7 @@ import {
 	PasskeyBox,
 	Toast,
 	ReactPy,
+	Inventory,
 } from "@components/index";
 import WaterMorseModule from "@modules/WaterMorseModule.txt";
 import {
@@ -44,6 +45,7 @@ const WaterMorse = ({
 	const [score, setScore] = useState<number>(0);
 	const [totalScore, setTotalScore] = useState<number>(0);
 	const status2 = useAppSelector((state) => state.status);
+	const player = useAppSelector((state) => state.player);
 	const waterMorse = useAppSelector((state) => state.waterMorse);
 	const config = useAppSelector((state) => state.editor);
 	const dispatch = useAppDispatch();
@@ -114,7 +116,7 @@ const WaterMorse = ({
 	return (
 		<>
 			<BackBtn />
-
+			{player.inventoryOpen && <Inventory />}
 			{!initialize && (
 				<div className="flex justify-center items-center h-[100vh]">
 					<Loader size={100} />

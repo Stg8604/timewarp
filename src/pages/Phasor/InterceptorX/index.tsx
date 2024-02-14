@@ -7,7 +7,7 @@ import { phaserConfig } from "@phaserGame/game";
 import { ReactPy } from "@components/index";
 import HintBox from "../../../components/InterceptorX/HintBox";
 import PasskeyBox from "../../../components/InterceptorX/PasskeyBox";
-import { BackBtn } from "@components/index";
+import { BackBtn, Inventory } from "@components/index";
 import {
 	toggleOpenBox,
 	updateInterceptParams,
@@ -56,6 +56,7 @@ const InterceptorX = ({
 	const [score, setScore] = useState<number>(0);
 	const [totalScore, setTotalScore] = useState<number>(0);
 	const config = useAppSelector((state) => state.editor);
+	const player = useAppSelector((state) => state.player);
 	const dispatch = useAppDispatch();
 
 	const defaultInput = `#Objects available\n# - Interceptor\nprint(Interceptor)\n#Interceptor.intercept(<optional ip string>)\nimport base64`;
@@ -139,11 +140,13 @@ const InterceptorX = ({
 
 	return (
 		<>
+			<BackBtn />
+			{player.inventoryOpen && <Inventory />}
 			<div
 				style={{
 					position: "absolute",
-					left: "1rem",
-					top: "1rem",
+					left: "2rem",
+					top: "4rem",
 					display: "flex",
 					justifyContent: "center",
 					alignItems: "center",

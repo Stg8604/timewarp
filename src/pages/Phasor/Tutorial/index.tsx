@@ -8,6 +8,7 @@ import {
 	ReactPy,
 	PasskeyBox,
 	Toast,
+	Inventory,
 } from "@components/index";
 import { toggleEditor } from "@slices/index";
 import {
@@ -29,6 +30,7 @@ const Tutorial = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const gameRef = useRef(null);
 	const tutorial = useAppSelector((state) => state.tutorial);
 	const config = useAppSelector((state) => state.editor);
+	const player = useAppSelector((state) => state.player);
 	const dispatch = useAppDispatch();
 
 	const seederParams = [
@@ -83,7 +85,7 @@ const Tutorial = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	return (
 		<>
 			<BackBtn />
-
+			{player.inventoryOpen && <Inventory />}
 			{tutorial.isInfoOpen && (
 				<InfoBox text={text} onClose={() => dispatch(toggleInfo())} />
 			)}
