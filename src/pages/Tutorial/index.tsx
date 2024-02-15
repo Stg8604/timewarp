@@ -11,7 +11,7 @@ import CustomAxios from "@utils/CustomAxios";
 import { toggleInfo } from "@slices/Tutorial/tutorial";
 
 const text =
-	"Hello Player! You are in the year 2049. Technology has went far and beyond making it possible to have portals to different time period. The world is in shambles. So you have to utilize the machine tools to get things done. Press 'E' anytime to open or close your weapon - the code editor.";
+	"Hello Player! You are in the year 2049. Technology has advanced and it is possible to have portals to different time period. The world is in shambles.  Utilize the gadgets at your disposal to get things done. Press 'E' anytime to open or close your weapon - the code editor.";
 
 const Tutorial = () => {
 	const [initialize, setInitialize] = useState(false);

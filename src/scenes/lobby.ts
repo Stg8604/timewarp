@@ -7,6 +7,7 @@ import {
 	togglePastPortal,
 	togglePresentPortal,
 	toggleFuturePortal,
+	toggleTutorial,
 } from "@slices/Lobby/Lobby";
 
 export class LobbyScene extends Phaser.Scene {
@@ -28,6 +29,9 @@ export class LobbyScene extends Phaser.Scene {
 	pillar_right: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
 	pillar_top: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
 	broken_pillar: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
+	tutorial_statue:
+		| Phaser.Types.Physics.Arcade.SpriteWithDynamicBody
+		| undefined;
 	stair_handle_top_left_left:
 		| Phaser.Types.Physics.Arcade.SpriteWithDynamicBody
 		| undefined;
@@ -58,6 +62,7 @@ export class LobbyScene extends Phaser.Scene {
 	isPastPortalOpen = store.getState().lobby.isPastPortalOpen;
 	isPresentPortalOpen = store.getState().lobby.isPresentPortalOpen;
 	isFuturePortalOpen = store.getState().lobby.isFuturePortalOpen;
+	isTutorialOpen = store.getState().lobby.isTutorialOpen;
 
 	preload() {
 		this.load.image("bullet", "assets/tutorial/trail.png");
@@ -115,11 +120,6 @@ export class LobbyScene extends Phaser.Scene {
 			frameHeight: 96,
 			startFrame: 0,
 		});
-		// this.load.spritesheet("leaderboard", "assets/lobby/leaderboard.png", {
-		// 	frameWidth: 96,
-		// 	frameHeight: 96,
-		// 	startFrame: 0,
-		// });
 		this.load.spritesheet("lamps", "assets/lobby/lamps.png", {
 			frameWidth: 49,
 			frameHeight: 96,
@@ -135,6 +135,14 @@ export class LobbyScene extends Phaser.Scene {
 			frameHeight: 95,
 			startFrame: 1,
 		});
+		this.load.spritesheet(
+			"tutorial_statue",
+			"assets/lobby/tutorial_statue.png",
+			{
+				frameWidth: 48,
+				frameHeight: 94,
+			}
+		);
 		this.load.spritesheet(
 			"stair_handle_left",
 			"assets/lobby/stair_handles.png",
@@ -225,11 +233,6 @@ export class LobbyScene extends Phaser.Scene {
 			tileset_7!,
 		]);
 
-		// Adding and configuring leaderboard
-		// this.leaderboard = this.physics.add.sprite(799, 758, "leaderboard");
-		// this.leaderboard.setScale(1);
-		// this.leaderboard.setImmovable(true);
-
 		const statues = map.createLayer("statues", [
 			tileset_1!,
 			tileset_2!,
@@ -261,6 +264,15 @@ export class LobbyScene extends Phaser.Scene {
 		this.future_portal = this.physics.add.sprite(1426, 758, "future_portal");
 		this.future_portal.setScale(1);
 		this.future_portal.setImmovable(true);
+
+		// Adding and configuring the future_portal
+		this.tutorial_statue = this.physics.add.sprite(
+			32 * 25,
+			32 * 51,
+			"tutorial_statue"
+		);
+		this.tutorial_statue.setScale(1);
+		this.tutorial_statue.setImmovable(true);
 
 		this.player = new TutorialPlayer(this, 32 * 25, 32 * 55, "player");
 
@@ -450,6 +462,11 @@ export class LobbyScene extends Phaser.Scene {
 				store.dispatch(toggleFuturePortal());
 			}
 		});
+		this.physics.add.collider(this.player, this.tutorial_statue, () => {
+			if (!store.getState().lobby.isTutorialOpen) {
+				store.dispatch(toggleTutorial());
+			}
+		});
 		this.physics.add.collider(this.player, this.stair_handle_top_left_left);
 		this.physics.add.collider(this.player, this.stair_handle_top_left_right);
 		this.physics.add.collider(this.player, this.stair_handle_bottom_left_left);
@@ -468,6 +485,7 @@ export class LobbyScene extends Phaser.Scene {
 		this.physics.add.collider(this.player, this.pillar_right);
 		this.physics.add.collider(this.player, this.pillar_top);
 		this.physics.add.collider(this.player, this.broken_pillar);
+		this.physics.add.collider(this.player, this.tutorial_statue);
 
 		store.subscribe(() => {
 			const newIsLeaderboardOpen = store.getState().lobby.isLeaderboardOpen;
@@ -475,6 +493,7 @@ export class LobbyScene extends Phaser.Scene {
 			const newIsPastPortalOpen = store.getState().lobby.isPastPortalOpen;
 			const newIsPresentPortalOpen = store.getState().lobby.isPresentPortalOpen;
 			const newIsFuturePortalOpen = store.getState().lobby.isFuturePortalOpen;
+			const newIsTutorialOpen = store.getState().lobby.isTutorialOpen;
 
 			if (!this.isLoreOpen && newIsLoreOpen) {
 				this.isLoreOpen = true;
@@ -496,6 +515,10 @@ export class LobbyScene extends Phaser.Scene {
 				this.isFuturePortalOpen = true;
 			} else if (this.isFuturePortalOpen && !newIsFuturePortalOpen) {
 				this.isFuturePortalOpen = false;
+			} else if (!this.isTutorialOpen && newIsTutorialOpen) {
+				this.isTutorialOpen = true;
+			} else if (this.isTutorialOpen && !newIsTutorialOpen) {
+				this.isTutorialOpen = false;
 			}
 		});
 

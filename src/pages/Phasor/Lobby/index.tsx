@@ -8,6 +8,7 @@ import {
 	TextBox,
 	Leaderboard,
 	Inventory,
+	RedoTutorial,
 } from "@components/index";
 
 const loreText = `You are now standing at the feet of an ancient coder from a distant era. Legends whisper that he crafted a Code Editor so powerful that it allows him to manipulate the very fabric of reality. It taps into the fundamental coding principles that exist in every era, making it the key to unlocking the mysteries of each puzzle. Now, the weapon has been passed on to you, and with it comes the heavy responsibility. 
@@ -55,6 +56,7 @@ const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
 					switchScene={switchScene}
 				/>
 			)}
+			{lobby.isTutorialOpen && <RedoTutorial switchScene={switchScene} />}
 			{lobby.isLoreOpen && <TextBox text={loreText} type="lore" />}
 			{lobby.isLeaderboardOpen && <Leaderboard />}
 

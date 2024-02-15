@@ -26,4 +26,5 @@ interface ILobbyState {
 	isPastPortalOpen: boolean;
 	isPresentPortalOpen: boolean;
 	isFuturePortalOpen: boolean;
+	isTutorialOpen: boolean;
 }

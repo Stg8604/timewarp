@@ -31,6 +31,9 @@ export const lobbySlice = createSlice({
 		toggleFuturePortal: (state) => {
 			state.isFuturePortalOpen = !state.isFuturePortalOpen;
 		},
+		toggleTutorial: (state) => {
+			state.isTutorialOpen = !state.isTutorialOpen;
+		},
 	},
 });
 export const {
@@ -40,6 +43,7 @@ export const {
 	togglePastPortal,
 	togglePresentPortal,
 	toggleInfo,
+	toggleTutorial,
 } = lobbySlice.actions;
 export const lobbySelector = (state: { dummy: DummyState }) => state.dummy;
 export default lobbySlice.reducer;

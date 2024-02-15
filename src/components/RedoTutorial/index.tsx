@@ -2,41 +2,33 @@ import popup from "../../assets/popup.svg";
 import { LevelProps } from "@components/index";
 import { LevelProps2 } from "@components/index";
 
-const LevelSelector = ({
-	title1,
-	title2,
-	title3,
-	currentTime,
+const RedoTutorial = ({
 	switchScene,
 }: {
-	title1: string;
-	title2: string;
-	title3?: string;
-	currentTime: string;
 	switchScene: (key: string) => void;
 }) => {
 	return (
 		<>
 			<div className=" absolute top-0 left-0 flex flex-row gap-8 justify-center w-full h-screen bg-[#0000004b] items-center">
-				<div className="w-[600px] h-[470px] relative">
+				<div className="w-[600px] h-[470px] relative p-[90px]">
 					{/* <div className="md:w-[600px] md:h-[470px] w-[400px] h-[312px] relative"> */}
 					<img
 						src={popup}
 						className="absolute  h-[87%] sm:h-[100%] top-0 tran left-0 w-[600px] "
 					/>
-					<div className="flex flex-col mt-16 items-center">
-						<LevelProps title={title1} switchScene={switchScene} />
-						<LevelProps title={title2} switchScene={switchScene} />
-						{title3 ? (
-							<LevelProps title={title3} switchScene={switchScene} />
-						) : (
-							<></>
-						)}
-						<LevelProps2 type={currentTime} />
+					<div className=" items-center flex flex-col h-full justify-between p-8">
+						<div className=" text-darkBrown z-50 text-center font-pixelifySans w-[95%]">
+							Want to train your time traveling skills?
+						</div>
+
+						<LevelProps title={"Tutorial"} switchScene={switchScene} />
+						<div className="mb-7">
+							<LevelProps2 type={"tutorial"} />
+						</div>
 					</div>
 				</div>
 			</div>
 		</>
 	);
 };
-export default LevelSelector;
+export default RedoTutorial;
