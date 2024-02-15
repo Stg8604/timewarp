@@ -22,7 +22,7 @@ const hashmap: { [key: string]: string } = {
 	audio_clip_3: "/assets/3.mp3",
 	audio_clip_4: "/assets/4.mp3",
 	audio_clip_5: "/assets/5.mp3",
-	audio_clip_6: "/assets/6.np3",
+	audio_clip_6: "/assets/6.mp3",
 };
 
 const SoundPuzzle = ({
@@ -73,6 +73,7 @@ const SoundPuzzle = ({
 		if (isPlaying) {
 			return;
 		}
+		console.log(audioFiles)
 
 		for (let i = 0; i < audioFiles.length; i++) {
 			if (
@@ -126,6 +127,7 @@ const SoundPuzzle = ({
 	};
 	useEffect(() => {
 		// Check if sound.params.play is true
+		console.log(sound.params.play);
 		if (sound.params.play) {
 			// Call the function to play audio recordings
 			playAudioRecordings(sound.params.audioFiles);
