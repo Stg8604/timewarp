@@ -13,6 +13,8 @@ import {
 } from "../slices/SoundPuzzle/soundPuzzle";
 import { Toast } from "../components";
 import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
+import { PuzzleIds } from "@utils/PuzzleIds/puzzleId";
+import { CommonCollectables } from "@sprites/CommonCollectables";
 
 export class SoundPuzzle extends Phaser.Scene {
 	hashMap!: Record<string, string>;
@@ -26,6 +28,11 @@ export class SoundPuzzle extends Phaser.Scene {
 	collectables: Phaser.Physics.Arcade.Group | undefined;
 	description: Record<string, string>;
 	puzzle: SoundPuzzleState;
+	commonCollectablesLoc: { x: number; y: number }[] = [
+		{ x: 260, y: 65 },
+		{ x: 440, y: 320 },
+		{ x: 70, y: 455 },
+	];
 
 	constructor() {
 		super({ key: "SoundPuzzleScene" });
@@ -188,6 +195,9 @@ export class SoundPuzzle extends Phaser.Scene {
 		//     frameWidth: 64,
 		//     frameHeight: 64,
 		// });
+		this.load.image("1", "assets/collectables/1.png");
+		this.load.image("2", "assets/collectables/2.png");
+		this.load.image("3", "assets/collectables/3.png");
 	}
 
 	create() {
@@ -457,6 +467,14 @@ export class SoundPuzzle extends Phaser.Scene {
 		// Configuring camera
 		const camera = this.cameras.main.setZoom(3, 3);
 		camera.startFollow(this.player, false, 0.5, 0.5);
+
+		new CommonCollectables(
+			this,
+			this.commonCollectablesLoc,
+			1,
+			PuzzleIds.SOUND_PUZZLE,
+			this.player
+		);
 	}
 
 	update(time: number, delta: number): void {

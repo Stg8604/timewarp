@@ -9,11 +9,22 @@ import ReactHtmlParser from "react-html-parser";
 import { useAppDispatch, useAppSelector } from "@stores/hooks";
 import { toggleInventory } from "@slices/Player/Player";
 import { IconX } from "@tabler/icons-react";
+import Collectable1 from "../../../public/assets/collectables/1.png";
+import Collectable2 from "../../../public/assets/collectables/2.png";
+import Collectable3 from "../../../public/assets/collectables/3.png";
+import { getAllCollectables } from "@slices/Collectables/collectablesAction";
 
 const Inventory = () => {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const dispatch = useAppDispatch();
 	const status = useAppSelector((state) => state.status);
+	const collectables = useAppSelector((state) => state.collectables);
+	const collectableIcons = [Collectable1, Collectable2, Collectable3];
+	const collectableNames = [
+		"Ancient Chest",
+		"Temporal Poison",
+		"Time Chronicles",
+	];
 	const [activeItem, setActiveItem] = useState(["ITEM NAME", "ITEM DESC"]);
 
 	const itemMap: ItemMap = {
@@ -25,6 +36,9 @@ const Inventory = () => {
 		audio_clip_6: item,
 		left_painting: item2,
 		right_painting: item2,
+		"Ancient Chest": Collectable1,
+		"Temporal Poison": Collectable2,
+		"Time Chronicles": Collectable3,
 	};
 
 	useEffect(() => {
@@ -32,6 +46,10 @@ const Inventory = () => {
 			setActiveItem(status?.inventory[0]);
 		}
 	}, [status?.inventory]);
+
+	useEffect(() => {
+		dispatch(getAllCollectables());
+	}, [dispatch]);
 
 	//top difference = 15%
 	return (
@@ -68,6 +86,28 @@ const Inventory = () => {
 								);
 							}
 						)}
+						{(collectables.collectables || []).map((collectable, index) => {
+							const [x, y] = coords[index + status.inventory.length];
+
+							return (
+								<div
+									className="absolute flex items-center justify-center w-[50px] h-[50px] hover:cursor-pointer"
+									style={{ top: `${y}px`, left: `${x}px` }}
+									onClick={() => {
+										setActiveItem([
+											collectableNames[collectable.id - 1],
+											`You have a total of <strong>${collectable.count}</strong> ${collectableNames[collectable.id - 1]} collectables.`,
+										]);
+									}}
+									key={index}
+								>
+									<img
+										src={collectableIcons[collectable.id - 1]}
+										className="w-[30px] h-[30px]"
+									/>
+								</div>
+							);
+						})}
 					</div>
 					<div className="top-[100px] left-[100px] z-[1]"> H </div>
 				</div>

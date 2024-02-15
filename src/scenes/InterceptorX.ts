@@ -10,6 +10,9 @@ import InterceptorX, {
 import { TutorialPlayer } from "../sprites/TutorialPlayer";
 import { store } from "@stores/index";
 import { Interceptor } from "@slices/index";
+import { PuzzleIds } from "@utils/PuzzleIds/puzzleId";
+import { CommonCollectables } from "@sprites/CommonCollectables";
+
 export class InterceptorXScene extends Phaser.Scene {
 	constructor() {
 		super({ key: "InterceptorXScene" });
@@ -23,6 +26,11 @@ export class InterceptorXScene extends Phaser.Scene {
 	isPortalKeyOpen = store.getState().interceptor.isPortalKeyOpen;
 	isDummyOpen = store.getState().interceptor.isDummyOpen;
 	bullets: Phaser.Physics.Arcade.Group | undefined;
+	collectablesLoc: { x: number; y: number }[] = [
+		{ x: 125, y: 175 },
+		{ x: 750, y: 1180 },
+		{ x: 1460, y: 665 },
+	];
 
 	preload() {
 		this.load.image("tileset_1", "assets/interceptorX/Space station._32_2.png");
@@ -97,6 +105,9 @@ export class InterceptorXScene extends Phaser.Scene {
 				frameHeight: 64,
 			}
 		);
+		this.load.image("1", "assets/collectables/1.png");
+		this.load.image("2", "assets/collectables/2.png");
+		this.load.image("3", "assets/collectables/3.png");
 	}
 
 	create() {
@@ -354,5 +365,13 @@ export class InterceptorXScene extends Phaser.Scene {
 
 		const camera = this.cameras.main.setZoom(1.5, 1.5);
 		camera.startFollow(this.player, false, 0.5, 0.5);
+
+		new CommonCollectables(
+			this,
+			this.collectablesLoc,
+			2,
+			PuzzleIds.INTERCEPT_PUZZLE,
+			this.player
+		);
 	}
 }

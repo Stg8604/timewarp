@@ -65,6 +65,10 @@ export default defineConfig({
 				find: "@modules",
 				replacement: path.resolve(__dirname, "./src/modules"),
 			},
+			{
+				find: "@sprites",
+				replacement: path.resolve(__dirname, "./src/sprites"),
+			},
 		],
 	},
 	base: "",

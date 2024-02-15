@@ -8,6 +8,8 @@ import {
 } from "@slices/emoji/emoji";
 import { TutorialPlayer } from "../sprites/TutorialPlayer";
 import { store } from "../stores/index";
+import { PuzzleIds } from "@utils/PuzzleIds/puzzleId";
+import { CommonCollectables } from "@sprites/CommonCollectables";
 
 export class EmojiScene extends Phaser.Scene {
 	inventory: [string, string][] | undefined;
@@ -18,6 +20,12 @@ export class EmojiScene extends Phaser.Scene {
 	player: TutorialPlayer | undefined;
 	portal: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
 	bullets: Phaser.Physics.Arcade.Group | undefined;
+	collectablesLoc: { x: number; y: number }[] = [
+		{ x: 920, y: 530 },
+		{ x: 100, y: 170 },
+		{ x: 500, y: 610 },
+	];
+
 	preload() {
 		// Loading all necessary assets
 		this.load.image("tileset", "assets/Emoji/tilesetscifi.png");
@@ -70,6 +78,10 @@ export class EmojiScene extends Phaser.Scene {
 				frameHeight: 64,
 			}
 		);
+
+		this.load.image("1", "assets/collectables/1.png");
+		this.load.image("2", "assets/collectables/2.png");
+		this.load.image("3", "assets/collectables/3.png");
 
 		// Info Component Variables.
 	}
@@ -190,5 +202,13 @@ export class EmojiScene extends Phaser.Scene {
 		// layer2?.setCollisionByProperty({ collides: true });
 		// layer1?.setCollisionByExclusion([-1]);
 		// layer2?.setCollisionByExclusion([-1]);
+
+		new CommonCollectables(
+			this,
+			this.collectablesLoc,
+			2,
+			PuzzleIds.EMOJI_PUZZLE,
+			this.player
+		);
 	}
 }

@@ -1,7 +1,8 @@
 import { TutorialPlayer } from "../sprites/TutorialPlayer";
 import { store } from "../stores/index";
 import { toggleInfo, togglePortalKey } from "../slices/Tutorial/tutorial";
-// import BulletSprite from "@assets/tutorial/trail.png";
+import { PuzzleIds } from "@utils/PuzzleIds/puzzleId";
+import { CommonCollectables } from "@sprites/CommonCollectables";
 
 export class TutorialScene extends Phaser.Scene {
 	constructor() {
@@ -13,6 +14,12 @@ export class TutorialScene extends Phaser.Scene {
 	portal: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
 	isInfoOpen = store.getState().tutorial.isInfoOpen;
 	isInfoOpened: boolean | undefined;
+	collectablesLoc: { x: number; y: number }[] = [
+		{ x: 125, y: 175 },
+		{ x: 125, y: 850 },
+		{ x: 850, y: 600 },
+	];
+
 	preload() {
 		// Loading all necessary assets
 		this.load.image("tileset", "assets/tutorial/tileset.png");
@@ -70,6 +77,10 @@ export class TutorialScene extends Phaser.Scene {
 			frameWidth: 64,
 			frameHeight: 64,
 		});
+
+		this.load.image("1", "assets/collectables/1.png");
+		this.load.image("2", "assets/collectables/2.png");
+		this.load.image("3", "assets/collectables/3.png");
 
 		// Info Component Variables.
 		this.isInfoOpened = false;
@@ -230,5 +241,13 @@ export class TutorialScene extends Phaser.Scene {
 		// layer2?.setCollisionByProperty({ collides: true });
 		// layer1?.setCollisionByExclusion([-1]);
 		// layer2?.setCollisionByExclusion([-1]);
+
+		new CommonCollectables(
+			this,
+			this.collectablesLoc,
+			2,
+			PuzzleIds.TUTORIAL_PUZZLE,
+			this.player
+		);
 	}
 }

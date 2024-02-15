@@ -3,6 +3,8 @@ import { store } from "@stores/index";
 import { setText, toggleInfo, togglePortalKey } from "@slices/Steg/steg";
 import { initStegPuzzle, getStegImages } from "@slices/index";
 import { addItemToInventory } from "@slices/Status/statusActions";
+import { PuzzleIds } from "@utils/PuzzleIds/puzzleId";
+import { CommonCollectables } from "@sprites/CommonCollectables";
 
 export class StegScene extends Phaser.Scene {
 	constructor() {
@@ -17,6 +19,11 @@ export class StegScene extends Phaser.Scene {
 	chestRight: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
 	chestOpen: number | undefined;
 	bullets: Phaser.Physics.Arcade.Group | undefined;
+	collectablesLoc: { x: number; y: number }[] = [
+		{ x: 490, y: 465 },
+		{ x: 50, y: 240 },
+		{ x: 290, y: 535 },
+	];
 
 	preload() {
 		this.load.image("tileset_1", "assets/steg/$piano.png");
@@ -93,6 +100,9 @@ export class StegScene extends Phaser.Scene {
 			frameWidth: 64,
 			frameHeight: 64,
 		});
+		this.load.image("1", "assets/collectables/1.png");
+		this.load.image("2", "assets/collectables/2.png");
+		this.load.image("3", "assets/collectables/3.png");
 	}
 
 	create() {
@@ -592,5 +602,13 @@ export class StegScene extends Phaser.Scene {
 		});
 
 		this.player.bullets = this.bullets;
+
+		new CommonCollectables(
+			this,
+			this.collectablesLoc,
+			1,
+			PuzzleIds.STEGANOGRAPHY,
+			this.player
+		);
 	}
 }

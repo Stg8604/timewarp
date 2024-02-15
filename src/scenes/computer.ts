@@ -2,6 +2,8 @@ import { TutorialPlayer } from "../sprites/TutorialPlayer";
 import { store } from "@stores/index";
 import { toggleInfo } from "@slices/computer/computer";
 import { toggleComputerPortalKey } from "@slices/computer/computer";
+import { PuzzleIds } from "@utils/PuzzleIds/puzzleId";
+import { CommonCollectables } from "@sprites/CommonCollectables";
 
 export class ComputerScene extends Phaser.Scene {
 	constructor() {
@@ -31,6 +33,11 @@ export class ComputerScene extends Phaser.Scene {
 	isLeverDown = store.getState().computer.isLeverDown;
 	isPortalKeyOpen = store.getState().computer.isPortalKeyOpen;
 	chest: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody | undefined;
+	collectablesLoc: { x: number; y: number }[] = [
+		{ x: 215, y: 1040 },
+		{ x: 400, y: 350 },
+		{ x: 1480, y: 540 },
+	];
 
 	preload() {
 		this.load.image("tileset_1", "assets/computer/Space station._32_2.png");
@@ -70,6 +77,10 @@ export class ComputerScene extends Phaser.Scene {
 			frameHeight: 16,
 			startFrame: 121,
 		});
+
+		this.load.image("1", "assets/collectables/1.png");
+		this.load.image("2", "assets/collectables/2.png");
+		this.load.image("3", "assets/collectables/3.png");
 	}
 
 	create() {
@@ -319,6 +330,14 @@ export class ComputerScene extends Phaser.Scene {
 
 		const camera = this.cameras.main.setZoom(1.5, 1.5);
 		camera.startFollow(this.player, false, 0.5, 0.5);
+
+		new CommonCollectables(
+			this,
+			this.collectablesLoc,
+			2,
+			PuzzleIds.MST_PUZZLE,
+			this.player
+		);
 	}
 
 	// update() {

@@ -102,7 +102,9 @@ const Interpretor: FC<IInterpretorProps> = ({
 		<Modal
 			opened={delayedOpen}
 			size="lg"
-			onClose={() => {closeEditor();}}
+			onClose={() => {
+				closeEditor();
+			}}
 			withCloseButton={false}
 			styles={{
 				content: {
@@ -124,7 +126,10 @@ const Interpretor: FC<IInterpretorProps> = ({
 					},
 				})}
 			>
-				<Group onClick={() => run(editor.value)} className="cursor-pointer w-12">
+				<Group
+					onClick={() => run(editor.value)}
+					className="cursor-pointer w-12"
+				>
 					<Image src={playImg} />
 				</Group>
 				<Group onClick={() => stop()} className="cursor-pointer w-12">
@@ -141,9 +146,9 @@ const Interpretor: FC<IInterpretorProps> = ({
 				minLines={20}
 				maxLines={20}
 				editorProps={{ $blockScrolling: true }}
-				value={editor.value === ""? defaultInput: editor.value}
+				value={editor.value === "" ? defaultInput : editor.value}
 				onChange={(value) => {
-					dispatch(setEditorValue(value))
+					dispatch(setEditorValue(value));
 				}}
 				onLoad={editorOnLoad}
 				defaultValue={editor.value === "" ? defaultInput : editor.value}

@@ -15,6 +15,7 @@ export { default as Interceptor } from "./InterceptorX/InterceptorX";
 export { default as cipherReducer } from "./cipher/cipher";
 export { default as LeaderBoardReducer } from "./Leaderboard/LeaderBoard";
 export { default as TrapsReducer } from "./Traps/traps";
+export { default as CollectableReducer } from "./Collectables/collectables";
 
 export {
 	loginUser,

@@ -4,6 +4,8 @@ import {
 	toggleInfoBox,
 	toggleWaterMorsePortal,
 } from "@slices/WaterMorse/waterMorse";
+import { PuzzleIds } from "@utils/PuzzleIds/puzzleId";
+import { CommonCollectables } from "@sprites/CommonCollectables";
 
 export class WaterMorseScene extends Phaser.Scene {
 	constructor() {
@@ -15,6 +17,11 @@ export class WaterMorseScene extends Phaser.Scene {
 	chestStatus = [false];
 	flagStarted: boolean = false;
 	bullets: Phaser.Physics.Arcade.Group | undefined;
+	collectablesLoc: { x: number; y: number }[] = [
+		{ x: 250, y: 460 },
+		{ x: 660, y: 100 },
+		{ x: 900, y: 650 },
+	];
 
 	preload() {
 		this.loadAssets();
@@ -101,6 +108,14 @@ export class WaterMorseScene extends Phaser.Scene {
 		});
 
 		this.createCamera();
+
+		new CommonCollectables(
+			this,
+			this.collectablesLoc,
+			2,
+			PuzzleIds.MORSE_AUDIO_PUZZLE,
+			this.player!
+		);
 	}
 
 	loadAssets() {
@@ -141,6 +156,9 @@ export class WaterMorseScene extends Phaser.Scene {
 			frameWidth: 64,
 			frameHeight: 64,
 		});
+		this.load.image("1", "assets/collectables/1.png");
+		this.load.image("2", "assets/collectables/2.png");
+		this.load.image("3", "assets/collectables/3.png");
 	}
 
 	createMapAndPlayer() {

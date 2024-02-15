@@ -6,6 +6,8 @@ import {
 } from "@slices/cipher/cipher";
 import { TutorialPlayer } from "../sprites/TutorialPlayer";
 import { store } from "@stores/index";
+import { PuzzleIds } from "@utils/PuzzleIds/puzzleId";
+import { CommonCollectables } from "@sprites/CommonCollectables";
 
 export class CipherScene extends Phaser.Scene {
 	constructor() {
@@ -27,6 +29,11 @@ export class CipherScene extends Phaser.Scene {
 	isPortalKeyOpen = store.getState().cipher.isPortalKeyOpen;
 	isFire = store.getState().cipher.isFire;
 	bullets: Phaser.Physics.Arcade.Group | undefined;
+	collectablesLoc: { x: number; y: number }[] = [
+		{ x: 1400, y: 300 },
+		{ x: 300, y: 1300 },
+		{ x: 1050, y: 1350 },
+	];
 
 	preload() {
 		// Loading all necessary assets
@@ -100,6 +107,9 @@ export class CipherScene extends Phaser.Scene {
 				frameHeight: 64,
 			}
 		);
+		this.load.image("1", "assets/collectables/1.png");
+		this.load.image("2", "assets/collectables/2.png");
+		this.load.image("3", "assets/collectables/3.png");
 	}
 
 	create() {
@@ -273,5 +283,13 @@ export class CipherScene extends Phaser.Scene {
 		// Configuring camera
 		const camera = this.cameras.main.setZoom(1.5, 1.5);
 		camera.startFollow(this.player, false, 0.5, 0.5);
+
+		new CommonCollectables(
+			this,
+			this.collectablesLoc,
+			2,
+			PuzzleIds.REV_ENG_PUZZLE,
+			this.player
+		);
 	}
 }

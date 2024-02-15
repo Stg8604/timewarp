@@ -9,6 +9,8 @@ import {
 import { Toast } from "../components";
 import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
 import { completePuzzle } from "@slices/Traps/trapsAction";
+import { PuzzleIds } from "@utils/PuzzleIds/puzzleId";
+import { CommonCollectables } from "@sprites/CommonCollectables";
 
 class Turret {
 	scene: Phaser.Scene;
@@ -124,9 +126,17 @@ export class TrapsScene extends Phaser.Scene {
 	currentStage = 0;
 	level1done = false;
 	level2done = false;
+	collectablesLoc: { x: number; y: number }[] = [
+		{ x: 560, y: 225 },
+		{ x: 225, y: 820 },
+		{ x: 1150, y: 890 },
+	];
 
 	preload() {
 		this.loadAllAssets();
+		this.load.image("1", "assets/collectables/1.png");
+		this.load.image("2", "assets/collectables/2.png");
+		this.load.image("3", "assets/collectables/3.png");
 	}
 
 	create() {
@@ -200,6 +210,8 @@ export class TrapsScene extends Phaser.Scene {
 		});
 		this.physics.add.collider(this.player!, this.walls!);
 		this.physics.add.collider(this.player!, turrets.tutorialTurret.gun);
+		this.physics.add.collider(this.player!, turrets.challengeTurret1.gun);
+		this.physics.add.collider(this.player!, turrets.challengeTurret2.gun);
 
 		store.subscribe(() => {
 			const state = store.getState();
@@ -225,6 +237,14 @@ export class TrapsScene extends Phaser.Scene {
 				}
 			}
 		});
+
+		new CommonCollectables(
+			this,
+			this.collectablesLoc,
+			1,
+			PuzzleIds.TRAPS_PUZZLE,
+			this.player!
+		);
 	}
 
 	update() {
