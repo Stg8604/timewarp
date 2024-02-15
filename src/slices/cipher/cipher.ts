@@ -32,7 +32,6 @@ export const cipherSlice = createSlice({
 			state.isGodInfo = !state.isGodInfo;
 		},
 		updateRevEngParams: (state, { payload }) => {
-			console.log("");
 		},
 		togglePortalKey: (state) => {
 			state.isPortalKeyOpen = !state.isPortalKeyOpen;

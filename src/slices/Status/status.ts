@@ -71,6 +71,9 @@ export const statusSlice = createSlice({
 
 		builder.addCase(addItemToInventory.fulfilled, (state, action) => {
 			// console.log("Here", action.payload, JSON.stringify(state.inventory))
+			if(state.inventory.find(([name, desc]) => name === action.payload.inventory[0][0])) {
+				return state;
+			}
 			state.inventory = [...state.inventory, ...action.payload.inventory];
 		});
 

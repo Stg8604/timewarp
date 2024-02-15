@@ -438,13 +438,13 @@ export class SoundPuzzle extends Phaser.Scene {
 					if (obj2.contents && !this.inventory.includes(obj2.contents)) {
 						Toast(TOAST_SUCCESS, obj2.contents[0] + " picked up");
 						this.inventory = [...this.inventory, obj2.contents];
-						store.dispatch(setInventory(this.inventory));
 						store.dispatch(
 							updateSoundParams({
 								...this.puzzle.params,
 								inventory: this.inventory.map((ele) => ele[0]),
 							})
 						);
+						store.dispatch(setInventory(this.inventory));
 						store.dispatch(addItemToInventory(obj2.contents));
 					}
 					obj2.destroy();
