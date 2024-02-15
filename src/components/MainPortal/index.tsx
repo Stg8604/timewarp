@@ -12,7 +12,7 @@ const MainPortal = (props: MainPortalProps) => {
   🍉
   🙅↪️ num 🚮 4 ◀️ 3 🍇
     num 🚮 4 ➡️ counter
-    🔂 i 🆕⏩ 1 10 counter❗️ 🍇
+    🔂 i 🆕⏩ 0 10 counter❗️ 🍇
       num ➕ i ➡️ num
     🍉
   🍉
@@ -34,13 +34,13 @@ const MainPortal = (props: MainPortalProps) => {
   num ➕ 22 ➡️ num
   ↪️ num 🚮 4 ◀️ 3 🍇
     num 🚮 4 ➡️ counter
-    🔂 i 🆕⏩ 1 20 counter❗️ 🍇
+    🔂 i 🆕⏩ 0 20 counter❗️ 🍇
       num ➖ (2 * i) ➡️ num
     🍉
   🍉
   🙅 🍇
     num 🚮 4 ➡️ counter
-    🔂 i 🆕⏩ 1 10 counter❗️ 🍇
+    🔂 i 🆕⏩ 0 10 counter❗️ 🍇
       num ➕ i ➡️ num
     🍉
   🍉
