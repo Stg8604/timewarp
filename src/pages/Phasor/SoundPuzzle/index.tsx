@@ -65,7 +65,7 @@ const SoundPuzzle = ({
 				switchScene("Lobby");
 			}
 		})
-	})
+	},[])
 
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [map, setMap] = useState(storedScene);
