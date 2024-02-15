@@ -236,3 +236,39 @@ body {
 .grecaptcha-badge {
 	display: none;
 }
+
+@media only screen and (max-width: 600px) {
+	body{
+		width: 100vw !important;
+		height: 100vh !important;
+		overflow: hidden;
+	}
+	.mobileView span{
+		font-size: 3.3rem;
+	}
+	.mobileImg{
+		display: none;
+	}
+	.mobileText{
+		font-size: 1rem;
+	}
+
+	.mobileNav div{
+		font-size: 1rem;
+	}
+
+	.mobileNav{
+		gap: 8px;
+		align-items: center;
+	}
+	.mobileNav div:first-child{
+		font-size: 1.1rem;
+		margin-bottom: 4px;
+	}
+
+	.mobileNav div:not(:first-child){
+		font-size: 0.8rem;
+		margin-right: 10px;
+	}
+
+  }

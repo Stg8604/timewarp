@@ -70,7 +70,7 @@ const Home: FC = () => {
 								ease: "easeInOut",
 								duration: 1.5,
 							}}
-							className="mono absolute text-[1.6rem] w-full left-0 text-center"
+							className="mono absolute text-[1.6rem] w-full left-0 text-center mobileText"
 						>
 							1S AND 0S THROUGH TIME
 						</motion.div>
@@ -92,11 +92,11 @@ const Home: FC = () => {
 				<div>
 					<img
 						src={P1}
-						className="absolute bottom-[0px] right-[-150px] transition-all opacity-0 fadeInEle"
+						className="absolute bottom-[0px] right-[-150px] transition-all opacity-0 fadeInEle mobileImg"
 					/>
 					<img
 						src={P3}
-						className="scale-[0.8] absolute bottom-[-100px] left-[-150px] transition-all opacity-0 fadeInEle"
+						className="scale-[0.8] absolute bottom-[-100px] left-[-150px] transition-all opacity-0 fadeInEle mobileImg"
 					/>
 				</div>
 			)}

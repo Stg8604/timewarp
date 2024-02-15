@@ -13,7 +13,7 @@ interface LandingPageProps {}
 
 const LandingPage: FC<LandingPageProps> = () => {
 	return (
-		<div className="w-screen min-h-[100vh] overflow-x-hidden text-white landing">
+		<div className="w-screen min-h-[100vh] overflow-x-hidden text-white landing mobileView">
 			<div className="overflow-hidden h-[100vh]">
 				<Navbar />
 				<Home />

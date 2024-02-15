@@ -31,12 +31,10 @@ export class CommonCollectables extends Phaser.GameObjects.Group {
 						collectableSprite.setScale(scale);
 						collectableSprite.setDepth(150);
 						this.add(collectableSprite);
-						console.log(collectableSprite);
 						if (collectable.collected) {
 							collectableSprite.destroy();
 						}
 						this.scene.physics.add.overlap(player, collectableSprite, () => {
-							console.log("here");
 							collectableSprite.destroy();
 							store
 								.dispatch(

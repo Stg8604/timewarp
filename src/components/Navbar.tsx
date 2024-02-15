@@ -7,7 +7,7 @@ const Navbar: FC = () => {
 	const navigate = useNavigate();
 	return (
 		<div className="h-30px text-[1.2rem]  w-full text-white flex items-center justify-between p-6 ">
-			<div className="flex justify-start items-center w-[80%] gap-8">
+			<div className="flex justify-start items-center w-[80%] gap-8 mobileNav">
 				<div className="font-semibold">Time Warp</div>
 				<div className="text-[1.1rem] hover:cursor-pointer">
 					<a href="https://docs-timewarp.netlify.app" target="_blank">
