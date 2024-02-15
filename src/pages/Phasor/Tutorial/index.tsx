@@ -48,7 +48,7 @@ const Tutorial = ({ switchScene }: { switchScene: (key: string) => void }) => {
 		},
 	];
 
-	const defaultInput = `#Objects available\n# - Security\nprint(Security)`;
+	const defaultInput = `#Objects available\n# - Security\n#print(Security)`;
 	const switchScene2 = () => {
 		navigate("/game");
 		localStorage.setItem("scene", "Lobby");

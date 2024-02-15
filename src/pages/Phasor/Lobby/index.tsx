@@ -33,7 +33,6 @@ const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
 				<LevelSelector
 					title1="Nature's Sound"
 					title2="Mysterious Music"
-					title3="Tutorial"
 					currentTime="past"
 					switchScene={switchScene}
 				/>
