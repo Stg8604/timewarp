@@ -15,6 +15,8 @@ import Emoji from "../Emoji";
 import InterceptorX from "../InterceptorX";
 import Cipher from "../Cipher";
 import TrapsPuzzle from "../Traps";
+import { playerStatus } from "@slices/Player/PlayerActions";
+import { store } from "@stores/index";
 
 const PhasorRouter = () => {
 	const dispatch = useAppDispatch();
@@ -26,12 +28,16 @@ const PhasorRouter = () => {
 		storedScene = "Lobby";
 	}
 	const [map, setMap] = useState(storedScene);
-
+	const [day, setDay] = useState(0);
 	const playerDetails = useAppSelector((state) => state.player);
 
 	useEffect(() => {
 		(async () => {
+			store.dispatch(playerStatus()).then((res) => {
+				setDay(res.payload?.day || 1);
+			})
 			const getStatus = await dispatch(status());
+			console.log(playerDetails)
 			if (status.fulfilled.match(getStatus)) {
 				if (playerDetails.tutorialCompleted) {
 					// setMap("Computer");
@@ -55,9 +61,19 @@ const PhasorRouter = () => {
 	}, [playerDetails.tutorialCompleted]);
 
 	const switchScene = (scene: string) => {
+		console.log(playerDetails.day)
+		if(scene!="Lobby" && playerDetails.day<=0){
+			Toast(TOAST_ERROR, "This puzzle is not available for today. Please try again later.");
+			setIsLoading(false);
+			return
+		}
 		setIsLoading(true);
 		setMap(scene);
 		// console.log("Switchting map");
+		// if(localStorage.getItem("scene")!="Lobby" && playerDetails.day<=0){
+		// 	Toast(TOAST_ERROR, "This puzzle is not available for today. Please come back tomorrow.");
+		// }
+		
 		localStorage.setItem("scene", scene);
 		dispatch(setScene(scene + "Scene"));
 		setIsLoading(false);
@@ -85,7 +101,7 @@ const PhasorRouter = () => {
 			) : map === "Cipher" ? (
 				<Cipher switchScene={switchScene} />
 			) : map === "Turret Defence" ? (
-				<TrapsPuzzle />
+				<TrapsPuzzle switchScene={switchScene} />
 			) : (
 				<Tutorial switchScene={switchScene} />
 			)}{" "}

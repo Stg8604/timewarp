@@ -40,7 +40,7 @@ export const waterMorseSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder.addCase(status.fulfilled, (state, action) => {
-			state.audioID = action.payload.audioID;
+			state.audioID = action.payload?.audioID || -1;
 		});
 	},
 });

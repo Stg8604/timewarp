@@ -7,6 +7,7 @@ interface PasskeyDetails {
 }
 
 interface APIError {
+	day?: number;
 	message: string;
 	score: number;
 	totalScore: number;

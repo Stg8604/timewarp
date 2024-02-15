@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { status } from "./PlayerActions";
+import { playerStatus } from "./PlayerActions";
 const initialState = {
 	day: 0,
 	inventoryOpen: false,
@@ -17,13 +17,13 @@ export const playerSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(status.rejected, (state) => {
+		builder.addCase(playerStatus.rejected, (state) => {
 			state.isFetching = false;
 		});
-		builder.addCase(status.pending, (state) => {
+		builder.addCase(playerStatus.pending, (state) => {
 			state.isFetching = true;
 		});
-		builder.addCase(status.fulfilled, (state, { payload }) => {
+		builder.addCase(playerStatus.fulfilled, (state, { payload }) => {
 			state.isFetching = false;
 			state.day = payload.day;
 			state.tutorialCompleted = payload.tutorialCompleted;

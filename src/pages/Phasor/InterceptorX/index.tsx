@@ -62,7 +62,11 @@ const InterceptorX = ({
 	const defaultInput = `#Objects available\n# - Interceptor\nprint(Interceptor)\n#Interceptor.intercept(<optional ip string>)\nimport base64`;
 	const navigate = useNavigate();
 	useEffect(() => {
-		dispatch(interceptorStatus());
+		dispatch(interceptorStatus()).then(res=>{
+			if(res.type.includes("/status/rejected")){
+				switchScene("Lobby");
+			}
+		})
 		setInitialize(true);
 	}, []);
 

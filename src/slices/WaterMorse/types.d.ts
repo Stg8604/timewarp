@@ -3,6 +3,7 @@ interface WaterMorseStatusResponse {
 	isCompleted: boolean;
 	score: number;
 	message: string;
+	error ?: string;
 }
 
 interface WaterMorseFlagBody {

@@ -46,7 +46,11 @@ const Cipher = ({ switchScene }: { switchScene: (key: string) => void }) => {
 
 	useEffect(() => {
 		setInitialize(true);
-		dispatch(cipherStatus());
+		dispatch(cipherStatus()).then(res=>{
+			if(res.type.includes("/status/rejected")){
+				switchScene("Lobby");
+			}
+		})
 	}, []);
 
 	const seederParams = [

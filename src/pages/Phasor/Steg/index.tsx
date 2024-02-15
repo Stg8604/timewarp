@@ -47,9 +47,13 @@ const Steg = ({ switchScene }: { switchScene: (key: string) => void }) => {
 
 	useEffect(() => {
 		setInitialize(true);
-		dispatch(initStegPuzzle()).then(() => {
+		dispatch(initStegPuzzle()).then((res) => {
+			console.log(res);
+			if(res.type.includes("/rejected")){
+				switchScene("Lobby");
+			}
 			dispatch(getStegImages());
-		});
+		})
 	}, [dispatch]);
 	const switchScene2 = () => {
 		navigate("/game");

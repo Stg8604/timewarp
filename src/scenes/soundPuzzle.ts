@@ -62,7 +62,7 @@ export class SoundPuzzle extends Phaser.Scene {
 					this.description[`audio_clip_${key}`] = value;
 				});
 			}
-		});
+		})
 	}
 
 	preload() {

@@ -3,7 +3,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import CustomAxios from "@utils/CustomAxios";
 
-export const status = createAsyncThunk<Status, void, { rejectValue: APIError }>(
+export const playerStatus = createAsyncThunk<Status, void, { rejectValue: APIError }>(
 	"user/loginUser",
 	async (_, { rejectWithValue }) => {
 		try {

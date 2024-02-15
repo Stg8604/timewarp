@@ -58,7 +58,11 @@ const Emoji = ({ switchScene }: { switchScene: (key: string) => void }) => {
 
 	useEffect(() => {
 		setInitialize(true);
-		dispatch(emojiStatus());
+		dispatch(emojiStatus()).then(res=>{
+			if(res.type.includes("/status/rejected")){
+				switchScene("Lobby");
+			}
+		})
 	}, []);
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {

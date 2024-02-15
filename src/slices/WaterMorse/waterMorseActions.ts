@@ -3,7 +3,7 @@ import CustomAxios from "@utils/CustomAxios";
 import { AxiosError } from "axios";
 
 export const status = createAsyncThunk<
-	WaterMorseStatusResponse,
+	WaterMorseStatusResponse | undefined,
 	void,
 	{
 		rejectValue: APIError;

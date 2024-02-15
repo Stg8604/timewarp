@@ -13,7 +13,9 @@ import { setScene } from "@slices/Scene/scene";
 import CompletionPopUp from "../../../components/CompletionPopUp";
 import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
 
-const TrapsPuzzle = () => {
+const TrapsPuzzle = ({
+	switchScene
+} : {switchScene: (key: string) => void } )=> {
 	const [initialize, setInitialize] = useState(false);
 	const gameRef = useRef(null);
 	const config = useAppSelector((state) => state.editor);
@@ -26,7 +28,11 @@ const TrapsPuzzle = () => {
 	const defaultInput = `# For stage 1, return should be of type {\n#   "tutorialTurret": number (Turret Angle)\n# }\n\n# For stage 2, return should be of type {\n#   "challengeTurret1": number (Turret 1 Angle),\n#   "challengeTurret2": number (Turret 2 Angle),\n# }\n\ndef engageTower(turretCoords, enemyCoords):\n\t# write your logic for turret angle here\n\t# using given turretCoords and enemyCoords\n\t# and return it`;
 
 	useEffect(() => {
-		dispatch(status());
+		dispatch(status()).then((res)=>{
+			if(res.type.includes("/status/rejected")){
+				switchScene("Lobby");
+			}
+		})
 		setInitialize(true);
 	}, [dispatch]);
 

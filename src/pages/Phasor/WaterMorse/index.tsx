@@ -65,7 +65,12 @@ const WaterMorse = ({
 
 	useEffect(() => {
 		setInitialize(true);
-		dispatch(status());
+		dispatch(status()).then((res)=>{
+			if(res.type=="watermorse/status/rejected"){
+				switchScene("Lobby");
+			}
+		})
+
 	}, [dispatch]);
 
 	useEffect(() => {

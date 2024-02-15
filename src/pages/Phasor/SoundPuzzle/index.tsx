@@ -15,6 +15,7 @@ import SoundPuzzleModule from "@modules/SoundPuzzle.txt";
 import CompletionPopUp from "../../../components/CompletionPopUp";
 import { setScene } from "@slices/Scene/scene";
 import { useNavigate } from "react-router-dom";
+import { getClipsOrder } from "@slices/SoundPuzzle/soundPuzzleActions";
 const hashmap: { [key: string]: string } = {
 	audio_clip_1: "/assets/1.mp3",
 	audio_clip_2: "/assets/2.mp3",
@@ -56,6 +57,16 @@ const SoundPuzzle = ({
 		localStorage.setItem("scene", "Lobby");
 		storedScene = "Lobby";
 	}
+
+	useEffect(()=>{
+		dispatch(getClipsOrder()).then(res=>{
+			console.log(res);
+			if(res.type.includes("/getClipsOrder/rejected")){
+				switchScene("Lobby");
+			}
+		})
+	})
+
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [map, setMap] = useState(storedScene);
 	const playAudioRecordings = (audioFiles: string[]) => {

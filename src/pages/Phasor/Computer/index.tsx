@@ -43,7 +43,11 @@ const Computer = ({ switchScene }: { switchScene: (key: string) => void }) => {
 
 	useEffect(() => {
 		setInitialize(true);
-		dispatch(status());
+		dispatch(status()).then(res=>{
+			if(res.type.includes("/status/rejected")){
+				switchScene("Lobby");
+			}
+		})
 	}, [dispatch]);
 
 	useEffect(() => {
