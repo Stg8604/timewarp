@@ -70,21 +70,21 @@ const PhasorRouter = () => {
 				<Loader />
 			) : map === "Lobby" ? (
 				<Lobby switchScene={switchScene} />
-			) : map === "Computer" ? (
+			) : map === "Email" ? (
 				<Computer switchScene={switchScene} />
-			) : map === "SoundPuzzle" ? (
+			) : map === "Mysterious Music" ? (
 				<SoundPuzzle switchScene={switchScene} />
-			) : map === "WaterMorse" ? (
+			) : map === "Nature's Sound" ? (
 				<WaterMorse switchScene={switchScene} />
-			) : map === "Steg" ? (
+			) : map === "Cryptic Paintings" ? (
 				<Steg switchScene={switchScene} />
 			) : map === "InterceptorX" ? (
 				<InterceptorX switchScene={switchScene} />
-			) : map === "Emoji" ? (
+			) : map === "He Who Emotes" ? (
 				<Emoji switchScene={switchScene} />
 			) : map === "Cipher" ? (
 				<Cipher switchScene={switchScene} />
-			) : map === "Traps" ? (
+			) : map === "Turret Defence" ? (
 				<TrapsPuzzle />
 			) : (
 				<Tutorial switchScene={switchScene} />
