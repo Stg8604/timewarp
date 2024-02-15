@@ -14,7 +14,7 @@ import { CommonCollectables } from "@sprites/CommonCollectables";
 export class EmojiScene extends Phaser.Scene {
 	inventory: [string, string][] | undefined;
 	constructor() {
-		super({ key: "EmojiScene" });
+		super({ key: "He Who EmotesScene" });
 	}
 
 	player: TutorialPlayer | undefined;
@@ -99,7 +99,7 @@ export class EmojiScene extends Phaser.Scene {
 		const layer7 = map.createLayer("Prop3", tileset!);
 		const layer8 = map.createLayer("Prop4", tileset!);
 
-		this.portal = this.physics.add.sprite(32 * 26 - 16, 32 * 7 - 16, "portal");
+		this.portal = this.physics.add.sprite(32 * 26 - 16, 32 * 8 - 16, "portal");
 		this.portal.setImmovable(true);
 		this.portal.setSize(32, 32);
 

@@ -35,7 +35,7 @@ export class SoundPuzzle extends Phaser.Scene {
 	];
 
 	constructor() {
-		super({ key: "SoundPuzzleScene" });
+		super({ key: "Mysterious MusicScene" });
 		this.puzzle = store.getState().soundPuzzle;
 		this.inventory = store.getState().status.inventory;
 		this.clipsOrder = store.getState().soundPuzzle.clipsOrder;
@@ -236,9 +236,11 @@ export class SoundPuzzle extends Phaser.Scene {
 			32 * 3 - 16,
 			32 * 3 - 16,
 			"player",
-			0.8
+			0.8,
+			100
 		);
 		this.player.setCollideWorldBounds(true);
+		this.player.setVelocityY(-50)
 
 		this.portal = this.physics.add
 			.sprite(16 * 32 - 16, 16 * 28.2 - 16, "portal")

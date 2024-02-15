@@ -31,8 +31,8 @@ const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
 			{player.inventoryOpen && <Inventory />}
 			{lobby.isPastPortalOpen && (
 				<LevelSelector
-					title1="WaterMorse"
-					title2="SoundPuzzle"
+					title1="Nature's Sound"
+					title2="Mysterious Music"
 					title3="Tutorial"
 					currentTime="past"
 					switchScene={switchScene}
@@ -41,16 +41,16 @@ const Lobby = ({ switchScene }: { switchScene: (key: string) => void }) => {
 			{lobby.isPresentPortalOpen && (
 				<LevelSelector
 					title1="Cipher"
-					title2="Steg"
-					title3="Traps"
+					title2="Cryptic Paintings"
+					title3="Turret Defence"
 					currentTime="present"
 					switchScene={switchScene}
 				/>
 			)}
 			{lobby.isFuturePortalOpen && (
 				<LevelSelector
-					title1="Computer"
-					title2="Emoji"
+					title1="Email"
+					title2="He Who Emotes"
 					title3="InterceptorX"
 					currentTime="future"
 					switchScene={switchScene}

@@ -9,7 +9,7 @@ import { CommonCollectables } from "@sprites/CommonCollectables";
 
 export class WaterMorseScene extends Phaser.Scene {
 	constructor() {
-		super({ key: "WaterMorseScene" });
+		super({ key: "Nature's SoundScene" });
 	}
 
 	player: TutorialPlayer | undefined;

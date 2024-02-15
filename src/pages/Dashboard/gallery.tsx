@@ -5,14 +5,16 @@ interface GalleryProps {
 }
 
 const sceneAssetsMap: { [key: string]: string } = {
-	WaterMorse: "assets/Dashboard/WaterMorse.svg",
+	"Nature's Sound": "assets/Dashboard/WaterMorse.svg",
 	Lobby: "assets/Dashboard/play.svg",
-	SoundPuzzle: "assets/Dashboard/Sound.svg",
+	"Mysterious Music": "assets/Dashboard/Sound.svg",
 	Cipher: "assets/Dashboard/RevEng.svg",
-	Steg: "assets/Dashboard/Steg.svg",
-	Computer: "assets/Dashboard/Computer.svg",
-	Emoji: "assets/Dashboard/Emoji.svg",
+	"Cryptic Paintings": "assets/Dashboard/Steg.svg",
+	"Email": "assets/Dashboard/Computer.svg",
+	"He Who Emotes": "assets/Dashboard/Emoji.svg",
 	InterceptorX: "assets/Dashboard/Interceptor.svg",
+	"Turret Defence": "assets/Dashboard/trap.svg",
+	Tutorial: "assets/Dashboard/Tutorial.svg"
 };
 
 const Gallery: React.FC<GalleryProps> = ({ onClick }) => {

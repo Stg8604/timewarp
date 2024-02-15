@@ -109,7 +109,7 @@ export class TrapsScene extends Phaser.Scene {
 	level2Block: Phaser.GameObjects.Rectangle | undefined;
 	blockLocation = { x: 847, y: 400 };
 	constructor() {
-		super({ key: "TrapsScene" });
+		super({ key: "Turret DefenceScene" });
 	}
 
 	player: TutorialPlayer | undefined;
@@ -572,7 +572,7 @@ export class TrapsScene extends Phaser.Scene {
 			this.walls = colliderLayer;
 		}
 
-		this.player = new TutorialPlayer(this, 400, 650, "player", 1.4);
+		this.player = new TutorialPlayer(this, 400, 650, "player", 1.4,150);
 
 		this.physics.add.collider(this.player!, layer1!);
 		this.physics.add.collider(this.player!, layer2!);

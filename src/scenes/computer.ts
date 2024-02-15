@@ -7,7 +7,7 @@ import { CommonCollectables } from "@sprites/CommonCollectables";
 
 export class ComputerScene extends Phaser.Scene {
 	constructor() {
-		super({ key: "ComputerScene" });
+		super({ key: "EmailScene" });
 	}
 
 	player: TutorialPlayer | undefined;
@@ -200,7 +200,7 @@ export class ComputerScene extends Phaser.Scene {
 
 		this.player.setDepth(102);
 		this.switch = this.physics.add.sprite(32 * 30 - 16, 32 * 17 - 16, "switch");
-		this.switch.setScale(2);
+		this.switch.setScale(4.5);
 		this.switch.setImmovable(true);
 		this.switch.setDepth(102);
 

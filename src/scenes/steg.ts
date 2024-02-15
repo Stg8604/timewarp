@@ -8,7 +8,7 @@ import { CommonCollectables } from "@sprites/CommonCollectables";
 
 export class StegScene extends Phaser.Scene {
 	constructor() {
-		super({ key: "StegScene" });
+		super({ key: "Cryptic PaintingsScene" });
 	}
 
 	player: TutorialPlayer | undefined;
@@ -347,7 +347,8 @@ export class StegScene extends Phaser.Scene {
 			32 * 10 - 16,
 			32 * 10 - 16,
 			"player",
-			0.9
+			0.9,
+			100
 		);
 
 		this.chestLeft.anims.create({
