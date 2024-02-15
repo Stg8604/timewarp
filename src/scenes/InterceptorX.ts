@@ -311,7 +311,6 @@ export class InterceptorXScene extends Phaser.Scene {
 					const chest =
 						chestObject as Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
 					const index = this.chests.indexOf(chest);
-					console.log(index);
 					if (index !== -1 && !isInfoStates[index]) {
 						console.log(index, "wassupppp");
 						store.dispatch(toggleInfoActions[index]());

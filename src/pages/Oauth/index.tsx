@@ -13,19 +13,13 @@ const Oauth = () => {
 	useEffect(() => {
 		const jwt = new URLSearchParams(location.search).get("jwt");
 		const error = new URLSearchParams(location.search).get("error");
-		console.log(jwt, error);
 		if (error) {
-			console.log("error");
 			Toast(TOAST_ERROR, error);
 			navigate("/");
 		} else if (jwt == null || jwt == "") {
-			console.log("errorjkbkj");
-
 			Toast(TOAST_ERROR, "There seems to be an issue.");
 			navigate("/");
 		} else {
-			console.log("erj");
-
 			setCookie("jwt", jwt, {
 				path: "/",
 				expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),

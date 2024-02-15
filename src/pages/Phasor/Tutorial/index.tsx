@@ -9,9 +9,11 @@ import {
 	PasskeyBox,
 	Toast,
 	Inventory,
+	TutorialPopUp,
 } from "@components/index";
 import { toggleEditor } from "@slices/index";
 import {
+	toggleCompletionPopUp,
 	toggleInfo,
 	togglePortalKey,
 	updateTutorialParams,
@@ -20,6 +22,8 @@ import { phaserConfig } from "@phaserGame/game";
 import SecurModule from "@modules/SecurityModule.txt";
 import { checkFlag } from "@slices/Tutorial/tutorialActions";
 import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
+import { useNavigate } from "react-router-dom";
+import { setScene } from "@slices/Scene/scene";
 
 const text =
 	"Hello Player! You are in the year 2049. Technology has went far and beyond making it possible to have portals to different time period. The world is run by machine now. So you have to utilize the machine tools to get things done. Press 'E' anytime to open or close your weapon - the code editor.";
@@ -32,6 +36,7 @@ const Tutorial = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	const config = useAppSelector((state) => state.editor);
 	const player = useAppSelector((state) => state.player);
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 
 	const seederParams = [
 		{
@@ -44,7 +49,12 @@ const Tutorial = ({ switchScene }: { switchScene: (key: string) => void }) => {
 	];
 
 	const defaultInput = `#Objects available\n# - Security\nprint(Security)`;
-
+	const switchScene2 = () => {
+		navigate("/game");
+		localStorage.setItem("scene", "Lobby");
+		dispatch(setScene("Lobby" + "Scene"));
+		window.location.reload();
+	};
 	useEffect(() => {
 		setInitialize(true);
 	}, []);
@@ -69,9 +79,9 @@ const Tutorial = ({ switchScene }: { switchScene: (key: string) => void }) => {
 
 		if (response.type === "tutorial/checkFlag/fulfilled") {
 			if ((response.payload as TutorialFlagResponse).correct) {
+				dispatch(toggleCompletionPopUp());
 				dispatch(togglePortalKey());
 				Toast(TOAST_SUCCESS, "You have solved the puzzle!");
-				switchScene("Lobby");
 			} else {
 				Toast(TOAST_ERROR, "Incorrect passkey!");
 			}
@@ -101,6 +111,7 @@ const Tutorial = ({ switchScene }: { switchScene: (key: string) => void }) => {
 					}}
 				/>
 			)}
+			{tutorial.isPopUpOpen && <TutorialPopUp onclick={switchScene2} />}
 
 			{!initialize && (
 				<div className="flex justify-center items-center h-[100vh]">

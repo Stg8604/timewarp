@@ -21,7 +21,6 @@ const ReactPy: FC<IReactPy> = ({ seederParams, defaultInput }) => {
 	} = usePython();
 
 	const [output, setOuput] = useState<string>("");
-	console.log(stdout);
 	const filterOutput = () => {
 		try {
 			const systemOutputIndex = stdout.indexOf("__SYSTEM__OUTPUT__");

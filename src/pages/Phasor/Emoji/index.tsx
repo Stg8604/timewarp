@@ -93,7 +93,6 @@ const Emoji = ({ switchScene }: { switchScene: (key: string) => void }) => {
 				setTotalScore(response.payload.totalScore);
 				dispatch(togglePortalKey());
 				dispatch(toggleOpenBox());
-				console.log(emoji.isPortalKeyOpen);
 			} else {
 				Toast(TOAST_INFO, response.payload?.message);
 			}

@@ -32,3 +32,4 @@ export { default as StyleWrapper } from "./Auth/StyleWrapper/index";
 export { default as Popup } from "./CompletionPopUp/index";
 export { default as TrapsPy } from "./TrapsPy/index";
 export { default as RedoTutorial } from "./RedoTutorial/index";
+export { default as TutorialPopUp } from "./TutorialPopUp/index";
