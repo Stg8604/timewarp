@@ -6,9 +6,7 @@ import {
 	setTurretCoords,
 	toggleInfoBox,
 } from "@slices/Traps/traps";
-import { Toast } from "../components";
-import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
-import { completePuzzle } from "@slices/Traps/trapsAction";
+import { completePuzzle, encodedFlag } from "@slices/Traps/trapsAction";
 import { PuzzleIds } from "@utils/PuzzleIds/puzzleId";
 import { CommonCollectables } from "@sprites/CommonCollectables";
 
@@ -278,14 +276,8 @@ export class TrapsScene extends Phaser.Scene {
 			this.level1done &&
 			this.currentStage > this.waveConfig.length
 		) {
-			store.dispatch(completePuzzle()).then((res) => {
-				if (res.type === "traps/complete/fulfilled") {
-					store.dispatch(toggleInfoBox(4));
-					Toast(TOAST_SUCCESS, res.payload?.message);
-				} else if (res.type === "traps/complete/rejected") {
-					Toast(TOAST_ERROR, res.payload?.message + " Attempt puzzle again!");
-				}
-			});
+			store.dispatch(encodedFlag())
+			store.dispatch(toggleInfoBox(6))
 			this.level2done = true;
 		}
 	}
@@ -540,6 +532,10 @@ export class TrapsScene extends Phaser.Scene {
 			}
 		);
 		this.load.image("bullet", "assets/tutorial/trail.png");
+		this.load.spritesheet("portal", "assets/tutorial/portal.png", {
+			frameWidth: 64,
+			frameHeight: 64,
+		});
 	}
 
 	createMapAndPlayer() {
@@ -578,6 +574,30 @@ export class TrapsScene extends Phaser.Scene {
 		this.physics.add.collider(this.player!, layer2!);
 		map.setCollisionFromCollisionGroup(true, true, layer1!);
 		map.setCollisionFromCollisionGroup(true, true, layer2!);
+
+		const portal = this.physics.add.sprite(
+			1400,
+			430,
+			"portal"
+		);
+		portal.setImmovable(true);
+		portal.setSize(32, 32);
+
+		// Portal animations
+		portal.anims.create({
+			key: "idle",
+			frames: this.anims.generateFrameNumbers("portal", { start: 0, end: 7 }),
+			frameRate: 10,
+			repeat: -1,
+		});
+		portal.anims.play("idle", true);
+
+		// Collider callback between player and portal
+		this.physics.add.collider(this.player, portal, () => {
+			if (!store.getState().traps.infoBox[5]) {
+				store.dispatch(toggleInfoBox(5));
+			}
+		});
 
 		const camera = this.cameras.main.setZoom(2.5, 2.5);
 		camera.startFollow(this.player, false, 0.5, 0.5);

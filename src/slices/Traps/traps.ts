@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { completePuzzle } from "./trapsAction";
+import { completePuzzle, encodedFlag } from "./trapsAction";
 
 interface TrapsState {
 	enemyCoords: { x: number; y: number }[];
@@ -18,6 +18,7 @@ interface TrapsState {
 	infoBox: boolean[];
 	score: number;
 	totalScore: number;
+	encodedFlag: string;
 }
 
 const initialState: TrapsState = {
@@ -26,9 +27,10 @@ const initialState: TrapsState = {
 	shoot: {},
 	pyOutput: {},
 	level: 1,
-	infoBox: [false, false, false, false, false],
+	infoBox: [false, false, false, false, false, false],
 	score: 0,
 	totalScore: 0,
+	encodedFlag: "",
 };
 
 export const trapsSlice = createSlice({
@@ -65,6 +67,10 @@ export const trapsSlice = createSlice({
 			state.totalScore = action.payload.totalScore;
 			state.score = action.payload.score;
 		});
+		builder.addCase(encodedFlag.fulfilled, (state, action) => {
+			state.encodedFlag = action.payload.encodedFlag;
+			state.infoBox[6] = true;
+		})
 	},
 });
 

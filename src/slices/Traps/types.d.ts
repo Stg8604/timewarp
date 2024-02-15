@@ -10,3 +10,7 @@ interface TrapsCompleteResponse {
 	totalScore: integer;
 	message: string;
 }
+
+interface TrapsEncodedFlagResponse {
+	encodedFlag: string;
+}

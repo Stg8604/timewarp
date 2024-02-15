@@ -2,15 +2,16 @@ import { useRef, useState, useEffect } from "react";
 import { IonPhaser } from "@ion-phaser/react";
 import { Loader } from "@mantine/core";
 import { useAppDispatch, useAppSelector } from "@stores/hooks";
-import { BackBtn, InfoBox, TrapsPy } from "@components/index";
+import { BackBtn, InfoBox, PasskeyBox, Toast, TrapsPy } from "@components/index";
 import { toggleEditor } from "@slices/index";
 import { phaserConfig } from "@phaserGame/game";
 import Inventory from "../../../components/Inventory";
 import { toggleInfoBox } from "@slices/Traps/traps";
-import { status } from "@slices/Traps/trapsAction";
+import { completePuzzle, status } from "@slices/Traps/trapsAction";
 import { useNavigate } from "react-router-dom";
 import { setScene } from "@slices/Scene/scene";
 import CompletionPopUp from "../../../components/CompletionPopUp";
+import { TOAST_ERROR, TOAST_SUCCESS } from "@utils/ToastStatus";
 
 const TrapsPuzzle = () => {
 	const [initialize, setInitialize] = useState(false);
@@ -18,6 +19,7 @@ const TrapsPuzzle = () => {
 	const config = useAppSelector((state) => state.editor);
 	const player = useAppSelector((state) => state.player);
 	const traps = useAppSelector((state) => state.traps);
+	const [passkey, setPasskey] = useState("");
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
@@ -46,6 +48,22 @@ const TrapsPuzzle = () => {
 		dispatch(setScene("Lobby" + "Scene"));
 		window.location.reload();
 	};
+
+	const handleSubmit = () => {
+		dispatch(completePuzzle({flag: passkey})).then((res) => {
+			if (res.type === "traps/complete/fulfilled") {
+				dispatch(toggleInfoBox(5));
+				dispatch(toggleInfoBox(4));
+				Toast(TOAST_SUCCESS, res.payload?.message);
+			} else if (res.type === "traps/complete/rejected") {
+				Toast(TOAST_ERROR, res.payload?.message);
+			}
+		});
+	}
+
+	const handleClose = () => {
+		dispatch(toggleInfoBox(5));
+	}
 
 	return (
 		<>
@@ -108,6 +126,22 @@ const TrapsPuzzle = () => {
 					title3={":" + traps.totalScore.toString()}
 					title4={"(+" + traps.score.toString() + ")"}
 					onclick={switchScene2}
+				/>
+			)}
+
+			{traps.infoBox[5] && (
+				<PasskeyBox
+					passkey={passkey}
+					setPasskey={setPasskey}
+					handleSubmit={handleSubmit}
+					handleClose={handleClose}
+				/>
+			)}
+
+			{traps.infoBox[6] && (
+				<InfoBox
+					text={`The enemies have fallen. They have dropped something that is encoded like an image. Decode this and get the passkey: ${traps.encodedFlag}`}
+					onClose={() => dispatch(toggleInfoBox(6))}
 				/>
 			)}
 

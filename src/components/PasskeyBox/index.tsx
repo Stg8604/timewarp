@@ -11,7 +11,7 @@ const PasskeyBox = (props: PasskeyBoxProps) => {
 			<div className=" flex flex-col gap-5 justify-center items-center bg-black/50 backdrop-blur-sm text-white rounded-md w-[40vh] aspect-square font-pixelifySans">
 				<span className="text-xl">ENTER PASSKEY</span>
 				<input
-					type="number"
+					type="text"
 					value={props.passkey}
 					onChange={(e) => {
 						if (e.target.value.length <= 30) {
