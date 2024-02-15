@@ -77,7 +77,7 @@ export class WaterMorseScene extends Phaser.Scene {
 		}
 
 		store.subscribe(() => {
-			if (store.getState().scene.sceneName !== "Nature's Sound") return;
+			if (store.getState().scene.sceneName !== "Nature's SoundScene") return;
 			const params = store.getState().waterMorse.params;
 			if (params.forest === "pause") forest.pause();
 			else forest.resume();
